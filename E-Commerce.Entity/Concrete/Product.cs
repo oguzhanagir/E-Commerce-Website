@@ -1,0 +1,21 @@
+﻿using E_Commerce.Entity.Abstract;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace E_Commerce.Entity.Concrete
+{
+    public class Product:BaseEntity
+    {
+        public string? Name { get; set; }
+        public string? SubTitle { get; set; }
+        public string? Description { get; set; }
+        public string? Price { get; set; }
+        public string? Quantity { get; set; }
+        public string? Features { get; set; }
+        public float Point { get; set; }
+
+    }
+}
