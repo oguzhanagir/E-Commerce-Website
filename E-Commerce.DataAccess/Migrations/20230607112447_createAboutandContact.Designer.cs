@@ -4,6 +4,7 @@ using E_Commerce.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.DataAccess.Migrations
 {
     [DbContext(typeof(CommerceDbContext))]
-    partial class CommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230607112447_createAboutandContact")]
+    partial class createAboutandContact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,43 +23,6 @@ namespace E_Commerce.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.About", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("CompanyAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyMail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyPhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Abouts");
-                });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Address", b =>
                 {
@@ -98,96 +63,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Blog", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Contact", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contacts");
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>
@@ -259,7 +135,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.OrderStatus", b =>
@@ -284,7 +160,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatuses");
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Payment", b =>
@@ -324,7 +200,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.PaymentMethod", b =>
@@ -352,7 +228,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods");
+                    b.ToTable("PaymentMethod");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.PaymentStatus", b =>
@@ -380,7 +256,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentStatuses");
+                    b.ToTable("PaymentStatus");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Product", b =>
@@ -474,13 +350,6 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Blog", b =>
-                {
-                    b.HasOne("E_Commerce.Entity.Concrete.Category", null)
-                        .WithMany("Blogs")
-                        .HasForeignKey("CategoryId");
-                });
-
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>
                 {
                     b.HasOne("E_Commerce.Entity.Concrete.Payment", "Payment")
@@ -539,11 +408,6 @@ namespace E_Commerce.DataAccess.Migrations
                     b.HasOne("E_Commerce.Entity.Concrete.OrderItem", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderItemId");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Category", b =>
-                {
-                    b.Navigation("Blogs");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>

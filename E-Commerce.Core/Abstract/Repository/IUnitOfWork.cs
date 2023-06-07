@@ -20,6 +20,8 @@ namespace E_Commerce.Core.Abstract.Repository
         IPaymentStatusRepository PaymentStatuses { get; }
         IProductRepository Products { get; }
         IUserRepository Users { get; }
+        IAboutRepository Abouts { get; }
+        IContactRepository Contacts { get; }
 
 
         Task<int> CompleteAsync();

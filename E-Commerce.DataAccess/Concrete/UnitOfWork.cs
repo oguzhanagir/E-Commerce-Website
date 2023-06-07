@@ -15,8 +15,10 @@ namespace E_Commerce.DataAccess.Concrete
         {
             _dbContext = dbContext;
             Addresses = new AddressRepository(_dbContext);
+            Abouts = new AboutRepository(_dbContext);
             Blogs = new BlogRepository(_dbContext);
             Categories = new CategoryRepository(_dbContext);
+            Contacts = new ContactRepository(_dbContext);
             OrderItems = new OrderItemRepository(_dbContext);
             Orders = new OrderRepository(_dbContext);
             OrderStatuses = new OrderStatusRepository(_dbContext);
@@ -29,10 +31,12 @@ namespace E_Commerce.DataAccess.Concrete
         }
 
         public IAddressRepository Addresses { get; }
+        public IAboutRepository Abouts { get; }
 
         public IBlogRepository Blogs { get; }
 
         public ICategoryRepository Categories { get; }
+        public IContactRepository Contacts { get; }
 
         public IOrderItemRepository OrderItems { get; }
 
