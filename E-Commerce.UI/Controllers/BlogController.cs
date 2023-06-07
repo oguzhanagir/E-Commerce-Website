@@ -1,28 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace E_Commerce.UI.Controllers
 {
-    public class HomeController : Controller
+    public class BlogController : Controller
     {
-    
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ShippingInfo()
+        public IActionResult BlogGrids()
         {
             return View();
         }
-
-        public IActionResult Footer()
+        public IActionResult BlogSingle()
         {
             return View();
         }
-
-
-
-
     }
 }

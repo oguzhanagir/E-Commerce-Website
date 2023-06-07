@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Component.InvokeAsync("MainHeader")
+@await Component.InvokeAsync("FeaturedCategories")
+@await Component.InvokeAsync("TrendProducts")
+@await Component.InvokeAsync("SpecialOffer")
+
+<partial name="~/Views/Shop/HomeProductList.cshtml"></partial>
+
+@await Component.InvokeAsync("LatestBlogs")
+
+<partial name="~/Views/Home/ShippingInfo.cshtml"></partial>
+<partial name="~/Views/Home/Footer.cshtml"></partial>

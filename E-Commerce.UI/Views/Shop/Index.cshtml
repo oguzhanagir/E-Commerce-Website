@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<partial name="~/Views/Shop/BreadCrumbs.cshtml"></partial>
+
+@await Component.InvokeAsync("ProductGrids")
+
+<partial name="~/Views/Home/Footer.cshtml"></partial>
