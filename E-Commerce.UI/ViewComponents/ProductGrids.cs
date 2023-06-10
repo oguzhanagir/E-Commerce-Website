@@ -14,8 +14,9 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogByBestSell = _productService.GetAll(); 
-
+            var getBlogByBestSell =  _productService.GetAllWithCategory();
+            var categoriesList = _productService.GetCategories();
+            ViewBag.Categories = categoriesList;
             return View(getBlogByBestSell);
         }
     }

@@ -20,17 +20,17 @@ namespace E_Commerce.Business.Service
 
         public void Create(Order entity)
         {
-            _unitOfWork.Orders.AddAsync(entity);
+            _unitOfWork.Orders.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var order = _unitOfWork.Orders.GetByIdAsync(id);
+            var order = _unitOfWork.Orders.GetById(id);
             if (order != null)
             {
-                await _unitOfWork.Orders.DeleteAsync(order);
-                await _unitOfWork.CompleteAsync();
+                _unitOfWork.Orders.Remove(order);
+                _unitOfWork.CompleteAsync();
             }
         }
 
@@ -41,12 +41,12 @@ namespace E_Commerce.Business.Service
 
         public Order GetById(int id)
         {
-            return _unitOfWork.Orders.GetByIdAsync(id);
+            return _unitOfWork.Orders.GetById(id);
         }
 
         public void Update(Order entity)
         {
-            _unitOfWork.Orders.UpdateAsync(entity);
+            _unitOfWork.Orders.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

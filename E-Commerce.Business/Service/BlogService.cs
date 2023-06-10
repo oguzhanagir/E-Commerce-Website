@@ -20,17 +20,17 @@ namespace E_Commerce.Business.Service
 
         public void Create(Blog entity)
         {
-            _unitOfWork.Blogs.AddAsync(entity);
+            _unitOfWork.Blogs.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public  void Delete(int id)
         {
-            var blog = _unitOfWork.Blogs.GetByIdAsync(id);
+            var blog = _unitOfWork.Blogs.GetById(id);
             if (blog != null)
             {
-                await _unitOfWork.Blogs.DeleteAsync(blog);
-                await _unitOfWork.CompleteAsync();
+                 _unitOfWork.Blogs.Remove(blog);
+                _unitOfWork.CompleteAsync();
             }
         }
 
@@ -39,14 +39,19 @@ namespace E_Commerce.Business.Service
             return await _unitOfWork.Blogs.GetAllAsync();
         }
 
+        public IEnumerable<Blog> GetAllNormal()
+        {
+            return _unitOfWork.Blogs.GetAll();
+        }
+
         public Blog GetById(int id)
         {
-            return _unitOfWork.Blogs.GetByIdAsync(id);
+            return _unitOfWork.Blogs.GetById(id);
         }
 
         public void Update(Blog entity)
         {
-            _unitOfWork.Blogs.UpdateAsync(entity);
+            _unitOfWork.Blogs.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

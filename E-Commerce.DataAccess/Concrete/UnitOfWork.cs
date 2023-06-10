@@ -27,6 +27,7 @@ namespace E_Commerce.DataAccess.Concrete
             PaymentStatuses = new PaymentStatusRepository(_dbContext);
             Products = new ProductRepository(_dbContext);
             Users = new UserRepository(_dbContext);
+            Images = new ImageRepository(_dbContext);
           
         }
 
@@ -53,10 +54,11 @@ namespace E_Commerce.DataAccess.Concrete
         public IProductRepository Products { get; }
 
         public IUserRepository Users { get; }
+        public IImageRepository Images { get; }
 
-        public async Task<int> CompleteAsync()
+        public void CompleteAsync()
         {
-            return await _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
         }
 
         public void Dispose()

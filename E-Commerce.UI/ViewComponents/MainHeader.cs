@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogByPopular = _productService.GetAll(); // Popular Olarak Değiştirilecektir.
+            var getBlogByPopular = _productService.GetPopularProducts();
 
             return View(getBlogByPopular);
         }

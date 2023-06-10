@@ -10,6 +10,7 @@ namespace E_Commerce.Core.Abstract.Service
     {
         T GetById(int id);
         Task<IEnumerable<T>> GetAll();
+        
         void Create(T entity);
         void Update(T entity);
         void Delete(int id);

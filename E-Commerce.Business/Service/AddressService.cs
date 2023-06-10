@@ -20,17 +20,17 @@ namespace E_Commerce.Business.Service
 
         public void Create(Address entity)
         {
-            _unitOfWork.Addresses.AddAsync(entity);
+            _unitOfWork.Addresses.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var address = _unitOfWork.Addresses.GetByIdAsync(id);
+            var address = _unitOfWork.Addresses.GetById(id);
             if (address != null)
             {
-               await _unitOfWork.Addresses.DeleteAsync(address);
-               await _unitOfWork.CompleteAsync();
+                _unitOfWork.Addresses.Remove(address);
+                _unitOfWork.CompleteAsync();
             }
         }
 
@@ -41,12 +41,12 @@ namespace E_Commerce.Business.Service
 
         public Address GetById(int id)
         {
-            return _unitOfWork.Addresses.GetByIdAsync(id);
+            return _unitOfWork.Addresses.GetById(id);
         }
 
         public void Update(Address entity)
         {
-            _unitOfWork.Addresses.UpdateAsync(entity);
+            _unitOfWork.Addresses.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

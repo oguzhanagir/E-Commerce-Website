@@ -1,0 +1,101 @@
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="table-components">
+    <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="title mb-30">
+                        <h2>Kategori Tablosu</h2>
+                        <a href="/Category/AddCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Kategori Ekle</a>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="col-md-6">
+                    <div class="breadcrumb-wrapper mb-30">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#0">Kontrol Paneli</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Kategoriler
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- ========== title-wrapper end ========== -->
+        <!-- ========== tables-wrapper start ========== -->
+        <div class="tables-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <h6 class="mb-10">Kategori Listesi</h6>
+                        <div class="table-wrapper table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><h6>Kategori Adı</h6></th>
+                                        <th><h6>Ürün Sayısı</h6></th>
+                                        <th><h6>Sil</h6></th>
+                                        <th><h6>Güncelle</h6></th>
+                                    </tr>
+                                    <!-- end table row-->
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+
+                                            <td class="min-width">
+                                                <p>@item.Name</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>5</p>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a href="/Category/DeleteCategory/@item.Id" class="text-danger">
+                                                        <i class="lni lni-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a href="/Category/UpdateCategory/@item.Id" class="text-warning">
+                                                        <i class="lni lni-pencil"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- end table row -->
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            <!-- end table -->
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+        </div>
+        <!-- ========== tables-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+</section>

@@ -10,50 +10,79 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.DataAccess.Concrete
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly CommerceDbContext _dbContext;
-        private readonly DbSet<TEntity> _dbSet;
+        private readonly DbSet<T> _dbSet;
 
         public GenericRepository(CommerceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _dbSet = dbContext.Set<TEntity>();
+            _dbSet = dbContext.Set<T>();
         }
 
-        public TEntity GetByIdAsync(int id)
+        public void Add(T entity)
         {
-            var entity =  _dbSet.Find(id);
-            return entity!;
+            _dbSet.Add(entity);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public void AddRange(IEnumerable<T> entities)
+        {
+            _dbSet.AddRange(entities);
+        }
+
+        public T? Find(Expression<Func<T, bool>> expression)
+        {
+            return _dbSet.FirstOrDefault(expression);
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet.AsEnumerable();
+        }
+
+        public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query.AsEnumerable();
+        }
+
+
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        public List<T> List(Expression<Func<T, bool>> where)
         {
-            return await _dbSet.Where(predicate).ToListAsync();
+            return _dbSet.Where(where).ToList();
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public T GetById(int id)
         {
-            await _dbSet.AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
-            return entity;
+            return _dbSet.Find(id)!;
         }
 
-        public async Task UpdateAsync(TEntity entity)
-        {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public async Task DeleteAsync(TEntity entity)
+        public void Remove(T entity)
         {
             _dbSet.Remove(entity);
-            await _dbContext.SaveChangesAsync();
+        }
+
+        public void RemoveRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
+
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
         }
     }
 

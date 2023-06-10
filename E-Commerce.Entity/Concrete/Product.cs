@@ -15,7 +15,11 @@ namespace E_Commerce.Entity.Concrete
         public Decimal Price { get; set; }
         public int Quantity { get; set; }
         public string? Features { get; set; }
-        public float Point { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category? Category { get; set; }
+
+        public ICollection<ProductImage>? ProductImages { get; set; }
 
     }
 }

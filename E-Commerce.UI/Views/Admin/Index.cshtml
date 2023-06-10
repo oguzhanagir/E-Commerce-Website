@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="title-wrapper pt-30">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div class="title mb-30">
+                <h2>Kontrol Paneli</h2>
+            </div>
+        </div>
+        <!-- end col -->
+        <div class="col-md-6">
+            <div class="breadcrumb-wrapper mb-30">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#0">Kontrol Paneli</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Ana Sayfa
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>
+
+<div class="row">
+
+    <partial name="~/Views/Admin/NewOrders.cshtml"></partial>
+    <partial name="~/Views/Admin/TotalIncome.cshtml"></partial>
+    <partial name="~/Views/Admin/TotalExpense.cshtml"></partial>
+    <partial name="~/Views/Admin/NewUsersNumber.cshtml"></partial>
+
+</div>
+
+<div class="row">
+    <partial name="~/Views/Admin/YearlySalesTotal.cshtml"></partial>
+
+</div>
+
+<div class="row">
+        <partial name="~/Views/Admin/TopSellingProducts.cshtml"></partial>
+
+</div>
+
+<div class="row">
+            <partial name="~/Views/Admin/SalesForecast.cshtml"></partial>
+            <partial name="~/Views/Admin/TrafficNumber.cshtml"></partial>
+
+</div>

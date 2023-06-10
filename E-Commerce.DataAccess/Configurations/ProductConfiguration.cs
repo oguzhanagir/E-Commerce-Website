@@ -20,7 +20,6 @@ namespace E_Commerce.DataAccess.Configurations
             builder.Property(x => x.Price).IsRequired();
             builder.Property(x => x.Quantity).IsRequired();
             builder.Property(x => x.Features).IsRequired();
-            builder.Property(x => x.Point).IsRequired();
 
         }
     }

@@ -109,6 +109,9 @@ namespace E_Commerce.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("BlogCategory")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
@@ -391,6 +394,9 @@ namespace E_Commerce.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -406,9 +412,6 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<int?>("OrderItemId")
                         .HasColumnType("int");
 
-                    b.Property<float>("Point")
-                        .HasColumnType("real");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -423,9 +426,38 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("OrderItemId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.User", b =>
@@ -536,14 +568,35 @@ namespace E_Commerce.DataAccess.Migrations
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Product", b =>
                 {
+                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("E_Commerce.Entity.Concrete.OrderItem", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderItemId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ProductImage", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Category", b =>
                 {
                     b.Navigation("Blogs");
+
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>
@@ -554,6 +607,11 @@ namespace E_Commerce.DataAccess.Migrations
             modelBuilder.Entity("E_Commerce.Entity.Concrete.OrderItem", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.Product", b =>
+                {
+                    b.Navigation("ProductImages");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.User", b =>

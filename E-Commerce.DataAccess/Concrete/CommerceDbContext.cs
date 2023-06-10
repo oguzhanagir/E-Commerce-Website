@@ -27,6 +27,7 @@ namespace E_Commerce.DataAccess.Concrete
         public DbSet<PaymentStatus>? PaymentStatuses { get; set; }
         public DbSet<User>? Users { get; set; }
         public DbSet<Product>? Products { get; set; }
+        public DbSet<ProductImage>? ProductImages { get; set; }
     }
 
 }

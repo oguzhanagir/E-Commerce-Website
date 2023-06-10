@@ -20,17 +20,17 @@ namespace E_Commerce.Business.Service
 
         public void Create(Contact entity)
         {
-            _unitOfWork.Contacts.AddAsync(entity);
+            _unitOfWork.Contacts.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public  void Delete(int id)
         {
-            var about = _unitOfWork.Contacts.GetByIdAsync(id);
+            var about = _unitOfWork.Contacts.GetById(id);
             if (about != null)
             {
-                await _unitOfWork.Contacts.DeleteAsync(about);
-                await _unitOfWork.CompleteAsync();
+                 _unitOfWork.Contacts.Remove(about);
+                 _unitOfWork.CompleteAsync();
             }
         }
 
@@ -41,12 +41,12 @@ namespace E_Commerce.Business.Service
 
         public Contact GetById(int id)
         {
-            return _unitOfWork.Contacts.GetByIdAsync(id);
+            return _unitOfWork.Contacts.GetById(id);
         }
 
         public void Update(Contact entity)
         {
-            _unitOfWork.Contacts.UpdateAsync(entity);
+            _unitOfWork.Contacts.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

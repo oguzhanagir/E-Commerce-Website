@@ -5,6 +5,6 @@
 }
 
 <partial name="~/Views/Shop/BreadCrumbs.cshtml"></partial>
-<partial name="~/Views/Blog/BlogGrids.cshtml"></partial>
+@await Component.InvokeAsync("BlogGrids")
 <partial name="~/Views/Home/Footer.cshtml"></partial>
 

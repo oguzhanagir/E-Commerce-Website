@@ -9,5 +9,6 @@ namespace E_Commerce.Core.Abstract.Service
 {
     public interface IBlogService : IGenericService<Blog>
     {
+        IEnumerable<Blog> GetAllNormal();
     }
 }

@@ -21,6 +21,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //Businees Classes
 builder.Services.AddTransient(typeof(IAddressService), typeof(AddressService));
+builder.Services.AddTransient(typeof(IAdminService), typeof(AdminService));
 builder.Services.AddTransient(typeof(IBlogService), typeof(BlogService));
 builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddTransient(typeof(IOrderItemService), typeof(OrderItemService));

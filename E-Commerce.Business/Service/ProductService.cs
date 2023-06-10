@@ -20,33 +20,52 @@ namespace E_Commerce.Business.Service
 
         public void Create(Product entity)
         {
-            _unitOfWork.Products.AddAsync(entity);
+            _unitOfWork.Products.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var product = _unitOfWork.Products.GetByIdAsync(id);
+            var product = _unitOfWork.Products.GetById(id);
             if (product != null)
             {
-                await _unitOfWork.Products.DeleteAsync(product);
-                await _unitOfWork.CompleteAsync();
+                _unitOfWork.Products.Remove(product);
+                _unitOfWork.CompleteAsync();
             }
         }
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _unitOfWork.Products.GetAllAsync();
+            var producList = await _unitOfWork.Products.GetAllAsync();
+            return producList;
+        }
+
+        
+        public IEnumerable<Product> GetPopularProducts()
+        {
+            var popularProducts = _unitOfWork.Products.GetPopularProduct();
+            return popularProducts;
+        }
+
+        public IEnumerable<Product> GetAllWithCategory()
+        {
+            var producList = _unitOfWork.Products.GetAll(x => x.Category!);
+            return producList;
         }
 
         public Product GetById(int id)
         {
-            return _unitOfWork.Products.GetByIdAsync(id);
+            return _unitOfWork.Products.GetById(id);
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+            return _unitOfWork.Categories.GetAll();
         }
 
         public void Update(Product entity)
         {
-            _unitOfWork.Products.UpdateAsync(entity);
+            _unitOfWork.Products.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

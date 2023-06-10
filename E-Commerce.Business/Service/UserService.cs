@@ -20,33 +20,33 @@ namespace E_Commerce.Business.Service
 
         public void Create(User entity)
         {
-            _unitOfWork.Users.AddAsync(entity);
+            _unitOfWork.Users.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public  void Delete(int id)
         {
-            var user = _unitOfWork.Users.GetByIdAsync(id);
+            var user = _unitOfWork.Users.GetById(id);
             if (user != null)
             {
-                await _unitOfWork.Users.DeleteAsync(user);
-                await _unitOfWork.CompleteAsync();
+                 _unitOfWork.Users.Remove(user);
+                 _unitOfWork.CompleteAsync();
             }
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public  Task<IEnumerable<User>> GetAll()
         {
-            return await _unitOfWork.Users.GetAllAsync();
+            return  _unitOfWork.Users.GetAllAsync();
         }
 
         public User GetById(int id)
         {
-            return _unitOfWork.Users.GetByIdAsync(id);
+            return _unitOfWork.Users.GetById(id);
         }
 
         public void Update(User entity)
         {
-            _unitOfWork.Users.UpdateAsync(entity);
+            _unitOfWork.Users.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

@@ -8,14 +8,19 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Core.Abstract.Repository
 {
-    public interface IGenericRepository<TEntity> where TEntity : BaseEntity
+    public interface IGenericRepository<T> where T : BaseEntity
     {
-        TEntity GetByIdAsync(int id);
-        Task<IEnumerable<TEntity>> GetAllAsync();
-        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
-        Task<TEntity> AddAsync(TEntity entity);
-        Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(TEntity entity);
+        T GetById(int id);
+        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties);
+        List<T> List(Expression<Func<T, bool>> where);
+        T? Find(Expression<Func<T, bool>> expression);
+        void Add(T entity);
+        void AddRange(IEnumerable<T> entities);
+        void Remove(T entity);
+        void RemoveRange(IEnumerable<T> entities);
+        Task<IEnumerable<T>> GetAllAsync();
+        void Update(T entity);
     }
 
 }

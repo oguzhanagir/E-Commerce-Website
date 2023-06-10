@@ -9,5 +9,7 @@ namespace E_Commerce.Core.Abstract.Repository
 {
     public interface IOrderRepository:IGenericRepository<Order>
     {
+        List<Order> GetLastMonthsOrders(int numberOfMonths);
+        IEnumerable<Order> GetOrdersByDate(DateTime date);
     }
 }

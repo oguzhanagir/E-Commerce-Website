@@ -12,5 +12,8 @@ namespace E_Commerce.Entity.Concrete
         public string? Title { get; set; }
         public string? Content { get; set; }
         public string? Image { get; set; }
+
+        public string?  BlogCategory { get; set; }
+
     }
 }

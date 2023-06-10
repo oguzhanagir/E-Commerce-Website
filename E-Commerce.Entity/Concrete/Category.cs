@@ -12,5 +12,6 @@ namespace E_Commerce.Entity.Concrete
         public string? Name { get; set; }
 
         public ICollection<Blog>? Blogs { get; set; }
+        public ICollection<Product>? Products { get; set; }
     }
 }

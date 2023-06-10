@@ -5,10 +5,10 @@
 }
 
 @await Component.InvokeAsync("MainHeader")
-@await Component.InvokeAsync("FeaturedCategories")
 @await Component.InvokeAsync("TrendProducts")
 @await Component.InvokeAsync("SpecialOffer")
 
+@await Component.InvokeAsync("FeaturedCategories")
 <partial name="~/Views/Shop/HomeProductList.cshtml"></partial>
 
 @await Component.InvokeAsync("LatestBlogs")

@@ -9,5 +9,8 @@ namespace E_Commerce.Core.Abstract.Service
 {
     public interface IProductService : IGenericService<Product>
     {
+        IEnumerable<Product> GetAllWithCategory();
+        IEnumerable<Category> GetCategories();
+        IEnumerable<Product> GetPopularProducts();
     }
 }

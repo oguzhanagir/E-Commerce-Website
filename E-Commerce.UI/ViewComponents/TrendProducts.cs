@@ -12,9 +12,9 @@ namespace E_Commerce.UI.ViewComponents
             _productService = productService;
         }
 
-        public IViewComponentResult Invoke()
+        public  IViewComponentResult Invoke()
         {
-            var getBlogByTrend = _productService.GetAll(); // Trend Olarak Değiştirilecektir.
+            var getBlogByTrend =  _productService.GetAllWithCategory(); 
 
             return View(getBlogByTrend);
         }

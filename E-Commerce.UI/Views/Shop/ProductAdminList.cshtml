@@ -1,0 +1,110 @@
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Product>
+@{
+    ViewData["Title"] = "ProductAdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="table-components">
+    <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="title mb-30">
+                        <h2>Ürün Tablosu</h2>
+                        <a href="/Shop/AddProduct" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Ürün Ekle</a>
+
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="col-md-6">
+                    <div class="breadcrumb-wrapper mb-30">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#0">Kontrol Paneli</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Ürünler
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- ========== title-wrapper end ========== -->
+        <!-- ========== tables-wrapper start ========== -->
+        <div class="tables-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <h6 class="mb-10">Ürün Listesi</h6>
+                        <div class="table-wrapper table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><h6>Ürün Id</h6></th>
+                                        <th><h6>Ürün Adı</h6></th>
+                                        <th><h6>Kategorisi</h6></th>
+                                        <th><h6>Kaç Adet Sepette</h6></th>
+                                        <th><h6>Sil</h6></th>
+                                        <th><h6>Güncelle</h6></th>
+                                    </tr>
+                                    <!-- end table row-->
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-width">
+                                                <p>@item.Id</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p><a href="/Shop/ProducDetails/@item.Id">@item.Name</a></p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Category!.Name</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>3</p>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a href="/Shop/DeleteProduct/@item.Id" class="text-danger">
+                                                        <i class="lni lni-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a href="/Shop/UpdateProduct/@item.Id" class="text-warning">
+                                                        <i class="lni lni-pencil"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- end table row -->
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            <!-- end table -->
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+        </div>
+        <!-- ========== tables-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+</section>

@@ -20,17 +20,17 @@ namespace E_Commerce.Business.Service
 
         public void Create(Category entity)
         {
-            _unitOfWork.Categories.AddAsync(entity);
+            _unitOfWork.Categories.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public  void Delete(int id)
         {
-            var category = _unitOfWork.Categories.GetByIdAsync(id);
+            var category = _unitOfWork.Categories.GetById(id);
             if (category != null)
             {
-                await _unitOfWork.Categories.DeleteAsync(category);
-                await _unitOfWork.CompleteAsync();
+                 _unitOfWork.Categories.Remove(category);
+                 _unitOfWork.CompleteAsync();
             }
         }
 
@@ -41,12 +41,12 @@ namespace E_Commerce.Business.Service
 
         public Category GetById(int id)
         {
-            return _unitOfWork.Categories.GetByIdAsync(id);
+            return _unitOfWork.Categories.GetById(id);
         }
 
         public void Update(Category entity)
         {
-            _unitOfWork.Categories.UpdateAsync(entity);
+            _unitOfWork.Categories.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }

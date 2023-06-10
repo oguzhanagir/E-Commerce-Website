@@ -20,17 +20,17 @@ namespace E_Commerce.Business.Service
 
         public void Create(Payment entity)
         {
-            _unitOfWork.Payments.AddAsync(entity);
+            _unitOfWork.Payments.Add(entity);
             _unitOfWork.CompleteAsync();
         }
 
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var payment = _unitOfWork.Payments.GetByIdAsync(id);
+            var payment = _unitOfWork.Payments.GetById(id);
             if (payment != null)
             {
-                await _unitOfWork.Payments.DeleteAsync(payment);
-                await _unitOfWork.CompleteAsync();
+                _unitOfWork.Payments.Remove(payment);
+                _unitOfWork.CompleteAsync();
             }
         }
 
@@ -41,12 +41,12 @@ namespace E_Commerce.Business.Service
 
         public Payment GetById(int id)
         {
-            return _unitOfWork.Payments.GetByIdAsync(id);
+            return _unitOfWork.Payments.GetById(id);
         }
 
         public void Update(Payment entity)
         {
-            _unitOfWork.Payments.UpdateAsync(entity);
+            _unitOfWork.Payments.Update(entity);
             _unitOfWork.CompleteAsync();
         }
     }
