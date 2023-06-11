@@ -2,6 +2,7 @@
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,19 +25,30 @@ namespace E_Commerce.Business.Service
             _unitOfWork.CompleteAsync();
         }
 
-        public  void Delete(int id)
+        public void Delete(int id)
         {
             var category = _unitOfWork.Categories.GetById(id);
             if (category != null)
             {
-                 _unitOfWork.Categories.Remove(category);
-                 _unitOfWork.CompleteAsync();
+                _unitOfWork.Categories.Remove(category);
+                _unitOfWork.CompleteAsync();
             }
         }
 
-        public async Task<IEnumerable<Category>> GetAll()
+        public  IEnumerable<Category> GetAll()
         {
-            return await _unitOfWork.Categories.GetAllAsync();
+            return _unitOfWork.Categories.GetAll();
+        }
+
+        public IEnumerable<Category> GetAllNormal()
+        {
+            return _unitOfWork.Categories.GetAll(x=>x.SubCategories!);
+        }
+
+        public Task<int> GetProductCountWithCategory(int id)
+        {
+            var countProduct = _unitOfWork.Products.GetCountByCategoryId(id);
+            return countProduct;
         }
 
         public Category GetById(int id)
@@ -50,4 +62,5 @@ namespace E_Commerce.Business.Service
             _unitOfWork.CompleteAsync();
         }
     }
+
 }

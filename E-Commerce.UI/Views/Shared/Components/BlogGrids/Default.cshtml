@@ -20,9 +20,14 @@
                                     <h4>
                                         <a href="blog-single-sidebar.html">@item.Title</a>
                                     </h4>
-                                    <p>
-                                        @item.Content
-                                    </p>
+                                   @if (@item.Content!.Length > 150)
+                                {
+                                    @Html.Raw(@item.Content.Substring(0, 150))
+                                }
+                                else
+                                {
+                                    @Html.Raw(@item.Content)
+                                }
                                     <div class="button">
                                         <a href="/Blog/BlogSingle/@item.Id" class="btn">Daha Fazla</a>
                                     </div>

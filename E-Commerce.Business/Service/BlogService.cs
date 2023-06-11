@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<Blog>> GetAll()
+        public   IEnumerable<Blog> GetAll()
         {
-            return await _unitOfWork.Blogs.GetAllAsync();
+            return _unitOfWork.Blogs.GetAll();
         }
 
         public IEnumerable<Blog> GetAllNormal()
@@ -44,9 +44,21 @@ namespace E_Commerce.Business.Service
             return _unitOfWork.Blogs.GetAll();
         }
 
+        public IEnumerable<Blog> GetLatestBlogToThree()
+        {
+            return _unitOfWork.Blogs.GetLatestBlogToThree();
+        }
+
         public Blog GetById(int id)
         {
-            return _unitOfWork.Blogs.GetById(id);
+            var blog = _unitOfWork.Blogs.GetById(id);
+            return blog!;
+        }
+
+        public List<Blog> GetByIdList(int id)
+        {
+            var blog = _unitOfWork.Blogs.List(x=>x.Id == id);
+            return blog!;
         }
 
         public void Update(Blog entity)

@@ -34,13 +34,27 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<Product>> GetAll()
+        public IEnumerable<Product> GetAll()
         {
-            var producList = await _unitOfWork.Products.GetAllAsync();
+            var producList =  _unitOfWork.Products.GetAll();
             return producList;
         }
 
-        
+        public  IEnumerable<Product> GetBestSellers()
+        {
+            var bestSellersList =  _unitOfWork.Products.GetBestSellers().Take(3);
+            return bestSellersList;
+        }
+        public IEnumerable<Product> GetNewArrivalsToThree()
+        {
+            var bestSellersList = _unitOfWork.Products.GetNewArrivalsToThree();
+            return bestSellersList;
+        }
+
+
+
+
+
         public IEnumerable<Product> GetPopularProducts()
         {
             var popularProducts = _unitOfWork.Products.GetPopularProduct();
@@ -49,13 +63,15 @@ namespace E_Commerce.Business.Service
 
         public IEnumerable<Product> GetAllWithCategory()
         {
-            var producList = _unitOfWork.Products.GetAll(x => x.Category!);
+            var producList = _unitOfWork.Products.GetAll(x => x.Category!,y=>y.ProductImages!);
             return producList;
         }
+        
+
 
         public Product GetById(int id)
         {
-            return _unitOfWork.Products.GetById(id);
+            return _unitOfWork.Products.GetById(id,x=>x.Category!,y=>y.ProductImages!);
         }
 
         public IEnumerable<Category> GetCategories()

@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<Contact>> GetAll()
+        public IEnumerable<Contact> GetAll()
         {
-            return await _unitOfWork.Contacts.GetAllAsync();
+            return _unitOfWork.Contacts.GetAll();
         }
 
         public Contact GetById(int id)

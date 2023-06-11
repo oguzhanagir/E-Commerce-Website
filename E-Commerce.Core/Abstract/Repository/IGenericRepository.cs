@@ -11,6 +11,7 @@ namespace E_Commerce.Core.Abstract.Repository
     public interface IGenericRepository<T> where T : BaseEntity
     {
         T GetById(int id);
+        T GetById(int id, params Expression<Func<T, object>>[] includeProperties);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties);
         List<T> List(Expression<Func<T, bool>> where);
@@ -19,7 +20,6 @@ namespace E_Commerce.Core.Abstract.Repository
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
-        Task<IEnumerable<T>> GetAllAsync();
         void Update(T entity);
     }
 

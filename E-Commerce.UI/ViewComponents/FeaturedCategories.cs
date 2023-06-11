@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getAllCategory = _categoryService.GetAll(); 
+            var getAllCategory = _categoryService.GetAllNormal();
 
             return View(getAllCategory);
         }

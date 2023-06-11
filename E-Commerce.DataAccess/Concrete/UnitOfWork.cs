@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.DataAccess.Concrete
 {
-    public class UnitOfWork:IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly CommerceDbContext _dbContext;
 
@@ -28,7 +28,9 @@ namespace E_Commerce.DataAccess.Concrete
             Products = new ProductRepository(_dbContext);
             Users = new UserRepository(_dbContext);
             Images = new ImageRepository(_dbContext);
-          
+            SubCategories = new SubCategoryRepository(_dbContext);
+
+
         }
 
         public IAddressRepository Addresses { get; }
@@ -55,6 +57,8 @@ namespace E_Commerce.DataAccess.Concrete
 
         public IUserRepository Users { get; }
         public IImageRepository Images { get; }
+
+        public ISubCategory SubCategories { get; }
 
         public void CompleteAsync()
         {

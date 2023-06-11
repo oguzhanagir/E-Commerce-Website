@@ -24,19 +24,19 @@ namespace E_Commerce.Business.Service
             _unitOfWork.CompleteAsync();
         }
 
-        public  void Delete(int id)
+        public void Delete(int id)
         {
             var about = _unitOfWork.Abouts.GetById(id);
             if (about != null)
             {
-                 _unitOfWork.Abouts.Remove(about);
-                 _unitOfWork.CompleteAsync();
+                _unitOfWork.Abouts.Remove(about);
+                _unitOfWork.CompleteAsync();
             }
         }
 
-        public async Task<IEnumerable<About>> GetAll()
+        public IEnumerable<About> GetAll()
         {
-            return await _unitOfWork.Abouts.GetAllAsync();
+            return _unitOfWork.Abouts.GetAll();
         }
 
         public About GetById(int id)

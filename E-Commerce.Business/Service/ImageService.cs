@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<ProductImage>> GetAll()
+        public  IEnumerable<ProductImage> GetAll()
         {
-            return await _unitOfWork.Images.GetAllAsync();
+            return  _unitOfWork.Images.GetAll();
         }
 
         public ProductImage GetById(int id)

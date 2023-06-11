@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getLatestBlogs = _blogService.GetAll(); // Latest Blogs Olarak Değiştirilecektir.
+            var getLatestBlogs = _blogService.GetLatestBlogToThree();
 
             return View(getLatestBlogs);
         }

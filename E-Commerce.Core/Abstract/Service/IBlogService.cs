@@ -10,5 +10,7 @@ namespace E_Commerce.Core.Abstract.Service
     public interface IBlogService : IGenericService<Blog>
     {
         IEnumerable<Blog> GetAllNormal();
+        IEnumerable<Blog> GetLatestBlogToThree();
+        List<Blog> GetByIdList(int id);
     }
 }

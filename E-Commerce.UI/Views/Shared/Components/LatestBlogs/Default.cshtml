@@ -1,84 +1,57 @@
-﻿   <!-- Start Blog Section Area -->
-    <section class="blog-section section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2>Our Latest News</h2>
-                        <p>There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Blog -->
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a href="blog-single-sidebar.html">
-                                <img src="https://via.placeholder.com/370x215" alt="#">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <a class="category" href="javascript:void(0)">eCommerce</a>
-                            <h4>
-                                <a href="blog-single-sidebar.html">What information is needed for shipping?</a>
-                            </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <div class="button">
-                                <a href="javascript:void(0)" class="btn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Blog -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Blog -->
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a href="blog-single-sidebar.html">
-                                <img src="https://via.placeholder.com/370x215" alt="#">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <a class="category" href="javascript:void(0)">Gaming</a>
-                            <h4>
-                                <a href="blog-single-sidebar.html">Interesting fact about gaming consoles</a>
-                            </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <div class="button">
-                                <a href="javascript:void(0)" class="btn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Blog -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Blog -->
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a href="blog-single-sidebar.html">
-                                <img src="https://via.placeholder.com/370x215" alt="#">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <a class="category" href="javascript:void(0)">Electronic</a>
-                            <h4>
-                                <a href="blog-single-sidebar.html">Electronics, instrumentation & control engineering
-                                </a>
-                            </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <div class="button">
-                                <a href="javascript:void(0)" class="btn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Blog -->
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Blog>
+
+<!-- Start Blog Section Area -->
+<section class="blog-section section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Son Bloglar</h2>
+                    <p>
+                        Aydınlatma dünyasındaki en son gelişmeler ve ilginç içerikler hakkında güncel bilgileri sunan bloglarımızı keşfedin.
+                        Aydınlatma trendleri, tasarım ipuçları, enerji verimliliği ve daha fazlasıyla ilgili yazılarımızla sizleri aydınlatıyoruz.
+                    </p>
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End Blog Section Area -->
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Blog -->
+                    <div class="single-blog">
+                        <div class="blog-img">
+                            <a href="/Blog/BlogSingle/@item.Id" class="btn">
+                                <img src="@item.Image" alt="@item.Title">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <a class="category" href="javascript:void(0)">@item.BlogCategory</a>
+                            <h4>
+                                @item.Title
+                            </h4>
+
+                            @if (@item.Content!.Length > 150)
+                            {
+                                @Html.Raw(@item.Content.Substring(0, 150))
+                            }
+                            else
+                            {
+                                @Html.Raw(@item.Content)
+                            }
+
+                            <div class="button">
+                                <a href="/Blog/BlogSingle/@item.Id" class="btn">Daha Fazla</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Blog -->
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<!-- End Blog Section Area -->

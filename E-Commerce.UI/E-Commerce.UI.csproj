@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="wwwroot\images\blog\" />
+    <Folder Include="wwwroot\images\about\" />
     <Folder Include="wwwroot\images\product\" />
   </ItemGroup>
 

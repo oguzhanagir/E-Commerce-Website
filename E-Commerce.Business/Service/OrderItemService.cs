@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<OrderItem>> GetAll()
+        public IEnumerable<OrderItem> GetAll()
         {
-            return await _unitOfWork.OrderItems.GetAllAsync();
+            return _unitOfWork.OrderItems.GetAll();
         }
 
         public OrderItem GetById(int id)

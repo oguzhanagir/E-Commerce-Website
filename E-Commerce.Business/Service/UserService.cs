@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public  Task<IEnumerable<User>> GetAll()
+        public  IEnumerable<User> GetAll()
         {
-            return  _unitOfWork.Users.GetAllAsync();
+            return  _unitOfWork.Users.GetAll();
         }
 
         public User GetById(int id)

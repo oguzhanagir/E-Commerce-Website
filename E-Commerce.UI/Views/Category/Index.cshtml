@@ -1,4 +1,4 @@
-﻿@model IEnumerable<E_Commerce.Entity.Concrete.Category>
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.SubCategory>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -13,6 +13,7 @@
                     <div class="title mb-30">
                         <h2>Kategori Tablosu</h2>
                         <a href="/Category/AddCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Kategori Ekle</a>
+                        <a href="/Category/AddSubCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Alt Kategori Ekle</a>
                     </div>
                 </div>
                 <!-- end col -->
@@ -45,8 +46,8 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th><h6>Kategori Adı</h6></th>
-                                        <th><h6>Ürün Sayısı</h6></th>
+                                        <th><h5>Kategori Adı</h5></th>
+                                        <th><h6>Alt Kategori Adı</h6></th>
                                         <th><h6>Sil</h6></th>
                                         <th><h6>Güncelle</h6></th>
                                     </tr>
@@ -56,23 +57,27 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
+                                            <td class="min-width">
+
+
+                                                <p>@item.Category!.Name</p>
+
+
+                                            </td>
 
                                             <td class="min-width">
                                                 <p>@item.Name</p>
                                             </td>
-                                            <td class="min-width">
-                                                <p>5</p>
-                                            </td>
                                             <td>
                                                 <div class="action">
-                                                    <a href="/Category/DeleteCategory/@item.Id" class="text-danger">
+                                                    <a href="/Category/DeleteSubCategory/@item.Id" class="text-danger">
                                                         <i class="lni lni-trash-can"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="action">
-                                                    <a href="/Category/UpdateCategory/@item.Id" class="text-warning">
+                                                    <a href="/Category/UpdateSubCategory/@item.Id" class="text-warning">
                                                         <i class="lni lni-pencil"></i>
                                                     </a>
                                                 </div>

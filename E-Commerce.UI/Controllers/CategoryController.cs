@@ -7,19 +7,23 @@ namespace E_Commerce.UI.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        private readonly ISubCategoryService _subCategoryService;
+        public CategoryController(ICategoryService categoryService, ISubCategoryService subCategoryService)
         {
             _categoryService = categoryService;
+            _subCategoryService = subCategoryService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var categoryList = await _categoryService.GetAll();
-            return View(categoryList);
+            var subCategoryList = _subCategoryService.GetAllNormal();
+            ViewBag.SubCategoryList = subCategoryList;
+            
+            return View(subCategoryList);
         }
 
         [HttpGet]
-        public IActionResult AddCategory()
+        public  IActionResult AddCategory()
         {
             return View();
         }
@@ -35,26 +39,44 @@ namespace E_Commerce.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateCategory(int id)
+        public  IActionResult AddSubCategory()
         {
-            var category = _categoryService.GetById(id);
-       
-            return View(category);
+            ViewBag.Categories =_categoryService.GetAll();
+            return View();
         }
 
         [HttpPost]
-        public IActionResult UpdateCategory(Category category)
+        public IActionResult AddSubCategory(SubCategory subcategory)
         {
-            if (category !=null)
+            if (subcategory != null)
             {
-                _categoryService.Update(category);
+                _subCategoryService.Create(subcategory);
+               
             }
             return RedirectToAction("Index", "Category");
         }
 
-        public IActionResult DeleteCategory(int id)
+        [HttpGet]
+        public IActionResult UpdateSubCategory(int id)
         {
-            _categoryService.Delete(id);
+            var subCategory = _subCategoryService.GetById(id);
+        
+            return View(subCategory);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateSubCategory(SubCategory subcategory)
+        {
+            if (subcategory != null)
+            {
+                _subCategoryService.Update(subcategory);
+            }
+            return RedirectToAction("Index", "Category");
+        }
+
+        public IActionResult DeleteSubCategory(int id)
+        {
+            _subCategoryService.Delete(id);
             return RedirectToAction("Index", "Category");
         }
 

@@ -29,9 +29,11 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
-        public IActionResult ProductDetails()
+        public IActionResult ProductDetails(int id)
         {
-            return View();
+            var product = _productService.GetById(id);
+           
+            return View(product);
         }
 
         public IActionResult Cart()
@@ -80,7 +82,7 @@ namespace E_Commerce.UI.Controllers
                         if (file.Length > 0)
                         {
                             var fileName = Path.GetFileName(file.FileName);
-                            var filePath = "images/product" + fileName;
+                            var filePath = "images/product/" + fileName;
 
                             using (var stream = new FileStream(Path.Combine("wwwroot", filePath), FileMode.Create))
                             {
@@ -127,7 +129,7 @@ namespace E_Commerce.UI.Controllers
                         if (file.Length > 0)
                         {
                             var fileName = Path.GetFileName(file.FileName);
-                            var filePath = "images/product" + fileName;
+                            var filePath = "images/product/" + fileName;
 
                             using (var stream = new FileStream(Path.Combine("wwwroot", filePath), FileMode.Create))
                             {

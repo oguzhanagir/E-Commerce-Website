@@ -55,10 +55,7 @@ namespace E_Commerce.DataAccess.Concrete
         }
 
 
-        public async Task<IEnumerable<T>> GetAllAsync()
-        {
-            return await _dbSet.ToListAsync();
-        }
+  
 
         public List<T> List(Expression<Func<T, bool>> where)
         {
@@ -69,6 +66,19 @@ namespace E_Commerce.DataAccess.Concrete
         {
             return _dbSet.Find(id)!;
         }
+
+        public T GetById(int id, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query.FirstOrDefault(x => x.Id == id)!;
+        }
+
 
         public void Remove(T entity)
         {

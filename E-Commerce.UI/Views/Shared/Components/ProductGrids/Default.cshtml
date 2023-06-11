@@ -77,7 +77,11 @@
                                             <!-- Start Single Product -->
                                             <div class="single-product">
                                                 <div class="product-image">
-                                                    <img src="https://via.placeholder.com/335x335" alt="#">
+                                                    @foreach (var image in item.ProductImages! )
+                                                    {
+                                                        <img src="@image.ImagePath" alt="#">
+                                                        break;
+                                                    }
                                                     <div class="button">
                                                         <a href="/Shop/AddCart/@item.Id" class="btn">
                                                             <i class="lni lni-cart"></i> Sepete Ekle
@@ -95,7 +99,7 @@
                                                             <li><i class="lni lni-star-filled"></i></li>
 
                                                         }
-                                                        if(5 != 5 ){
+                                                        @if(5 != 5 ){
                                                             @for (int i = 1; i < (5 - 5) * -1; i++)
                                                         {
                                                             <li><i class="lni lni-star"></i></li>

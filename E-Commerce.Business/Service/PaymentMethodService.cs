@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<PaymentMethod>> GetAll()
+        public IEnumerable<PaymentMethod> GetAll()
         {
-            return await _unitOfWork.PaymentMethods.GetAllAsync();
+            return  _unitOfWork.PaymentMethods.GetAll();
         }
 
         public PaymentMethod GetById(int id)

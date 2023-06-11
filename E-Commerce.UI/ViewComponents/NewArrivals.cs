@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogByNew = _productService.GetAll(); // Yeni Gelenler Olarak Değiştirilecektir.
+            var getBlogByNew = _productService.GetNewArrivalsToThree();
 
             return View(getBlogByNew);
         }

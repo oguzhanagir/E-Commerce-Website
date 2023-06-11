@@ -1,0 +1,78 @@
+﻿@model E_Commerce.Entity.Concrete.About
+@{
+    ViewData["Title"] = "AboutAdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="table-components">
+    <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="title mb-30">
+                        <h2>Hakkımızda</h2>
+
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="col-md-6">
+                    <div class="breadcrumb-wrapper mb-30">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#0">Kontrol Paneli</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Hakkımızda
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- ========== title-wrapper end ========== -->
+        <!-- ========== tables-wrapper start ========== -->
+        <div class="tables-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <div class="table-wrapper table-responsive">
+                            <h4>@Model.Title</h4>
+                            <br />
+                            <br />
+                            @Html.Raw(@Model.Content)
+                            <br />
+                            <br />
+                            <img src="~/@Model.ImagePath" />
+                            <br />
+                            <br />
+                            <p>@Model.CompanyAddress</p>
+                            <br />
+                            <br />
+                            <p>@Model.CompanyMail</p>
+                            <br />
+                            <br />
+                            <p>@Model.CompanyPhoneNumber</p>
+                            <br />
+                            <br />
+
+                            <a href="/About/UpdateAbout/@Model.Id" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Düzenle</a>
+
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+        </div>
+        <!-- ========== tables-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+</section>

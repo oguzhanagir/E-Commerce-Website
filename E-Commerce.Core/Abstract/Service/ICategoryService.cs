@@ -9,5 +9,7 @@ namespace E_Commerce.Core.Abstract.Service
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        Task<int> GetProductCountWithCategory(int id);
+        IEnumerable<Category> GetAllNormal();
     }
 }

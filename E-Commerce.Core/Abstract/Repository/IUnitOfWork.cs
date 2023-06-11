@@ -23,6 +23,7 @@ namespace E_Commerce.Core.Abstract.Repository
         IAboutRepository Abouts { get; }
         IContactRepository Contacts { get; }
         IImageRepository Images { get; }
+        ISubCategory SubCategories { get; }
 
 
        void CompleteAsync();

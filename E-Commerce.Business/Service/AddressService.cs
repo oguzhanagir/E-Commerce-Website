@@ -34,9 +34,9 @@ namespace E_Commerce.Business.Service
             }
         }
 
-        public async Task<IEnumerable<Address>> GetAll()
+        public   IEnumerable<Address> GetAll()
         {
-            return await _unitOfWork.Addresses.GetAllAsync();
+            return _unitOfWork.Addresses.GetAll();
         }
 
         public Address GetById(int id)

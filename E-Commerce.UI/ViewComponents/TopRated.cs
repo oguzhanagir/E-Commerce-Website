@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogByTopRated = _productService.GetAll(); // TopRated Olarak Değiştirilecektir.
+            var getBlogByTopRated = _productService.GetBestSellers(); // TopRated Olarak Değiştirilecektir.
 
             return View(getBlogByTopRated);
         }

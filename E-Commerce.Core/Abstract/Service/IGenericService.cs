@@ -9,7 +9,7 @@ namespace E_Commerce.Core.Abstract.Service
     public interface IGenericService<T>
     {
         T GetById(int id);
-        Task<IEnumerable<T>> GetAll();
+        IEnumerable<T> GetAll();
         
         void Create(T entity);
         void Update(T entity);

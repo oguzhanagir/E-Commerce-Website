@@ -1,4 +1,6 @@
-﻿@{
+﻿@model E_Commerce.Entity.Concrete.About
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,10 +15,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Contact Us</h2>
+                        <h2>Bizimle İletişime Geç</h2>
                         <p>
-                            There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.
+                            Aydınlatma ürünleri hakkında daha fazla bilgi almak, sipariş vermek veya sorularınızı yanıtlamak için bize ulaşın. Size yardımcı olmaktan mutluluk duyacağız.
+
                         </p>
                     </div>
                 </div>
@@ -28,31 +30,30 @@
                             <!-- Start Single Info -->
                             <div class="single-info">
                                 <i class="lni lni-map"></i>
-                                <h3>Address</h3>
+                                <h3>Adres</h3>
                                 <ul>
-                                    <li>44 Shirley Ave. West Chicago,<br> IL 60185, USA.</li>
+                                    <li>@Model.CompanyAddress</li>
                                 </ul>
                             </div>
                             <!-- End Single Info -->
                             <!-- Start Single Info -->
                             <div class="single-info">
                                 <i class="lni lni-phone"></i>
-                                <h3>Call us on</h3>
+                                <h3>Telefon Numaramız</h3>
                                 <ul>
-                                    <li><a href="tel:+18005554400">+1 800 555 44 00 (Toll free)</a></li>
-                                    <li><a href="tel:+321556667890">+321 55 666 7890</a></li>
+                                    
+                                    <li><a href="tel:@Model.CompanyPhoneNumber">@Model.CompanyPhoneNumber</a></li>
                                 </ul>
                             </div>
                             <!-- End Single Info -->
                             <!-- Start Single Info -->
                             <div class="single-info">
                                 <i class="lni lni-envelope"></i>
-                                <h3>Mail at</h3>
+                                <h3>Mail</h3>
                                 <ul>
                                     <li>
-                                        <a href="mailto:support@shopgrids.com">support@shopgrids.com</a>
+                                        <a href="mailto:@Model.CompanyMail">@Model.CompanyMail</a>
                                     </li>
-                                    <li><a href="mailto:career@shopgrids.com">career@shopgrids.com</a></li>
                                 </ul>
                             </div>
                             <!-- End Single Info -->
@@ -61,40 +62,40 @@
                     <div class="col-lg-8 col-md-12 col-12">
                         <div class="contact-form-head">
                             <div class="form-main">
-                                <form class="form" method="post" action="assets/mail/mail.php">
+                                <form class="form" method="post" action="/mail/mail.php">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="name" type="text" placeholder="Your Name"
+                                                <input name="FullName" type="text" placeholder="Adınız"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="subject" type="text" placeholder="Your Subject"
+                                                <input name="Subject" type="text" placeholder="Konu"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="email" type="email" placeholder="Your Email"
+                                                <input name="Mail" type="email" placeholder="Mail Adresi"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="phone" type="text" placeholder="Your Phone"
+                                                <input name="Phone" type="text" placeholder="Telefon Numarası"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group message">
-                                                <textarea name="message" placeholder="Your Message"></textarea>
+                                                <textarea name="Messsage" placeholder="Mesaj"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button">
-                                                <button type="submit" class="btn ">Submit Message</button>
+                                                <button type="submit" class="btn ">Mesajı Gönder</button>
                                             </div>
                                         </div>
                                     </div>
