@@ -74,7 +74,8 @@
                         <div class="top-end">
                             <div class="user">
                                 <i class="lni lni-user"></i>
-                                Merhaba
+                                <a href="/User/Profile">Profil</a>
+
                             </div>
                             <ul class="user-login">
                                 <li>
@@ -123,19 +124,11 @@
                             <div class="nav-hotline">
                                 <i class="lni lni-phone"></i>
                                 <h3>Telefon Numaramız:
-                                    <span>(+100) 123 456 7890</span>
+                                    <span></span>
                                 </h3>
                             </div>
-                            <div class="navbar-cart">
-                               
-                                <div class="cart-items">
-                                    <a href="/Cart" class="main-btn">
-                                        <i class="lni lni-cart"></i>
-                                        <span class="total-items">0</span>
-                                    </a>
-                         
-                                </div>
-                            </div>
+                            @await Component.InvokeAsync("BasketButtonHeader")
+
                         </div>
                     </div>
                 </div>
@@ -148,25 +141,7 @@
                 <div class="col-lg-8 col-md-6 col-12">
                     <div class="nav-inner">
                         <!-- Start Mega Category Menu -->
-                        <div class="mega-category-menu">
-                            <span class="cat-button"><i class="lni lni-menu"></i>Tüm Kategoriler</span>
-                            <ul class="sub-category">
-                                <li><a href="product-grids.html">Electronics <i class="lni lni-chevron-right"></i></a>
-                          
-                                </li>
-                                <li><a href="product-grids.html">accessories</a></li>
-                                <li><a href="product-grids.html">Televisions</a></li>
-                                <li><a href="product-grids.html">best selling</a></li>
-                                <li><a href="product-grids.html">top 100 offer</a></li>
-                                <li><a href="product-grids.html">sunglass</a></li>
-                                <li><a href="product-grids.html">watch</a></li>
-                                <li><a href="product-grids.html">man’s product</a></li>
-                                <li><a href="product-grids.html">Home Audio & Theater</a></li>
-                                <li><a href="product-grids.html">Computers & Tablets </a></li>
-                                <li><a href="product-grids.html">Video Games </a></li>
-                                <li><a href="product-grids.html">Home Appliances </a></li>
-                            </ul>
-                        </div>
+                        @await Component.InvokeAsync("AllCategoryHeader")
                         <!-- End Mega Category Menu -->
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
@@ -192,7 +167,7 @@
                                         <a href="/Blog" aria-label="Toggle navigation">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/Contact" class="active" >İletişim</a>
+                                        <a href="/Contact" >İletişim</a>
                                     </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
@@ -203,7 +178,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Nav Social -->
                     <div class="nav-social">
-                        <h5 class="title">Follow Us:</h5>
+                        <h5 class="title">Takip Ediniz:</h5>
                         <ul>
                             <li>
                                 <a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
@@ -280,7 +255,7 @@
 
     </script>
     <script>
-        const finaleDate = new Date("February 15, 2023 00:00:00").getTime();
+        const finaleDate = new Date("June 12, 2023 00:00:00").getTime();
 
         const timer = () => {
             const now = new Date().getTime();

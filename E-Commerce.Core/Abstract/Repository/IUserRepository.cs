@@ -9,5 +9,6 @@ namespace E_Commerce.Core.Abstract.Repository
 {
     public interface IUserRepository:IGenericRepository<User>
     {
+        User GetUserByEmail(string email);
     }
 }

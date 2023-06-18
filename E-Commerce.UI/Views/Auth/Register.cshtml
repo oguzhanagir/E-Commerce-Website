@@ -16,48 +16,61 @@
                         <h3>No Account? Register</h3>
                         <p>Registration takes less than a minute but gives you full control over your orders.</p>
                     </div>
+                    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                    {
+                        <div class="alert alert-success">
+                            @ViewBag.SuccessMessage
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
                     <form class="row" method="post">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="reg-fn">First Name</label>
-                                <input class="form-control" type="text" id="reg-fn" required>
+                                <label for="reg-fn">Ad</label>
+                                <input class="form-control" name="FirstName" type="text" id="reg-fn" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="reg-ln">Last Name</label>
-                                <input class="form-control" type="text" id="reg-ln" required>
+                                <label for="reg-ln">Soyad</label>
+                                <input class="form-control" name="LastName" type="text" id="reg-ln" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="reg-email">E-mail Address</label>
-                                <input class="form-control" type="email" id="reg-email" required>
+                                <label for="reg-email">E-Mail Adresi</label>
+                                <input class="form-control" name="Email" type="email" id="reg-email" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="reg-phone">Phone Number</label>
-                                <input class="form-control" type="text" id="reg-phone" required>
+                                <label for="reg-phone">Telefon Numarası</label>
+                                <input class="form-control" name="PhoneNumber" type="text" id="reg-phone" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="reg-pass">Password</label>
-                                <input class="form-control" type="password" id="reg-pass" required>
+                                <label for="reg-pass">Şifre</label>
+                                <input class="form-control" name="Password" type="password" id="reg-pass" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="reg-pass-confirm">Confirm Password</label>
-                                <input class="form-control" type="password" id="reg-pass-confirm" required>
+                                <label for="reg-pass-confirm">Şifreyi Onayla</label>
+                                <input class="form-control" name="PasswordConfirm" type="password" id="reg-pass-confirm" required>
                             </div>
+                            <div id="password-error" style="color: red;"></div>
                         </div>
                         <div class="button">
-                            <button class="btn" type="submit">Register</button>
+                            <button class="btn" type="submit">Kayıt Ol</button>
                         </div>
                         <p class="outer-link">
-                            Already have an account? <a href="login.html">Login Now</a>
+                            Zaten bir hesabınız var mı? <a href="/Auth/Login">Giriş Yap</a>
                         </p>
                     </form>
                 </div>
@@ -68,3 +81,17 @@
 <!-- End Account Register Area -->
 
 <partial name="~/Views/Home/Footer.cshtml"></partial>
+
+<script>
+    function validateForm() {
+        var password = document.getElementById("reg-pass").value;
+        var passwordConfirm = document.getElementById("reg-pass-confirm").value;
+
+        if (password !== passwordConfirm) {
+            document.getElementById("password-error").innerText = "Şifreler uyuşmuyor.";
+            return false;
+        }
+
+        return true;
+    }
+</script>

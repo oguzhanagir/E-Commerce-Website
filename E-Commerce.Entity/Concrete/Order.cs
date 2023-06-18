@@ -13,8 +13,14 @@ namespace E_Commerce.Entity.Concrete
         public decimal TotalAmount { get; set; }
         public OrderStatus? Status { get; set; }
         public ICollection<OrderItem>? OrderItems { get; set; }
+
+        public int AddressId { get; set; }
         public Address? ShippingAddress { get; set; }
+
+        public int PaymentId { get; set; } 
         public Payment? Payment { get; set; }
+
+        public int UserId { get; set; }
         public User? User { get; set; }
 
     }

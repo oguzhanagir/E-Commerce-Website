@@ -2,7 +2,7 @@ using E_Commerce.Business.Service;
 using E_Commerce.Core.Abstract.Repository;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.DataAccess.Concrete;
-using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +26,8 @@ builder.Services.AddTransient(typeof(IAboutService), typeof(AboutService));
 builder.Services.AddTransient(typeof(IAdminService), typeof(AdminService));
 builder.Services.AddTransient(typeof(IBlogService), typeof(BlogService));
 builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
+builder.Services.AddTransient(typeof(IContactService), typeof(ContactService));
+builder.Services.AddTransient(typeof(ICartService), typeof(CartService));
 builder.Services.AddTransient(typeof(ISubCategoryService), typeof(SubCategoryService));
 builder.Services.AddTransient(typeof(IOrderItemService), typeof(OrderItemService));
 builder.Services.AddTransient(typeof(IOrderService), typeof(OrderService));
@@ -37,6 +39,17 @@ builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 builder.Services.AddTransient(typeof(IUserService), typeof(UserService));
 
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+
+
+});
+
+
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 
 
@@ -57,9 +70,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Core.Abstract.Repository;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,13 @@ namespace E_Commerce.Business.Service
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IUnitOfWork unitOfWork)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public UserService(IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor)
         {
+            _httpContextAccessor = httpContextAccessor;
             _unitOfWork = unitOfWork;
         }
+
 
         public void Create(User entity)
         {
@@ -24,19 +28,19 @@ namespace E_Commerce.Business.Service
             _unitOfWork.CompleteAsync();
         }
 
-        public  void Delete(int id)
+        public void Delete(int id)
         {
             var user = _unitOfWork.Users.GetById(id);
             if (user != null)
             {
-                 _unitOfWork.Users.Remove(user);
-                 _unitOfWork.CompleteAsync();
+                _unitOfWork.Users.Remove(user);
+                _unitOfWork.CompleteAsync();
             }
         }
 
-        public  IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return  _unitOfWork.Users.GetAll();
+            return _unitOfWork.Users.GetAll();
         }
 
         public User GetById(int id)
@@ -44,10 +48,77 @@ namespace E_Commerce.Business.Service
             return _unitOfWork.Users.GetById(id);
         }
 
+        public bool ValidateUser(string email, string password)
+        {
+            User user = _unitOfWork.Users.GetUserByEmail(email);
+
+            if (user != null && user.Password == password)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Register(User user)
+        {
+            if (ValidatePassword(user))
+            {
+                _unitOfWork.Users.Add(user);
+                _unitOfWork.CompleteAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool ValidatePassword(User user)
+        {
+            if (user == null)
+            {
+                // Kullanıcı nesnesi null ise hata var, geçerli değil.
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(user.Password) || string.IsNullOrEmpty(user.PasswordConfirm))
+            {
+                // Şifre veya Şifre Onayı alanlarından biri veya her ikisi boşsa hata var, geçerli değil.
+                return false;
+            }
+
+            if (user.Password != user.PasswordConfirm)
+            {
+                // Şifre ve Şifre Onayı alanları eşleşmiyorsa hata var, geçerli değil.
+                return false;
+            }
+
+            // Yukarıdaki kontrollerden geçtiyse şifre geçerli.
+            return true;
+        }
+        public bool GetCheckEmail(string email)
+        {
+            var user = _unitOfWork.Users.GetUserByEmail(email);
+            if (user != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void Update(User entity)
         {
             _unitOfWork.Users.Update(entity);
             _unitOfWork.CompleteAsync();
         }
+
+
+        public User GetUserByMail(string mail)
+        {
+            var user = _unitOfWork.Users.GetUserByEmail(mail);
+            return user;
+        }
+
+
     }
 }

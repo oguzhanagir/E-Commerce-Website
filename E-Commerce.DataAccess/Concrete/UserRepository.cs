@@ -8,11 +8,19 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.DataAccess.Concrete
 {
-    public class UserRepository: GenericRepository<User> , IUserRepository
+    public class UserRepository : GenericRepository<User>, IUserRepository
     {
+        private readonly CommerceDbContext _dbContext;
         public UserRepository(CommerceDbContext dbContext): base(dbContext)
         {
-
+            _dbContext = dbContext;
         }
+
+        public User GetUserByEmail(string email)
+        {
+            return _dbContext.Set<User>().FirstOrDefault(u => u.Email == email)!;
+        }
+
+      
     }
 }

@@ -43,6 +43,7 @@ namespace E_Commerce.DataAccess.Concrete
             return bestSellers;
         }
 
+
         public IEnumerable<Product> GetNewArrivalsToThree()
         {
             var newArrivals = _dbContext.Products!

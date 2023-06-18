@@ -1,0 +1,155 @@
+﻿@model E_Commerce.Entity.Concrete.Cart
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<partial name="~/Views/Shop/BreadCrumbs.cshtml"></partial>
+
+
+<!-- Shopping Cart -->
+<div class="shopping-cart section">
+    <div class="container">
+        <div class="cart-list-head">
+            <!-- Cart List Title -->
+            <div class="cart-list-title">
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-12">
+                    </div>
+                    <div class="col-lg-4 col-md-3 col-12">
+                        <p>Ürün İsmi</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Adet</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Ara Toplam</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>İndirim</p>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-12">
+                        <p>Sil</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End Cart List Title -->
+            @if (Model != null)
+            {
+                @foreach (var cardItem in Model.CartItems)
+                {
+                    <!-- Cart Single List list -->
+                    <div class="cart-single-list">
+                        <div class="row align-items-center">
+                            <div class="col-lg-1 col-md-1 col-12">
+                                @foreach (var image in cardItem.Product!.ProductImages!)
+                                {
+                                    <a href="/Shop/ProductDetails/@cardItem.ProductId"><img src="~/@image.ImagePath" alt="#"></a>
+                                    break;
+                                }
+                            </div>
+                            <div class="col-lg-4 col-md-3 col-12">
+                                <h5 class="product-name">
+                                    <a href="/Shop/ProductDetails/@cardItem.ProductId">
+                                        @cardItem.Product.Name
+                                    </a>
+                                </h5>
+                                <p class="product-des">
+                                    <span><em>Type:</em> Mirrorless</span>
+                                    <span><em>Color:</em> Black</span>
+                                </p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <div class="count-input">
+                                    <select class="form-control" id="quantitySelect">
+                                        @for (int i = 1; i <= cardItem.Product.Quantity; i++)
+                                        {
+                                            if (i == cardItem.Quantity)
+                                            {
+                                                <option value="@i" selected>@i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <script>
+                                        // Seçilen seçeneği ayarla
+                                        var selectedQuantity = @cardItem.Quantity;
+                                        $(document).ready(function () {
+                                            $("#quantitySelect").val(selectedQuantity);
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>@cardItem.Product.Price</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>$29.00</p>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-12">
+                                <form action="/Cart/RemoveProductFromCart/@ViewBag.UserId/products/@cardItem.Id" method="post">
+
+                                    <button type="submit" class="btn remove-item"><i class="lni lni-close"></i></button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single List list -->
+                }
+
+            }
+            else
+            {
+                <h4 class="p-5">Sepetiniz Boş</h4>
+            }
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Total Amount -->
+                <div class="total-amount">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6 col-12">
+                            <div class="left">
+                                <div class="coupon">
+                                    <form action="#" target="_blank">
+                                        <input name="Coupon" placeholder="Enter Your Coupon">
+                                        <div class="button">
+                                            <button class="btn">Apply Coupon</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="right">
+                                <ul>
+                                    <li>Cart Subtotal<span>$2560.00</span></li>
+                                    <li>Shipping<span>Free</span></li>
+                                    <li>You Save<span>$29.00</span></li>
+                                    <li class="last">You Pay<span>$2531.00</span></li>
+                                </ul>
+                                <div class="button">
+                                    <a href="checkout.html" class="btn">Checkout</a>
+                                    <a href="product-grids.html" class="btn btn-alt">Continue shopping</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Total Amount -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Shopping Cart -->
+
+
+<partial name="~/Views/Home/Footer.cshtml"></partial>
+

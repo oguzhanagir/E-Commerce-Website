@@ -24,6 +24,7 @@ namespace E_Commerce.Core.Abstract.Repository
         IContactRepository Contacts { get; }
         IImageRepository Images { get; }
         ISubCategory SubCategories { get; }
+        ICartRepository Carts { get; }
 
 
        void CompleteAsync();

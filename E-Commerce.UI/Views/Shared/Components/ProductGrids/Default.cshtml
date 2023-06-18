@@ -20,13 +20,13 @@
                     <div class="single-widget">
                         <h3>Tüm Kategoriler</h3>
                         <ul class="list">
-                           @foreach (var item in ViewBag.Categories)
+                            @foreach (var item in ViewBag.Categories)
                             {
-                                 <li>
-                                <a href="product-grids.html">@item.Name</a>
-                            </li>
+                                <li>
+                                    <a href="product-grids.html">@item.Name</a>
+                                </li>
                             }
-                        
+
                         </ul>
                     </div>
                     <!-- End Single Widget -->
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <!-- End Single Widget -->
-          
+
                 </div>
                 <!-- End Product Sidebar -->
             </div>
@@ -62,7 +62,7 @@
                                     <h3 class="total-show-product">Bulunan: <span>1 - 12 ürün</span></h3>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="tab-content" id="nav-tabContent">
@@ -71,21 +71,24 @@
                             <div class="row">
                                 @if (Model != null)
                                 {
-                                     @foreach (var item in Model)
+                                    @foreach (var item in Model)
                                     {
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <!-- Start Single Product -->
                                             <div class="single-product">
                                                 <div class="product-image">
-                                                    @foreach (var image in item.ProductImages! )
+                                                    @foreach (var image in item.ProductImages!)
                                                     {
                                                         <img src="@image.ImagePath" alt="#">
                                                         break;
                                                     }
                                                     <div class="button">
-                                                        <a href="/Shop/AddCart/@item.Id" class="btn">
-                                                            <i class="lni lni-cart"></i> Sepete Ekle
-                                                        </a>
+
+                                                        <form action="/Cart/AddProductToCart/@ViewBag.UserId/products/@item.Id" method="post">
+                                                            <button type="submit" class="btn">
+                                                                <i class="lni lni-cart"></i> Sepete Ekle
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="product-info">
@@ -99,11 +102,12 @@
                                                             <li><i class="lni lni-star-filled"></i></li>
 
                                                         }
-                                                        @if(5 != 5 ){
-                                                            @for (int i = 1; i < (5 - 5) * -1; i++)
+                                                        @if (5 != 5)
                                                         {
-                                                            <li><i class="lni lni-star"></i></li>
-                                                        }
+                                                            @for (int i = 1; i < (5 - 5) * -1; i++)
+                                                            {
+                                                                <li><i class="lni lni-star"></i></li>
+                                                            }
                                                         }
                                                         <li><i class="lni lni-star"></i></li>
                                                         <li><span>5 Puan</span></li>
@@ -123,7 +127,7 @@
                                     <div class="col-lg-4 col-md-6 col-12">
                                         <h4>Ürün Bulunamadı</h4>
                                     </div>
-                                   
+
                                 }
                             </div>
                             <div class="row">

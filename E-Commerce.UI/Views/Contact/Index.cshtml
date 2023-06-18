@@ -41,7 +41,7 @@
                                 <i class="lni lni-phone"></i>
                                 <h3>Telefon Numaramız</h3>
                                 <ul>
-                                    
+
                                     <li><a href="tel:@Model.CompanyPhoneNumber">@Model.CompanyPhoneNumber</a></li>
                                 </ul>
                             </div>
@@ -62,7 +62,23 @@
                     <div class="col-lg-8 col-md-12 col-12">
                         <div class="contact-form-head">
                             <div class="form-main">
-                                <form class="form" method="post" action="/mail/mail.php">
+                                <div id="alertContainer"></div>
+                                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                                {
+                                    <div class="alert alert-danger">
+                                        @ViewBag.ErrorMessage
+                                    </div>
+                                }
+
+                                @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                                {
+                                    <div class="alert alert-success">
+                                        @ViewBag.SuccessMessage
+                                    </div>
+                                }
+
+
+                                <form class="form" method="post" action="@Url.Action("AddContact", "Contact")">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
@@ -100,6 +116,7 @@
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
@@ -114,3 +131,29 @@
 
 <partial name="~/Views/Home/Footer.cshtml"></partial>
 
+<script>
+    // Uyarı mesajlarını yakalamak ve tarayıcı uyarısı olarak göstermek için JavaScript kullanılıyor
+    var errorMessage = '@ViewBag.ErrorMessage';
+    var successMessage = '@ViewBag.SuccessMessage';
+
+    if (errorMessage) {
+        showAlert(errorMessage, 'danger');
+    }
+
+    if (successMessage) {
+        showAlert(successMessage, 'success');
+    }
+
+    function showAlert(message, type) {
+        var alertContainer = document.getElementById('alertContainer');
+        var alertElement = document.createElement('div');
+        alertElement.classList.add('alert', 'alert-' + type);
+        alertElement.innerText = message;
+        alertContainer.appendChild(alertElement);
+
+        // 3 saniye sonra uyarıyı kaldır
+        setTimeout(function () {
+            alertElement.remove();
+        }, 3000);
+    }
+</script>

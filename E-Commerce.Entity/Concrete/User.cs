@@ -18,7 +18,9 @@ namespace E_Commerce.Entity.Concrete
         public ICollection<Order>? Orders { get; set; }
         public ICollection<Address>? Addresses { get; set; }
         public ICollection<Payment>? Payments { get; set; }
-        
+
+        public int CardId { get; set; }
+        public Cart? Cart { get; set; }
     }
 
 }

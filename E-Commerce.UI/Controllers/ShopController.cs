@@ -8,7 +8,7 @@ namespace E_Commerce.UI.Controllers
     public class ShopController : Controller
     {
         private readonly IProductService _productService;
-        public ShopController(IProductService productService)
+        public ShopController(IProductService productService  )
         {
             _productService = productService;
         }
@@ -36,10 +36,7 @@ namespace E_Commerce.UI.Controllers
             return View(product);
         }
 
-        public IActionResult Cart()
-        {
-            return View();
-        }
+     
 
         public IActionResult Checkout()
         {

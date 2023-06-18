@@ -1,0 +1,21 @@
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Category>
+
+<div class="mega-category-menu">
+    <span class="cat-button"><i class="lni lni-menu"></i>Tüm Kategoriler</span>
+    <ul class="sub-category">
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="product-grids.html">@category.Name <i class="lni lni-chevron-right"></i></a>
+                <ul class="inner-sub-category">
+                   @foreach (var subCategory in category.SubCategories!)
+                    {
+                        <li><a href="product-grids.html">@subCategory.Name</a></li>
+                    }
+                   
+                </ul>
+            </li>
+
+        }
+    </ul>
+</div>

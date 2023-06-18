@@ -8,5 +8,12 @@ namespace E_Commerce.UI.Controllers
         {
             return View();
         }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+
     }
 }
