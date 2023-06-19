@@ -11,5 +11,6 @@ namespace E_Commerce.Core.Abstract.Repository
     {
         List<Order> GetLastMonthsOrders(int numberOfMonths);
         IEnumerable<Order> GetOrdersByDate(DateTime date);
+        IEnumerable<Order> GetListByUser(int id);
     }
 }

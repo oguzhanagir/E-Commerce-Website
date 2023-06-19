@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Core.Abstract.Service
+namespace E_Commerce.Core.Abstract.Repository
 {
-    public interface IOrderService : IGenericService<Order>
+    public interface ICargoRepository : IGenericRepository<Cargo>
     {
-        IEnumerable<OrderItem> GetAllProductsByUser(int id);
     }
 }

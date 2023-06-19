@@ -4,6 +4,7 @@ using E_Commerce.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.DataAccess.Migrations
 {
     [DbContext(typeof(CommerceDbContext))]
-    partial class CommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230619152437_createCargoModel")]
+    partial class createCargoModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,33 +137,6 @@ namespace E_Commerce.DataAccess.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Cargo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("No")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("Cargoes");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Cart", b =>
@@ -625,17 +600,6 @@ namespace E_Commerce.DataAccess.Migrations
                     b.HasOne("E_Commerce.Entity.Concrete.Category", null)
                         .WithMany("Blogs")
                         .HasForeignKey("CategoryId");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Cargo", b =>
-                {
-                    b.HasOne("E_Commerce.Entity.Concrete.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Cart", b =>

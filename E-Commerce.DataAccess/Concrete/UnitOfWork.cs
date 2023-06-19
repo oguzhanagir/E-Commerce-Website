@@ -30,7 +30,7 @@ namespace E_Commerce.DataAccess.Concrete
             Images = new ImageRepository(_dbContext);
             SubCategories = new SubCategoryRepository(_dbContext);
             Carts = new CartRepository(_dbContext);
-
+            Cargoes = new CargoRepository(_dbContext);
 
         }
 
@@ -62,6 +62,8 @@ namespace E_Commerce.DataAccess.Concrete
         public ISubCategory SubCategories { get; }
 
         public ICartRepository Carts { get; }
+
+        public ICargoRepository Cargoes { get; }
 
         public void CompleteAsync()
         {

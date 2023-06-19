@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Core.Abstract.Service
 {
-    public interface IOrderService : IGenericService<Order>
+    public interface ICargoService : IGenericService<Cargo>
     {
-        IEnumerable<OrderItem> GetAllProductsByUser(int id);
     }
 }

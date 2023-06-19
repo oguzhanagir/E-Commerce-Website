@@ -45,6 +45,11 @@ namespace E_Commerce.Business.Service
             return _unitOfWork.Categories.GetAll(x=>x.SubCategories!);
         }
 
+        public IEnumerable<Category> GetAllNormalWithFive()
+        {
+            return _unitOfWork.Categories.GetAll(x => x.SubCategories!).Take(5);
+        }
+
         public Task<int> GetProductCountWithCategory(int id)
         {
             var countProduct = _unitOfWork.Products.GetCountByCategoryId(id);

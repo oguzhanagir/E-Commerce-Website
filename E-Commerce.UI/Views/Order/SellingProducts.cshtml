@@ -4,92 +4,132 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div class="container">
 
-<div class="row">
-    <div class="col-lg-7">
-        <div class="card-style mb-30">
-            <div class="
+    <div class="tables-wrapper mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-style mb-30">
+                    <div class="
                     title
                     d-flex
                     flex-wrap
                     justify-content-between
                     align-items-center
                   ">
-                <div class="left">
-                    <h6 class="text-medium mb-30">Toplam Satış Listesi</h6>
+                        <div class="left">
+                            <h6 class="text-medium mb-30">Toplam Satış Listesi</h6>
+                        </div>
+
+                    </div>
+                    <!-- End Title -->
+                    <div class="table-responsive">
+                        <<table class="table top-selling-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h6 class="text-sm text-medium">Resim</h6>
+                                    </th>
+                                    <th>
+                                        <h6 class="text-sm text-medium">Ürünler</h6>
+                                    </th>
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Kategori</h6>
+                                    </th>
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Maliyeti</h6>
+                                    </th>
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Satılan Fiyat</h6>
+                                    </th>
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Kar</h6>
+                                    </th>
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Satış Durumu</h6>
+                                    </th>
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Kargo No Ekle</h6>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="product">
+                                                <div class="image">
+                                                    <img src="" alt="" />
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ürün Adı</th>
+                                                        <th>Fiyat</th>
+                                                        <th>Kategori</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var orderItem in order.OrderItems!)
+                                                    {
+                                                        <tr>
+                                                            <td>@orderItem.Product!.Name</td>
+                                                            <td>@orderItem.Product!.Price</td>
+                                                            <td>@orderItem.Product.Category!.Name</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                     
+                                        <td>
+                                            <p class="text-sm">@order.TotalAmount</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">50</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">10</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">@order.Status</p>
+                                        </td>
+                                        <td>
+                                            <div class="action">
+                                                <a href="/Cargo/AddCargo/@order.Id" class="text-warning">
+                                                    <i class="lni lni-pencil"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action justify-content-end">
+                                                <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                    <i class="lni lni-more-alt"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
+                                                    <li class="dropdown-item">
+                                                        <a href="#0" class="text-gray">Onayla</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#0" class="text-gray">İptal Et</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <!-- End Table -->
+                    </div>
                 </div>
-
-            </div>
-            <!-- End Title -->
-            <div class="table-responsive">
-                <table class="table top-selling-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h6 class="text-sm text-medium">Ürünler</h6>
-                            </th>
-                            <th class="min-width">
-                                <h6 class="text-sm text-medium">Kategori</h6>
-                            </th>
-                            <th class="min-width">
-                                <h6 class="text-sm text-medium">Maliyeti</h6>
-                            </th>
-                            <th class="min-width">
-                                <h6 class="text-sm text-medium">Satılan Fiyat</h6>
-                            </th>
-                            <th class="min-width">
-                                <h6 class="text-sm text-medium">Kar</h6>
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-
-                                <td>
-                                    <div class="product">
-                                        <div class="image">
-                                            <img src="" alt="" />
-                                        </div>
-                                        <p class="text-sm">Arm Chair</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="text-sm">Interior</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm">$345</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm">43</p>
-                                </td>
-                                <td>
-                                    <p class="text-sm">$45</p>
-                                </td>
-                                <td>
-                                    <div class="action justify-content-end">
-                                        <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="lni lni-more-alt"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
-                                            <li class="dropdown-item">
-                                                <a href="#0" class="text-gray">Remove</a>
-                                            </li>
-                                            <li class="dropdown-item">
-                                                <a href="#0" class="text-gray">Edit</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
-                <!-- End Table -->
             </div>
         </div>
     </div>

@@ -13,7 +13,10 @@ namespace E_Commerce.UI.Controllers
         {
             return View();
         }
-
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
 
     }
 }

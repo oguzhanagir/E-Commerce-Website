@@ -29,12 +29,18 @@ namespace E_Commerce.UI.Controllers
             if (contact == null)
             {
                 ViewBag.ErrorMessage = "Geçersiz iletişim bilgileri.";
-                return View("Index");
+                return View();
             }
 
             _contactService.Create(contact);
             ViewBag.SuccessMessage = "İletişim bilgileri başarıyla eklendi.";
-            return RedirectToAction("Index","Contact");
+            return View();
+        }
+    
+        public IActionResult ContactMessageList()
+        {
+            var contactList = _contactService.GetAll();
+            return View(contactList);
         }
     }
 }

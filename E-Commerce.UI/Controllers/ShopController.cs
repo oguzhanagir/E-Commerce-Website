@@ -8,9 +8,14 @@ namespace E_Commerce.UI.Controllers
     public class ShopController : Controller
     {
         private readonly IProductService _productService;
-        public ShopController(IProductService productService  )
+        private readonly IOrderService _orderService;
+        private readonly IUserService _userService;
+
+        public ShopController(IProductService productService, IOrderService orderService, IUserService userService)
         {
             _productService = productService;
+            _orderService = orderService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -32,11 +37,25 @@ namespace E_Commerce.UI.Controllers
         public IActionResult ProductDetails(int id)
         {
             var product = _productService.GetById(id);
-           
+
             return View(product);
         }
 
-     
+        public IActionResult SalesByUser()
+        {
+            string email = HttpContext.Session.GetString("Email")!;
+            if (!string.IsNullOrEmpty(email))
+            {
+                var user = _userService.GetUserByMail(email);
+                var orderItemByUser = _orderService.GetAllProductsByUser(user.Id);
+
+                 return View(orderItemByUser);
+            }
+            else
+            {
+                return View();
+            }
+        }
 
         public IActionResult Checkout()
         {

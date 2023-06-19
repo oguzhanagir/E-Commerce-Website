@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Entity.Concrete
 {
-    public class OrderItem:BaseEntity
+    public class Cargo : BaseEntity
     {
-        public int ProductId { get; set; }
-        public Product? Product { get; set; }
-        public int Quantity { get; set; }
+        public string? No { get; set; }
+
+        public int OrderId { get; set; }
+        public Order? Order { get; set; }
     }
 }
