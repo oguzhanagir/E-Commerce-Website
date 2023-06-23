@@ -31,7 +31,7 @@ namespace E_Commerce.DataAccess.Concrete
             SubCategories = new SubCategoryRepository(_dbContext);
             Carts = new CartRepository(_dbContext);
             Cargoes = new CargoRepository(_dbContext);
-
+            Comments = new CommentRepository(_dbContext);
         }
 
         public IAddressRepository Addresses { get; }
@@ -64,6 +64,8 @@ namespace E_Commerce.DataAccess.Concrete
         public ICartRepository Carts { get; }
 
         public ICargoRepository Cargoes { get; }
+
+        public ICommentRepository Comments { get; }
 
         public void CompleteAsync()
         {

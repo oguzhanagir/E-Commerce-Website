@@ -73,11 +73,8 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-end">
-                            <div class="user">
-                                <i class="lni lni-user"></i>
-                                <a href="/User/Profile">Profil</a>
+                            @await Component.InvokeAsync("ProfileButtonHeader")
 
-                            </div>
                             <ul class="user-login">
                                 <li>
                                     <a href="/Auth/Login">Giriş Yap</a>

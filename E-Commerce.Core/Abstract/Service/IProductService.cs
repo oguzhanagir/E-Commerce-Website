@@ -14,5 +14,6 @@ namespace E_Commerce.Core.Abstract.Service
         IEnumerable<Product> GetPopularProducts();
         IEnumerable<Product> GetBestSellers();
         IEnumerable<Product> GetNewArrivalsToThree();
+        IEnumerable<Product> GetAllWithCategoryById(int id);
     }
 }

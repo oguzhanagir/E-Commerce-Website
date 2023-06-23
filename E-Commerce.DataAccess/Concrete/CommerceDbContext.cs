@@ -31,6 +31,7 @@ namespace E_Commerce.DataAccess.Concrete
         public DbSet<Cart>? Carts { get; set; }
         public DbSet<CartItem>? CartItems { get; set; }
         public DbSet<Cargo>? Cargoes { get; set; }
+        public DbSet<Comment>? Comments { get; set; }
     }
 
 }

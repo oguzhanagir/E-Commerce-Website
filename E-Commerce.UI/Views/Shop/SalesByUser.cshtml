@@ -1,4 +1,4 @@
-﻿@model IEnumerable<E_Commerce.Entity.Concrete.OrderItem>
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Order>
 @{
     ViewData["Title"] = "SalesByUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,59 +13,93 @@
                     <h3 class="block-title">invoice</h3>
 
                     <div class="invoice-items default-list-style">
-
                         <div class="default-list-title">
                             <div class="row align-items-center">
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <p>Package</p>
+                                    <p>Sipariş No</p>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-12">
-                                    <p>Invoice date</p>
+                                    <p>Toplam Tutarı</p>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-12">
-                                    <p>Due date</p>
+                                    <p>Sipariş Tarihi</p>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-12">
-                                    <p>Status</p>
+                                    <p>Sipariş Durumu</p>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-12 align-right">
                                     <p>Action</p>
                                 </div>
                             </div>
                         </div>
-
-
                         @if (Model != null)
                         {
-                            @foreach (var orderItem in Model)
+                            @foreach (var order in Model)
                             {
+                                
 
-                                <div class="single-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <p>
-                                                @orderItem.Product!.Name
-                                                <span>$0.00</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Jan 13,2023</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Feb 5,2021</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p class="paid">Paid</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
+                               
+
+
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-4 col-md-4 col-12">
+                                                        <p>@order.No</p>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-12">
+                                                        <p>@order.TotalAmount</p>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-12">
+                                                        <p>@order.CreatedAt</p>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-12">
+                                                        <p>@order.Status!.Name</p>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-12 align-right">
+                                                        <p>Action</p>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                @foreach (var orderItem in order.OrderItems!)
+                                                {
+
+                                                    <div class="single-list">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-lg-4 col-md-4 col-12">
+                                                                <p>
+                                                                    @orderItem.Product!.Name
+
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-2 col-12">
+                                                                <p>@orderItem.Product.Price</p>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-2 col-12">
+                                                                <p>@orderItem.CreatedAt</p>
+                                                            </div>
+
+                                                            <div class="col-lg-2 col-md-2 col-12 align-right">
+                                                                <ul class="action-btn">
+                                                                    <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
+                                                                    <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             }
+
 
 
                         }

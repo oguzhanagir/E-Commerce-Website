@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<E_Commerce.Entity.Concrete.Product>
-
 <!-- Start Product Grids -->
 <section class="product-grids section">
     <div class="container">
@@ -18,12 +17,12 @@
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
                     <div class="single-widget">
-                        <h3>Tüm Kategoriler</h3>
+                        <a href="/Shop/Index"><h3>Tüm Kategoriler</h3></a>
                         <ul class="list">
                             @foreach (var item in ViewBag.Categories)
                             {
                                 <li>
-                                    <a href="product-grids.html">@item.Name</a>
+                                    <a href="/Shop/Index/@item.Id">@item.Name</a>
                                 </li>
                             }
 
@@ -375,3 +374,4 @@
     </div>
 </section>
 <!-- End Product Grids -->
+

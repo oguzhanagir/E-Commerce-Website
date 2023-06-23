@@ -2,48 +2,32 @@
 @{
     ViewData["Title"] = "SellingProducts";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+  
 }
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div class="container">
-
     <div class="tables-wrapper mt-5">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-style mb-30">
-                    <div class="
-                    title
-                    d-flex
-                    flex-wrap
-                    justify-content-between
-                    align-items-center
-                  ">
+                    <div class="title d-flex flex-wrap justify-content-between align-items-center">
                         <div class="left">
                             <h6 class="text-medium mb-30">Toplam Satış Listesi</h6>
                         </div>
-
                     </div>
                     <!-- End Title -->
                     <div class="table-responsive">
-                        <<table class="table top-selling-table">
+                        <table class="table top-selling-table">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <h6 class="text-sm text-medium">Resim</h6>
-                                    </th>
-                                    <th>
-                                        <h6 class="text-sm text-medium">Ürünler</h6>
+
+                                    <th class="min-width">
+                                        <h6 class="text-sm text-medium">Toplam Sipariş Tutarı</h6>
                                     </th>
                                     <th class="min-width">
-                                        <h6 class="text-sm text-medium">Kategori</h6>
-                                    </th>
-                                    <th class="min-width">
-                                        <h6 class="text-sm text-medium">Maliyeti</h6>
-                                    </th>
-                                    <th class="min-width">
-                                        <h6 class="text-sm text-medium">Satılan Fiyat</h6>
-                                    </th>
-                                    <th class="min-width">
-                                        <h6 class="text-sm text-medium">Kar</h6>
+                                        <h6 class="text-sm text-medium text-center">Ürünler</h6>
                                     </th>
                                     <th class="min-width">
                                         <h6 class="text-sm text-medium">Satış Durumu</h6>
@@ -55,78 +39,111 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var order in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            <div class="product">
-                                                <div class="image">
-                                                    <img src="" alt="" />
+                                    @foreach (var order in Model)
+                                    {
+                                <tr>
+                                        <td>@order.TotalAmount</td>
+                                        <td class="w-75">
+                                            <div class="accordion text-center" id="accordionExample">
+
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            @order.No
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Ürün Adı</th>
+                                                                        <th>Kategori</th>
+                                                                        <th>Fiyat</th>
+                                                                        <th>Adet</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var orderItem in order.OrderItems!)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @orderItem.Product!.Name
+                                                                            </td>
+                                                                            <td>
+                                                                                @orderItem.Product!.Category!.Name
+                                                                            </td>
+                                                                            <td>
+                                                                                @orderItem.Product!.Price
+                                                                            </td>
+                                                                            <td>@orderItem.Quantity</td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </td>
-                                        <td>
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Ürün Adı</th>
-                                                        <th>Fiyat</th>
-                                                        <th>Kategori</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var orderItem in order.OrderItems!)
-                                                    {
-                                                        <tr>
-                                                            <td>@orderItem.Product!.Name</td>
-                                                            <td>@orderItem.Product!.Price</td>
-                                                            <td>@orderItem.Product.Category!.Name</td>
-                                                        </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                     
-                                        <td>
-                                            <p class="text-sm">@order.TotalAmount</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm">50</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm">10</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm">@order.Status</p>
-                                        </td>
-                                        <td>
-                                            <div class="action">
-                                                <a href="/Cargo/AddCargo/@order.Id" class="text-warning">
-                                                    <i class="lni lni-pencil"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="action justify-content-end">
-                                                <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
+
+                                        <td class="text-center">
+                                            @order.Status.Name <br />
+                                            <div class="action justify-content-center mt-3">
+                                                <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="lni lni-more-alt"></i>
                                                 </button>
-                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
+                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1" style="">
                                                     <li class="dropdown-item">
-                                                        <a href="#0" class="text-gray">Onayla</a>
+                                                        <a href="/Order/ConfirmOrder/@order.Id" class="text-gray">Onayla</a>
                                                     </li>
                                                     <li class="dropdown-item">
-                                                        <a href="#0" class="text-gray">İptal Et</a>
+                                                        <a href="/Order/CancelOrder/@order.Id" class="text-gray">İptal Et</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </td>
-                                    </tr>
-                                }
+                                        <td>
+                                            <div class="action">
+                                                <p>@order.Cargo!.No</p>
+                                                <button type="button" class="btn btn-primary text-warning m-auto" data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="lni lni-pencil"></i>
+                                                </button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Kodu Ekleme Ekranı</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            @using (Html.BeginForm("AddCargoByOrder", "Cargo", FormMethod.Post))
+                                                            {
+                                                                <div class="modal-body">
+                                                                    <div class="input-style-1">
+                                                                        <label>Sipariş ID</label>
+                                                                        <input type="text" name="OrderId" value="@order.Id" placeholder="Sipariş ID">
+                                                                        <label>Kargo Kodu</label>
+                                                                        <input type="text" name="No" placeholder="Kargo Kodu">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary bg-danger" data-dismiss="modal">Kapat</button>
+                                                                    <button  type="submit" class="btn btn-primary bg-primary">Ekle</button>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                </tr>
+                                    }
                             </tbody>
                         </table>
-
                         <!-- End Table -->
                     </div>
                 </div>
@@ -134,3 +151,10 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</script>

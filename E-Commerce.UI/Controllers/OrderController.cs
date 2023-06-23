@@ -17,9 +17,24 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+        public IActionResult ConfirmOrder(int id)
+        {
+            _orderService.ConfirmOrderService(id);
+            return View();
+        }
+
+        public IActionResult CancelOrder(int id)
+        {
+            _orderService.CancelOrderService(id);
+            return View();
+        }
+
+
         public IActionResult SellingProducts()
         {
             var sellingProductsList = _orderService.GetAll();
+            
+             
             return View(sellingProductsList);
         }
     }

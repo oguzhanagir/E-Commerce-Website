@@ -66,7 +66,14 @@ namespace E_Commerce.Business.Service
             var producList = _unitOfWork.Products.GetAll(x => x.Category!,y=>y.ProductImages!);
             return producList;
         }
-        
+
+        public IEnumerable<Product> GetAllWithCategoryById(int id)
+        {
+            var producList = _unitOfWork.Products.GetAll(x => x.Category!, y => y.ProductImages!).Where(c => c.CategoryId == id);
+            return producList;
+        }
+
+
 
 
         public Product GetById(int id)

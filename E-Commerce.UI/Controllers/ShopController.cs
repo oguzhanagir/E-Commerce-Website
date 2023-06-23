@@ -23,6 +23,13 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult GetProductGrids(int categoryId)
+        {
+            var getProductByCategoryId = _productService.GetAllWithCategoryById(categoryId);
+            return ViewComponent("ProductGrids", getProductByCategoryId);
+        }
+
 
         public IActionResult HomeProductList()
         {
@@ -34,6 +41,7 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+      
         public IActionResult ProductDetails(int id)
         {
             var product = _productService.GetById(id);
@@ -47,9 +55,9 @@ namespace E_Commerce.UI.Controllers
             if (!string.IsNullOrEmpty(email))
             {
                 var user = _userService.GetUserByMail(email);
-                var orderItemByUser = _orderService.GetAllProductsByUser(user.Id);
+                var orders = _orderService.GetByUserId(user.Id);
 
-                 return View(orderItemByUser);
+                 return View(orders);
             }
             else
             {

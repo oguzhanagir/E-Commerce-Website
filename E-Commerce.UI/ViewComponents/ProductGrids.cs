@@ -17,10 +17,8 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogByBestSell =  _productService.GetAllWithCategory();
             var categoriesList = _productService.GetCategories();
             ViewBag.Categories = categoriesList;
-
             string email = HttpContext.Session.GetString("Email")!;
             if (!string.IsNullOrEmpty(email))
             {
@@ -31,9 +29,26 @@ namespace E_Commerce.UI.ViewComponents
             else
             {
                 ViewBag.UserId = 0;
+
             }
 
-            return View(getBlogByBestSell);
+            if (HttpContext.Request.RouteValues.TryGetValue("id", out var categoryIdObject))
+            {
+                if (int.TryParse(categoryIdObject!.ToString(), out var categoryId))
+                {
+                    var getProductByCategoryId = _productService.GetAllWithCategoryById(categoryId);
+                    return View(getProductByCategoryId);
+                }
+                else
+                {
+                    return View("Index","Home");
+                }
+            }
+            else
+            {
+                var getProductByBestSell = _productService.GetAllWithCategory();
+                return View(getProductByBestSell);
+            }
         }
     }
 }

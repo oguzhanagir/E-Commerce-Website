@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Core.Abstract.Repository
+namespace E_Commerce.Core.Abstract.Service
 {
-    public interface ICargoRepository : IGenericRepository<Cargo>
+    public interface ICommentService : IGenericService<Comment>
     {
-        string GetCargoNoByOrderId(int orderId);
     }
 }

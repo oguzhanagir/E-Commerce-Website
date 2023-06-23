@@ -20,9 +20,20 @@ namespace E_Commerce.Business.Service
 
         public void Create(Cargo entity)
         {
-            _unitOfWork.Cargoes.Add(entity);
-            _unitOfWork.CompleteAsync();
+            var existingCargo = _unitOfWork.Cargoes.Find(c => c.OrderId == entity.OrderId);
+            if (existingCargo != null)
+            {
+                existingCargo.No = entity.No;
+                Update(existingCargo);
+            }
+            else
+            {
+                _unitOfWork.Cargoes.Add(entity);
+                _unitOfWork.CompleteAsync();
+            }
         }
+
+
 
         public void Delete(int id)
         {

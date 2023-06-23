@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Core.Abstract.Repository
 {
-    public interface ICargoRepository : IGenericRepository<Cargo>
+    public interface ICommentRepository: IGenericRepository<Comment>
     {
-        string GetCargoNoByOrderId(int orderId);
     }
 }

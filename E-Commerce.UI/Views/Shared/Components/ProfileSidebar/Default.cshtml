@@ -1,11 +1,13 @@
-﻿<div class="col-lg-3 col-md-4 col-12">
+﻿@model E_Commerce.Entity.Concrete.User
+
+<div class="col-lg-3 col-md-4 col-12">
 
     <div class="dashboard-sidebar">
         <div class="user-image">
             <img src="assets/images/dashboard/xuser-image.jpg.pagespeed.ic.YpFzrr6OVW.webp" alt="#" data-pagespeed-url-hash="2750445946" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
             <h3>
-                Ad ve Soyad
-                <span><a href="javascript:void(0)">mail</a></span>
+                @Model.FirstName @Model.LastName
+                <span>@ViewBag.Email</span>
             </h3>
         </div>
         <div class="dashboard-menu">
@@ -20,7 +22,7 @@
                     <a href="/User/EditProfile"><i class="lni lni-pencil-alt"></i> Profili Düzenle</a>
                 </li>
                 <li><a href="/Shop/SalesByUser"><i class="lni lni-bolt-alt"></i>Siparişlerim</a></li>
-                              
+
             </ul>
             <div class="button">
                 <a class="btn" href="/Auth/LogOut">Çıkış Yap</a>
