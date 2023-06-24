@@ -1,18 +1,22 @@
-﻿using E_Commerce.Core.Abstract.Service;
-using E_Commerce.UI.Languages;
+﻿using E_Commerce.UI.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Diagnostics;
 
+[assembly: ResourceLocation("Resources")]
+[assembly: RootNamespace("E_Commerce.UI")]
+
 namespace E_Commerce.UI.Controllers
 {
+   
     public class HomeController : Controller
     {
-        private readonly IStringLocalizer<Lang> _stringLocalizer;
-
-        public HomeController(IStringLocalizer<Lang> stringLocalizer)
+        private LanguageService _localization;
+        public HomeController(LanguageService localization)
         {
-            _stringLocalizer = stringLocalizer;
+
+            _localization = localization;
         }
 
         public IActionResult Index()
@@ -20,9 +24,19 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+        public IActionResult ChangeLanguage(string culture)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)), new CookieOptions()
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1)
+                });
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+
         public IActionResult ShippingInfo()
         {
-            ViewBag.ShippingInfo = _stringLocalizer["shippingInfo.Shipping"];
+
             return View();
         }
 

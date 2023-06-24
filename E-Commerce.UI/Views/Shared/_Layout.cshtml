@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@inject LanguageService _localization;
 <html class="no-js" lang="zxx">
 
 <head>
@@ -46,29 +47,46 @@
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-left">
                             <ul class="menu-top-link">
-                                <li>
-
-                                </li>
-                                <li>
-                                    <div class="select-position">
-                                        <select id="select5">
-                                            <option value="0" selected>English</option>
-                                            <option value="1">Español</option>
-                                            <option value="2">Filipino</option>
-
-                                        </select>
-                                    </div>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="flag-icon flag-icon-gb"></i> Dil Seçin
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a asp-controller="Home"
+                                               asp-action="ChangeLanguage"
+                                               asp-route-culture="en-US"
+                                               class="dropdown-item">
+                                                <i class="flag-icon flag-icon-gb"></i> İngilizce
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Home"
+                                               asp-action="ChangeLanguage"
+                                               asp-route-culture="fr-FR"
+                                               class="dropdown-item">
+                                                <i class="flag-icon flag-icon-gb"></i> Fransızca
+                                            </a>
+                                        </li>
+                                        <a asp-controller="Home"
+                                           asp-action="ChangeLanguage"
+                                           asp-route-culture="tr-TR"
+                                           class="dropdown-item">
+                                            <i class="flag-icon flag-icon-gb"></i> Türkçe
+                                        </a>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-middle">
                             <ul class="useful-links">
-                                <li><a href="/Home/Index">Ana Sayfa</a></li>
-                                <li><a href="/About/Index">Hakkımızda</a></li>
+                                <li><a href="/Home/Index">@_localization.Getkey("Navbar.Home").Value</a></li>
+                                <li><a href="/About/Index">@_localization.Getkey("Navbar.About").Value</a></li>
                                 <li><a href="/About/Wholesale">Özel Tasarım</a></li>
-                                <li><a href="/Contact/Index">İletişim</a></li>
+                                <li><a href="/Contact/Index">@_localization.Getkey("Navbar.Contact").Value</a></li>
                             </ul>
                         </div>
                     </div>
@@ -155,19 +173,19 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="/" aria-label="Toggle navigation">Ana Sayfa</a>
+                                        <a href="/" aria-label="Toggle navigation">@_localization.Getkey("Navbar.Home").Value</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/About" aria-label="Toggle navigation">Hakkımızda</a>
+                                        <a href="/About" aria-label="Toggle navigation">@_localization.Getkey("Navbar.About").Value</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/Shop" aria-label="Toggle navigation">Mağaza</a>
+                                        <a href="/Shop" aria-label="Toggle navigation">@_localization.Getkey("Navbar.Shop").Value</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/Blog" aria-label="Toggle navigation">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/Contact">İletişim</a>
+                                        <a href="/Contact">@_localization.Getkey("Navbar.Contact").Value</a>
                                     </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
@@ -210,7 +228,9 @@
     <a href="#" class="scroll-top">
         <i class="lni lni-chevron-up"></i>
     </a>
-
+ 
+    <!-- jQuery kütüphanesini ekleyin -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- ========================= JS here ========================= -->
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/tiny-slider.js"></script>

@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Compile Remove="Models\**" />
+    <Content Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\blog\" />
     <Folder Include="wwwroot\images\about\" />
     <Folder Include="wwwroot\images\product\" />
