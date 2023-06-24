@@ -9,5 +9,6 @@ namespace E_Commerce.Core.Abstract.Service
 {
     public interface ICommentService : IGenericService<Comment>
     {
+        IEnumerable<Comment> GetCommentsByProductId(int id);
     }
 }

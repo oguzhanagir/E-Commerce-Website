@@ -49,5 +49,11 @@ namespace E_Commerce.Business.Service
             _unitOfWork.Comments.Update(entity);
             _unitOfWork.CompleteAsync();
         }
+
+        public IEnumerable<Comment> GetCommentsByProductId(int id)
+        {
+            var comments = _unitOfWork.Comments.GetCommentByProductId(id);
+            return comments;
+        }
     }
 }

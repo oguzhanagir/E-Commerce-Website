@@ -91,5 +91,14 @@ namespace E_Commerce.Business.Service
             _unitOfWork.Products.Update(entity);
             _unitOfWork.CompleteAsync();
         }
+   
+    
+        public int GetPointByProductId(int id)
+        {
+            var commentsListByProduct = _unitOfWork.Comments.GetCommentByProductId(id);
+
+            int averagePoint = commentsListByProduct.Any() ? (int)commentsListByProduct.Average(c => c.Star) : 0;
+            return averagePoint;
+        }
     }
 }

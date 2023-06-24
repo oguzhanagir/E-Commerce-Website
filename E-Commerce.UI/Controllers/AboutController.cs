@@ -25,6 +25,13 @@ namespace E_Commerce.UI.Controllers
             var about = _aboutService.GetById(2);
             return View(about);
         }
+        
+        public IActionResult Wholesale()
+        {
+
+            return View();
+        }
+
         [HttpGet]
         public IActionResult UpdateAbout(int id)
         {

@@ -10,12 +10,14 @@ namespace E_Commerce.UI.Controllers
         private readonly IProductService _productService;
         private readonly IOrderService _orderService;
         private readonly IUserService _userService;
+        private readonly ICommentService _commentService;
 
-        public ShopController(IProductService productService, IOrderService orderService, IUserService userService)
+        public ShopController(IProductService productService, IOrderService orderService, IUserService userService, ICommentService commentService)
         {
             _productService = productService;
             _orderService = orderService;
             _userService = userService;
+            _commentService = commentService;
         }
 
         public IActionResult Index()
@@ -38,6 +40,9 @@ namespace E_Commerce.UI.Controllers
 
         public IActionResult BreadCrumbs()
         {
+            ViewBag.PageTitle = "Ürünler";
+            ViewBag.PageRoot = "Ana Sayfa";
+            ViewBag.PageController = "Mağaza";
             return View();
         }
 
@@ -45,7 +50,9 @@ namespace E_Commerce.UI.Controllers
         public IActionResult ProductDetails(int id)
         {
             var product = _productService.GetById(id);
-
+            ViewBag.Point = _productService.GetPointByProductId(id);
+            var comments = _commentService.GetCommentsByProductId(id);
+            ViewBag.Comments = comments;
             return View(product);
         }
 

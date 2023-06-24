@@ -22,5 +22,7 @@ namespace E_Commerce.Entity.Concrete
         public ICollection<ProductImage>? ProductImages { get; set; }
         public ICollection<OrderItem>? OrderItems { get; set; }
         public ICollection<Comment>? Comments { get; set; }
+
+      
     }
 }

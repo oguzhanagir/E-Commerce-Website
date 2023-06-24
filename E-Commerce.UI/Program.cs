@@ -3,9 +3,31 @@ using E_Commerce.Core.Abstract.Repository;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.DataAccess.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews()
+                .AddViewLocalization();
+
+builder.Services.AddLocalization(options =>
+{
+    options.ResourcesPath = "Resources";
+});
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new("tr-TR");
+
+    CultureInfo[] cultures = new CultureInfo[]
+    {
+        new("tr-TR"),
+        new("en-US"),
+    };
+    options.SupportedCultures = cultures;
+    options.SupportedUICultures = cultures;
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -28,6 +50,7 @@ builder.Services.AddTransient(typeof(IBlogService), typeof(BlogService));
 builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddTransient(typeof(ICargoService), typeof(CargoService));
 builder.Services.AddTransient(typeof(IContactService), typeof(ContactService));
+builder.Services.AddTransient(typeof(ICommentService), typeof(CommentService));
 builder.Services.AddTransient(typeof(ICartService), typeof(CartService));
 builder.Services.AddTransient(typeof(ISubCategoryService), typeof(SubCategoryService));
 builder.Services.AddTransient(typeof(IOrderItemService), typeof(OrderItemService));
@@ -68,7 +91,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseRequestLocalization();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

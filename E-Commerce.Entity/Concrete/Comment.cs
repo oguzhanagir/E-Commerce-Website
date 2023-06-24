@@ -12,8 +12,9 @@ namespace E_Commerce.Entity.Concrete
         public string? FirstName { get; set; } 
         public string? LastName { get; set; } 
         public string? Title { get; set; } 
+        public string? Mail { get; set; } 
         public string? Content { get; set; }
-
+        public int Star { get; set; }
         public int ProductId { get; set; }
         public Product? Product { get; set; }
     }

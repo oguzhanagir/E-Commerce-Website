@@ -6,6 +6,7 @@
 
 <partial name="~/Views/Shop/BreadCrumbs.cshtml" />
 
+
 <!-- Start Item Details -->
 <section class="item-details section">
     <div class="container">
@@ -113,21 +114,27 @@
             <div class="row">
                 <div class="col-lg-4 col-12">
                     <div class="single-block give-review">
-                        <h4>4.5 (Overall)</h4>
+                        <h4>@ViewBag.Point</h4>
                         <ul class="review">
-                            @for (int i = 1; i <= 5; i++)
+                            @if (@ViewBag.Point != 5)
                             {
-                                <li><i class="lni lni-star-filled"></i></li>
-                            }
-                            @if (5 != 5)
-                            {
-                                @for (int i = 1; i < (5 - 5) * -1; i++)
+                                @for (int i = 1; i <= @ViewBag.Point; i++)
+                                {
+                                    <li><i class="lni lni-star-filled"></i></li>
+                                }
+                                @for (int i = 1; i <= (5 - @ViewBag.Point); i++)
                                 {
                                     <li><i class="lni lni-star"></i></li>
                                 }
                             }
-                            <li><i class="lni lni-star"></i></li>
-                            <li><span>5 Puan</span></li>
+                            else
+                            {
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <li><i class="lni lni-star-filled"></i></li>
+                                }
+                            }
+                            <li><span> @ViewBag.Point</span></li>
                         </ul>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn review-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -139,78 +146,44 @@
                     <div class="single-block">
                         <div class="reviews">
                             <h4 class="title">Yorumlar</h4>
-                            <!-- Start Single Review -->
-                            <div class="single-review">
-                                <img src="https://via.placeholder.com/150x150" alt="#">
-                                <div class="review-info">
-                                    <h4>
-                                        Awesome quality for the price
-                                        <span>
-                                            Jacob Hammond
-                                        </span>
-                                    </h4>
-                                    <ul class="stars">
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                    </ul>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor...
-                                    </p>
+                            @foreach (var comment in ViewBag.Comments)
+                            {
+                                <!-- Start Single Review -->
+                                <div class="single-review">
+                                    <div class="review-info">
+                                        <h4>
+                                            @comment.Title
+                                            <span>
+                                                @comment.FirstName @comment.LastName
+                                            </span>
+                                        </h4>
+                                        <ul class="stars">
+                                            @if (@comment.Star != 5)
+                                            {
+                                                @for (int i = 1; i <= @ViewBag.Point; i++)
+                                                {
+                                                    <li><i class="lni lni-star-filled"></i></li>
+                                                }
+                                                @for (int i = 1; i <= (5 - @comment.Star); i++)
+                                                {
+                                                    <li><i class="lni lni-star"></i></li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <li><i class="lni lni-star-filled"></i></li>
+                                                }
+                                            }
+                                        </ul>
+                                        <p>
+                                            @comment.Content
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- End Single Review -->
-                            <!-- Start Single Review -->
-                            <div class="single-review">
-                                <img src="https://via.placeholder.com/150x150" alt="#">
-                                <div class="review-info">
-                                    <h4>
-                                        My husband love his new...
-                                        <span>
-                                            Alex Jaza
-                                        </span>
-                                    </h4>
-                                    <ul class="stars">
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor...
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- End Single Review -->
-                            <!-- Start Single Review -->
-                            <div class="single-review">
-                                <img src="https://via.placeholder.com/150x150" alt="#">
-                                <div class="review-info">
-                                    <h4>
-                                        I love the built quality...
-                                        <span>
-                                            Jacob Hammond
-                                        </span>
-                                    </h4>
-                                    <ul class="stars">
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                    </ul>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor...
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- End Single Review -->
+                                <!-- End Single Review -->
+                            }
                         </div>
                     </div>
                 </div>
@@ -218,8 +191,75 @@
         </div>
     </div>
 </section>
-<!-- End Item Details -->
 
 
+
+ @using (Html.BeginForm("AddComment", "Comment", FormMethod.Post))
+                {
+    <div class="modal fade review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Yorum Yap</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="hidden" name="ProductId" value="@Model.Id" />
+                                <label for="review-name">Ad</label>
+                                <input class="form-control" name="FirstName" type="text" id="review-name" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="review-name">Soyad</label>
+                                <input class="form-control" name="LastName" type="text" id="review-name" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="review-email">Mail Adresi</label>
+                                    <input class="form-control" name="Mail" type="email" id="review-email" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="review-rating">Puan</label>
+                                    <select class="form-control" name="Star" id="review-rating">
+                                        <option value="5">5 Yıldız</option>
+                                        <option value="4">4 Yıldız</option>
+                                        <option value="3">3 Yıldız</option>
+                                        <option value="2">2 Yıldız</option>
+                                        <option value="1">1 Yıldız</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="review-subject">Subject</label>
+                                <input class="form-control" name="Title" type="text" id="review-subject" required>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="review-message">Mesaj</label>
+                        <textarea class="form-control" name="Content" id="review-message" rows="8" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer button">
+                    <button type="submit" class="btn">Yorum Yap</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ }
 
 <partial name="~/Views/Home/Footer.cshtml"></partial>
