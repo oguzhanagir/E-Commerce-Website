@@ -12,13 +12,13 @@
                             <div class="single-blog">
                                 <div class="blog-img">
                                     <a href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/370x215" alt="#">
+                                        <img src="@item.Image" style="width:370px; height:215px" alt="#">
                                     </a>
                                 </div>
                                 <div class="blog-content">
                                     <p class="category" >@item.BlogCategory</p>
                                     <h4>
-                                        <a href="blog-single-sidebar.html">@item.Title</a>
+                                        <a href="/Blog/BlogSingle/@item.Id">@item.Title</a>
                                     </h4>
                                    @if (@item.Content!.Length > 150)
                                 {
@@ -61,55 +61,7 @@
                         </form>
                     </div>
                     <!-- End Single Widget -->
-                    <!-- Start Single Widget -->
-                    <div class="widget popular-feeds">
-                        <h5 class="widget-title">Featured Posts</h5>
-                        <div class="popular-feed-loop">
-                            <div class="single-popular-feed">
-                                <div class="feed-desc">
-                                    <a class="feed-img" href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/200x200" alt="#">
-                                    </a>
-                                    <h6 class="post-title">
-                                        <a href="blog-single-sidebar.html">
-                                            What information is
-                                            needed for shipping?
-                                        </a>
-                                    </h6>
-                                    <span class="time"><i class="lni lni-calendar"></i> 05th Nov 2023</span>
-                                </div>
-                            </div>
-                            <div class="single-popular-feed">
-                                <div class="feed-desc">
-                                    <a class="feed-img" href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/200x200" alt="#">
-                                    </a>
-                                    <h6 class="post-title">
-                                        <a href="blog-single-sidebar.html">
-                                            Interesting fact about
-                                            gaming consoles
-                                        </a>
-                                    </h6>
-                                    <span class="time"><i class="lni lni-calendar"></i> 24th March 2023</span>
-                                </div>
-                            </div>
-                            <div class="single-popular-feed">
-                                <div class="feed-desc">
-                                    <a class="feed-img" href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/200x200" alt="#">
-                                    </a>
-                                    <h6 class="post-title">
-                                        <a href="blog-single-sidebar.html">
-                                            Electronics,
-                                            instrumentation & control engineering
-                                        </a>
-                                    </h6>
-                                    <span class="time"><i class="lni lni-calendar"></i> 30th Jan 2023</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Widget -->
+                    @await Component.InvokeAsync("FeaturedBlogSidebar")
                     <!-- Start Single Widget -->
                     <div class="widget categories-widget">
                         <h5 class="widget-title">Top Categories</h5>

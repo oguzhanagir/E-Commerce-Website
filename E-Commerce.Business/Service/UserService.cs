@@ -48,22 +48,23 @@ namespace E_Commerce.Business.Service
             return _unitOfWork.Users.GetById(id);
         }
 
-        public bool ValidateUser(string email, string password)
+        public User ValidateUser(string email, string password)
         {
             User user = _unitOfWork.Users.GetUserByEmail(email);
 
             if (user != null && user.Password == password)
             {
-                return true;
+                return user;
             }
 
-            return false;
+            return null!;
         }
 
         public bool Register(User user)
         {
             if (ValidatePassword(user))
             {
+                user.RoleId = 1;
                 _unitOfWork.Users.Add(user);
                 _unitOfWork.CompleteAsync();
                 return true;

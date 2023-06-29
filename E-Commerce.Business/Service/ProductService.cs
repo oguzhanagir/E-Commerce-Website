@@ -52,9 +52,6 @@ namespace E_Commerce.Business.Service
         }
 
 
-
-
-
         public IEnumerable<Product> GetPopularProducts()
         {
             var popularProducts = _unitOfWork.Products.GetPopularProduct();
@@ -74,8 +71,6 @@ namespace E_Commerce.Business.Service
         }
 
 
-
-
         public Product GetById(int id)
         {
             return _unitOfWork.Products.GetById(id,x=>x.Category!,y=>y.ProductImages!);
@@ -91,14 +86,23 @@ namespace E_Commerce.Business.Service
             _unitOfWork.Products.Update(entity);
             _unitOfWork.CompleteAsync();
         }
-   
-    
+ 
         public int GetPointByProductId(int id)
         {
             var commentsListByProduct = _unitOfWork.Comments.GetCommentByProductId(id);
 
             int averagePoint = commentsListByProduct.Any() ? (int)commentsListByProduct.Average(c => c.Star) : 0;
             return averagePoint;
+        }
+    
+        public List<SearchResultViewModel> SearchProduct(string query)
+        {
+            var searchResults = _unitOfWork.Products.PerformSearch(query);
+
+            // Sonuçları işleyerek görüntülenecek bir modele dönüştürün
+            var viewModel = _unitOfWork.Products.ConvertToViewModel(searchResults);
+            return viewModel;
+
         }
     }
 }

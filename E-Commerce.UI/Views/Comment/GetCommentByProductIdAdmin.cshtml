@@ -1,0 +1,98 @@
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Comment>
+@{
+    ViewData["Title"] = "GetCommentByProductIdAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="table-components">
+    <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+               
+                <!-- end col -->
+                <div class="col-md-6">
+                    <div class="breadcrumb-wrapper mb-30">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#0">Kontrol Paneli</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Yorumlar
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- ========== title-wrapper end ========== -->
+        <!-- ========== tables-wrapper start ========== -->
+        <div class="tables-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <h6 class="mb-10">Yorum Listesi</h6>
+                        <div class="table-wrapper table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><h6>Yorum Başlığı</h6></th>
+                                        <th><h6>Yorum Yapan Ad ve Soyad</h6></th>
+                                        <th><h6>Yorum Yapan Maili</h6></th>
+                                        <th><h6>Content</h6></th>
+                                        <th><h6>Sil</h6></th>
+                                    </tr>
+                                    <!-- end table row-->
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-width">
+                                                <p>@item.Title</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.FirstName @item.LastName</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Mail</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Content</p>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a href="/Comment/DeleteComment/@item.Id" class="text-danger">
+                                                        <i class="lni lni-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                          
+                                        </tr>
+                                        <!-- end table row -->
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            <!-- end table -->
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+        </div>
+        <!-- ========== tables-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+</section>

@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="~/css/glightbox.min.css" />
     <link rel="stylesheet" href="~/css/main.css" />
     <link rel="stylesheet" href="~/css/profile.css" />
-
 </head>
 
 <body>
@@ -44,62 +43,45 @@
         <div class="topbar">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-3 col-md-4 col-12">
                         <div class="top-left">
-                            <ul class="menu-top-link">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="flag-icon flag-icon-gb"></i> Dil Seçin
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a asp-controller="Home"
-                                               asp-action="ChangeLanguage"
-                                               asp-route-culture="en-US"
-                                               class="dropdown-item">
-                                                <i class="flag-icon flag-icon-gb"></i> İngilizce
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a asp-controller="Home"
-                                               asp-action="ChangeLanguage"
-                                               asp-route-culture="fr-FR"
-                                               class="dropdown-item">
-                                                <i class="flag-icon flag-icon-gb"></i> Fransızca
-                                            </a>
-                                        </li>
-                                        <a asp-controller="Home"
-                                           asp-action="ChangeLanguage"
-                                           asp-route-culture="tr-TR"
-                                           class="dropdown-item">
-                                            <i class="flag-icon flag-icon-gb"></i> Türkçe
-                                        </a>
-                                    </ul>
-                                </li>
-                            </ul>
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="test" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @_localization.Getkey("ChooseLanguage").Value
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="test">
+                                    <a class="dropdown-item" href="/Home/ChangeLanguage?culture=en-US">@_localization.Getkey("English").Value</a>
+                                    <a class="dropdown-item" href="/Home/ChangeLanguage?culture=tr-TR">@_localization.Getkey("Turkish").Value</a>
+                                </div>
+                            </div>
+
+
+                              
+                              
                         </div>
 
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-6 col-md-4 col-12">
                         <div class="top-middle">
                             <ul class="useful-links">
                                 <li><a href="/Home/Index">@_localization.Getkey("Navbar.Home").Value</a></li>
                                 <li><a href="/About/Index">@_localization.Getkey("Navbar.About").Value</a></li>
-                                <li><a href="/About/Wholesale">Özel Tasarım</a></li>
+                                <li><a href="/About/Wholesale">@_localization.Getkey("Navbar.SpecialDesign").Value</a></li>
                                 <li><a href="/Contact/Index">@_localization.Getkey("Navbar.Contact").Value</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-3 col-md-4 col-12">
                         <div class="top-end">
                             @await Component.InvokeAsync("ProfileButtonHeader")
 
                             <ul class="user-login">
                                 <li>
-                                    <a href="/Auth/Login">Giriş Yap</a>
+                                    <a href="/Auth/Login">@_localization.Getkey("Login").Value</a>
                                 </li>
                                 <li>
-                                    <a href="/Auth/Register">Kayıt Ol</a>
+                                    <a href="/Auth/Register">@_localization.Getkey("Register").Value</a>
                                 </li>
                             </ul>
                         </div>
@@ -125,12 +107,7 @@
                             <!-- navbar search start -->
                             <div class="navbar-search search-style-5">
 
-                                <div class="search-input">
-                                    <input type="text" placeholder="Ara">
-                                </div>
-                                <div class="search-btn">
-                                    <button><i class="lni lni-search-alt"></i></button>
-                                </div>
+                                <partial name="~/Views/Home/Search.cshtml" ></partial>
                             </div>
                             <!-- navbar search Ends -->
                         </div>
@@ -141,7 +118,7 @@
                             <div class="nav-hotline">
                                 <i class="lni lni-phone"></i>
                                 <h3>
-                                    Telefon Numaramız:
+                                    @_localization.Getkey("PhoneNumber").Value:
                                     <span></span>
                                 </h3>
                             </div>
@@ -196,7 +173,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Nav Social -->
                     <div class="nav-social">
-                        <h5 class="title">Takip Ediniz:</h5>
+                        <h5 class="title">@_localization.Getkey("SocialMedia").Value</h5>
                         <ul>
                             <li>
                                 <a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
@@ -228,9 +205,9 @@
     <a href="#" class="scroll-top">
         <i class="lni lni-chevron-up"></i>
     </a>
- 
-    <!-- jQuery kütüphanesini ekleyin -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- ========================= JS here ========================= -->
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/tiny-slider.js"></script>

@@ -1,8 +1,11 @@
-﻿using E_Commerce.UI.Services;
+﻿using E_Commerce.Core.Abstract.Service;
+using E_Commerce.Entity.Concrete;
+using E_Commerce.UI.Services;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Diagnostics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 [assembly: ResourceLocation("Resources")]
 [assembly: RootNamespace("E_Commerce.UI")]
@@ -12,11 +15,11 @@ namespace E_Commerce.UI.Controllers
    
     public class HomeController : Controller
     {
-        private LanguageService _localization;
-        public HomeController(LanguageService localization)
-        {
+        private readonly IProductService _productService;
 
-            _localization = localization;
+        public HomeController(IProductService productService)
+        {
+            _productService = productService;
         }
 
         public IActionResult Index()
@@ -46,7 +49,12 @@ namespace E_Commerce.UI.Controllers
         }
 
 
+        public IActionResult Search(string query)
+        {
+            var search = _productService.SearchProduct(query);
 
+            return View(search);
+        }
 
     }
 }

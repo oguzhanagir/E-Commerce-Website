@@ -14,6 +14,8 @@
                         <h2>Kategori Tablosu</h2>
                         <a href="/Category/AddCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Kategori Ekle</a>
                         <a href="/Category/AddSubCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Alt Kategori Ekle</a>
+                        <a href="/Category/UpdateMainCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Ana Kategoriyi Güncelle</a>
+                        <a href="/Category/UpdateSubCategory" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Alt Kategoriyi Güncelle</a>
                     </div>
                 </div>
                 <!-- end col -->
@@ -49,7 +51,7 @@
                                         <th><h5>Kategori Adı</h5></th>
                                         <th><h6>Alt Kategori Adı</h6></th>
                                         <th><h6>Sil</h6></th>
-                                        <th><h6>Güncelle</h6></th>
+                                     
                                     </tr>
                                     <!-- end table row-->
                                 </thead>
@@ -75,13 +77,7 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="action">
-                                                    <a href="/Category/UpdateSubCategory/@item.Id" class="text-warning">
-                                                        <i class="lni lni-pencil"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                           
                                         </tr>
                                         <!-- end table row -->
                                     }

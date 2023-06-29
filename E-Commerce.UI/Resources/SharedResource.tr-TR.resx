@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>Dil Seçin</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>İngilizce</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
   <data name="Navbar.About" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
@@ -129,7 +138,31 @@
   <data name="Navbar.Shop" xml:space="preserve">
     <value>Mağaza</value>
   </data>
+  <data name="Navbar.SpecialDesign" xml:space="preserve">
+    <value>Özel Tasarım ve Toptan Satış</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefon Numaramız</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
   <data name="ShippingInfo" xml:space="preserve">
     <value>Ücretsiz Kargo</value>
+  </data>
+  <data name="SocialMedia" xml:space="preserve">
+    <value>Sosyal Medya</value>
+  </data>
+  <data name="Turkish" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="WeeklySale.Button" xml:space="preserve">
+    <value>Satın Al</value>
+  </data>
+  <data name="WeeklySale.Content" xml:space="preserve">
+    <value>Bu hafta tüm çevrimiçi mağaza ürünlerinde% 50'ye varan indirim.</value>
+  </data>
+  <data name="WeeklySale.Title" xml:space="preserve">
+    <value>Haftalık Satış</value>
   </data>
 </root>

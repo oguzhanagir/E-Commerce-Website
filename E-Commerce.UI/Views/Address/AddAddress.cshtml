@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "AddAddress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="dashboard section">
+    <div class="container">
+        <div class="row">
+            @await Component.InvokeAsync("ProfileSidebar")
+            <div class="col-lg-9 col-md-8 col-12">
+                <div class="dashboard-block mt-0 profile-settings-block">
+                    <h3 class="block-title">Profile Settings</h3>
+                    <div class="inner-block">
+                        <div class="image">
+                            <img src="assets/images/dashboard/xuser-image.jpg.pagespeed.ic.YpFzrr6OVW.webp" alt="#" data-pagespeed-url-hash="2750445946" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                        </div>
+                        <form class="profile-setting-form" method="post" action="@Url.Action("AddAddress", "Address")">
+
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Adres Başlığı*</label>
+                                        <input name="first-name" type="text" placeholder="Adres Başlığı">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>İl*</label>
+                                        <input name="last-name" type="text" placeholder="İl">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>İlçe*</label>
+                                        <input name="usernames" type="text" placeholder="test">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Email Adresi*</label>
+                                        <input name="email" type="email" placeholder="username@gmail.com">
+                                    </div>
+                                </div>
+                               
+                               
+                                <div class="col-12">
+                                    <div class="form-group button mb-0">
+                                        <button type="submit" class="btn ">Adres Ekle</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

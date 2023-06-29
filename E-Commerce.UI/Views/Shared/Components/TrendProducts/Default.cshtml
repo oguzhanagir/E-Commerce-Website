@@ -8,8 +8,8 @@
                 <div class="section-title">
                     <h2>Son Ürünler</h2>
                     <p>
-                        En yeni ve çeşitli ürünleri sizin için bir araya getirdik. 
-                        Her zevke uygun seçeneklerimizle alışveriş deneyiminizi zenginleştirelim. 
+                        En yeni ve çeşitli ürünleri sizin için bir araya getirdik.
+                        Her zevke uygun seçeneklerimizle alışveriş deneyiminizi zenginleştirelim.
                         Kaliteli ve güvenilir markaların ürünleri arasından seçim yaparak ihtiyaçlarınızı karşılayabilirsiniz.
                     </p>
                 </div>
@@ -22,7 +22,11 @@
                     <!-- Start Single Product -->
                     <div class="single-product">
                         <div class="product-image">
-                            <img src="" alt="#">
+                            @foreach (var image in item.ProductImages!)
+                            {
+                                <img src="@image.ImagePath" alt="#">
+                                break;
+                            }
                             <div class="button">
                                 <a href="/Cart/AddCart/@item.Id" class="btn"><i class="lni lni-cart"></i>Sepete Ekle</a>
                             </div>
@@ -33,17 +37,25 @@
                                 <a href="/Shop/ProductDetails/@item.Id">@item.Name</a>
                             </h4>
                             <ul class="review">
-                                @for (int i = 1; i <=4; i++)
+                                @if (@ViewBag.Point != 5)
                                 {
-                                    <li><i class="lni lni-star-filled"></i></li>
-
+                                    @for (int i = 1; i <= @ViewBag.Point; i++)
+                                    {
+                                        <li><i class="lni lni-star-filled"></i></li>
+                                    }
+                                    @for (int i = 1; i <= (5 - @ViewBag.Point); i++)
+                                    {
+                                        <li><i class="lni lni-star"></i></li>
+                                    }
                                 }
-                                @for (int i = 1; i < (4 - 5) * -1; i++)
+                                else
                                 {
-                                    <li><i class="lni lni-star"></i></li>
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <li><i class="lni lni-star-filled"></i></li>
+                                    }
                                 }
-                                <li><i class="lni lni-star"></i></li>
-                                <li><span>4 Puan</span></li>
+                                <li><span> @ViewBag.Point Puan</span></li>
                             </ul>
                             <div class="price">
                                 <span>₺@item.Price</span>

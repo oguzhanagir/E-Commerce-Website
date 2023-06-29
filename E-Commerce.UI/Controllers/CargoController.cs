@@ -1,6 +1,8 @@
 ﻿using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace E_Commerce.UI.Controllers
 {
@@ -12,11 +14,8 @@ namespace E_Commerce.UI.Controllers
         {
             _cargoService = cargoService;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult AddCargoByOrder()
         {
@@ -24,6 +23,7 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddCargoByOrder(Cargo cargo)
         {

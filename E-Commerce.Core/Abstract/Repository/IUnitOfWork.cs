@@ -27,6 +27,7 @@ namespace E_Commerce.Core.Abstract.Repository
         ICartRepository Carts { get; }
         ICargoRepository Cargoes { get; }
         ICommentRepository Comments { get; }
+        ISubscribeRepository Subscribes { get; }
 
        void CompleteAsync();
     }

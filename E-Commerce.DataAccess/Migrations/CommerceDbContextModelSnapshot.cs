@@ -233,6 +233,9 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -587,6 +590,28 @@ namespace E_Commerce.DataAccess.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
             modelBuilder.Entity("E_Commerce.Entity.Concrete.SubCategory", b =>
                 {
                     b.Property<int>("Id")
@@ -612,6 +637,28 @@ namespace E_Commerce.DataAccess.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("SubCategory");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.Subscribe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribes");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.User", b =>
@@ -646,10 +693,15 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
                 });
@@ -818,6 +870,17 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.User", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.Role", "Role")
+                        .WithMany("User")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Cart", b =>
                 {
                     b.Navigation("CartItems");
@@ -846,6 +909,11 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("OrderItems");
 
                     b.Navigation("ProductImages");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.Role", b =>
+                {
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.User", b =>

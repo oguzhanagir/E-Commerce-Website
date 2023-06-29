@@ -13,5 +13,7 @@ namespace E_Commerce.Core.Abstract.Repository
         IEnumerable<Product> GetBestSellers();
         Task<int> GetCountByCategoryId(int categoryId);
         IEnumerable<Product> GetNewArrivalsToThree();
+        public List<Product> PerformSearch(string query);
+        List<SearchResultViewModel> ConvertToViewModel(List<Product> searchResults);
     }
 }

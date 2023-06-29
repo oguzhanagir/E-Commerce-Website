@@ -10,7 +10,11 @@
                 <ul class="inner-sub-category">
                    @foreach (var subCategory in category.SubCategories!)
                     {
-                        <li>@subCategory.Name</li>
+
+                        <li>
+                            <a href="/Shop/Index/@subCategory.Id">@subCategory.Name</a>
+
+                        </li>
                     }
                    
                 </ul>

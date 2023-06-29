@@ -19,10 +19,10 @@
                                 <span>En son bilgileri, Satışları ve Teklifleri alın.</span>
                             </h4>
                             <div class="newsletter-form-head">
-                                <form action="/Newsletter/AddNewsletter" method="post" class="newsletter-form">
+                                <form action="@Url.Action("AddSubscribe", "Subscribe")" method="post" class="newsletter-form">
                                     <input name="Mail" placeholder="E-Mail Adresiniz" type="email">
                                     <div class="button">
-                                        <button class="btn">Abone Ol<span class="dir-part"></span></button>
+                                        <button type="submit" class="btn">Abone Ol<span class="dir-part"></span></button>
                                     </div>
                                 </form>
                             </div>

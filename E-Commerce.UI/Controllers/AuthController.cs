@@ -1,6 +1,8 @@
 ﻿using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace E_Commerce.UI.Controllers
 {
@@ -10,12 +12,9 @@ namespace E_Commerce.UI.Controllers
 
         public AuthController(IUserService userService)
         {
-               _userService = userService;
+            _userService = userService;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+
 
         [HttpGet]
         public IActionResult Login()
@@ -24,24 +23,47 @@ namespace E_Commerce.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
+            var user = _userService.ValidateUser(model.Email!, model.Password!);
             if (ModelState.IsValid)
             {
-                if (_userService.ValidateUser(model.Email!, model.Password!))
+                if (user != null)
                 {
-                    // Kullanıcının bilgilerini Session'a kaydet
                     HttpContext.Session.SetString("Email", model.Email!);
-                    
-                    return RedirectToAction("Index", "Home");
-                }
+                    // Kullanıcının bilgilerini Session'a kaydet
 
-                ModelState.AddModelError("Password", "Geçersiz e-posta veya şifre.");
-                ViewBag.ErrorMessage = "Geçersiz e-posta veya şifre.";
+                    // Rol bilgisini claims olarak ekleyin
+                    var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, model.Email!),
+                new Claim(ClaimTypes.Role, user.RoleId == 1 ? "Customer" : "Admin")
+            };
+
+                    var identity = new ClaimsIdentity(claims, "login");
+                    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+                    await HttpContext.SignInAsync(principal);
+
+                    if (user.RoleId == 1)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else if (user.RoleId == 0)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("Password", "Geçersiz e-posta veya şifre.");
+                    ViewBag.ErrorMessage = "Geçersiz e-posta veya şifre.";
+                }
             }
 
             return View(model);
         }
+
 
         [HttpGet]
         public IActionResult Register()
@@ -69,7 +91,7 @@ namespace E_Commerce.UI.Controllers
                 ViewBag.ErrorMessage = "Şifreler Uyuşmuyor";
                 return View();
             }
-            
+
         }
     }
 }

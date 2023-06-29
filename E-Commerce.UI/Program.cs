@@ -71,6 +71,7 @@ builder.Services.AddTransient(typeof(IPaymentService), typeof(PaymentService));
 builder.Services.AddTransient(typeof(IPaymentStatusService), typeof(PaymentStatusService));
 builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 builder.Services.AddTransient(typeof(IUserService), typeof(UserService));
+builder.Services.AddTransient(typeof(ISubscribeService), typeof(SubscribeService));
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
@@ -86,7 +87,13 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
 
-
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
+    options.AddPolicy("CustomerOnly", policy =>
+        policy.RequireRole("Customer"));
+});
 
 
 

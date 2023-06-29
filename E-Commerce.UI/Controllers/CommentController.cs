@@ -1,6 +1,8 @@
 ﻿using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace E_Commerce.UI.Controllers
 {
@@ -12,10 +14,6 @@ namespace E_Commerce.UI.Controllers
         {
             _commentService = commentService;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpPost]
         public IActionResult AddComment(Comment comment)
@@ -25,5 +23,21 @@ namespace E_Commerce.UI.Controllers
             return RedirectToAction("Index","Shop");
         }
 
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteComment(int id)
+        {
+
+            _commentService.Delete(id); 
+            return RedirectToAction("ProductAdminList", "Shop");
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult GetCommentByProductIdAdmin(int id)
+        {
+            var comments = _commentService.GetCommentsByProductId(id);
+            return View(comments);
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using E_Commerce.Business.Service;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace E_Commerce.UI.Controllers
 {
@@ -38,6 +40,7 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+
         public IActionResult BreadCrumbs()
         {
             ViewBag.PageTitle = "Ürünler";
@@ -45,12 +48,12 @@ namespace E_Commerce.UI.Controllers
             ViewBag.PageController = "Mağaza";
             return View();
         }
-
       
         public IActionResult ProductDetails(int id)
         {
             var product = _productService.GetById(id);
             ViewBag.Point = _productService.GetPointByProductId(id);
+
             var comments = _commentService.GetCommentsByProductId(id);
             ViewBag.Comments = comments;
             return View(product);
@@ -77,6 +80,8 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = "Admin")]
         public IActionResult ProductAdminList()
         {
             var productList = _productService.GetAllWithCategory();
@@ -84,12 +89,15 @@ namespace E_Commerce.UI.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteProduct(int id)
         {
             _productService.Delete(id);
             return RedirectToAction("ProductAdminList", "Shop");
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult UpdateProduct(int id)
         {
@@ -98,6 +106,8 @@ namespace E_Commerce.UI.Controllers
             return View(product);
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(Product product, List<IFormFile> files)
 
@@ -137,7 +147,7 @@ namespace E_Commerce.UI.Controllers
             return RedirectToAction("ProductAdminList", "Shop");
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult AddProduct()
         {
@@ -145,6 +155,7 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product, List<IFormFile> files)
         {

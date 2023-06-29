@@ -49,5 +49,11 @@ namespace E_Commerce.Business.Service
             _unitOfWork.Addresses.Update(entity);
             _unitOfWork.CompleteAsync();
         }
+
+        public IEnumerable<Address> GetAddressesByUser(int id)
+        {
+            var adressList = _unitOfWork.Addresses.GetAddressesByUserId(id);
+            return adressList;
+        }
     }
 }

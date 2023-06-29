@@ -32,6 +32,7 @@ namespace E_Commerce.DataAccess.Concrete
             Carts = new CartRepository(_dbContext);
             Cargoes = new CargoRepository(_dbContext);
             Comments = new CommentRepository(_dbContext);
+            Subscribes = new SubscribeRepository(_dbContext);
         }
 
         public IAddressRepository Addresses { get; }
@@ -66,6 +67,8 @@ namespace E_Commerce.DataAccess.Concrete
         public ICargoRepository Cargoes { get; }
 
         public ICommentRepository Comments { get; }
+
+        public ISubscribeRepository Subscribes { get; }
 
         public void CompleteAsync()
         {

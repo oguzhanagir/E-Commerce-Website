@@ -58,5 +58,31 @@ namespace E_Commerce.DataAccess.Concrete
         {
             return await _dbContext.Products!.CountAsync(p => p.CategoryId == categoryId);
         }
+
+        public List<Product> PerformSearch(string query)
+        {
+           
+            var searchResults = _dbContext.Products!
+                .Where(p => p.Name!.Contains(query))
+                .ToList();
+
+            return searchResults;
+        }
+
+        public List<SearchResultViewModel> ConvertToViewModel(List<Product> searchResults)
+        {
+            
+            var viewModelList = searchResults.Select(p => new SearchResultViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                SubTitle = p.SubTitle
+                
+            }).ToList();
+
+            return viewModelList;
+        }
+
     }
 }

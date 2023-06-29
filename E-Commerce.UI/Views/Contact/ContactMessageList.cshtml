@@ -4,5 +4,98 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>ContactMessageList</h1>
+<section class="table-components">
+    <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              
+                <!-- end col -->
+                <div class="col-md-6">
+                    <div class="breadcrumb-wrapper mb-30">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#0">Kontrol Paneli</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Mesajlar
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- ========== title-wrapper end ========== -->
+        <!-- ========== tables-wrapper start ========== -->
+        <div class="tables-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <h6 class="mb-10">Mesaj Listesi</h6>
+                        <div class="table-wrapper table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><h6>Gönderen Ad ve Soyad</h6></th>
+                                        <th><h6>Konu</h6></th>
+                                        <th><h6>Mail</h6></th>
+                                        <th><h6>Telefon Numarası</h6></th>
+                                        <th><h6>Mesaj</h6></th>
+                                        <th><h6>Sil</h6></th>
+                                    </tr>
+                                    <!-- end table row-->
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-width">
+                                                <p>@item.FullName</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Subject</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Mail</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Phone</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>@item.Message</p>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a href="/Contact/DeleteContact/@item.Id" class="text-danger">
+                                                        <i class="lni lni-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                           
+                                        </tr>
+                                        <!-- end table row -->
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            <!-- end table -->
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+        </div>
+        <!-- ========== tables-wrapper end ========== -->
+    </div>
+    <!-- end container -->
+</section>
 

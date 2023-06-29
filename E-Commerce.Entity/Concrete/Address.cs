@@ -16,6 +16,7 @@ namespace E_Commerce.Entity.Concrete
         public string? City { get; set; }
         public string? District { get; set; }
         public string? Zip { get; set; }
+
         public User? User { get; set; }
     }
 }

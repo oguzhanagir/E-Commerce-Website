@@ -1,6 +1,8 @@
 ﻿using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace E_Commerce.UI.Controllers
 {
@@ -34,13 +36,25 @@ namespace E_Commerce.UI.Controllers
 
             _contactService.Create(contact);
             ViewBag.SuccessMessage = "İletişim bilgileri başarıyla eklendi.";
-            return View();
+            return RedirectToAction("Index","Contact");
         }
-    
+
+
+        [Authorize(Roles = "Admin")]
         public IActionResult ContactMessageList()
         {
             var contactList = _contactService.GetAll();
             return View(contactList);
         }
+
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteContact(int id)
+        {
+            _contactService.Delete(id);
+            return RedirectToAction("ContactMessageList", "Contact");
+        }
+
+       
     }
 }

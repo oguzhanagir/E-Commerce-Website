@@ -51,15 +51,13 @@
                             <div class="col-lg-7 col-md-8 col-12">
                                 <div class="product-sorting">
                                     <label for="sorting">Sıralama:</label>
-                                    <select class="form-control" id="sorting">
-                                        <option>Popularity</option>
-                                        <option>Low - High Price</option>
-                                        <option>High - Low Price</option>
-                                        <option>A - Z Order</option>
-                                        <option>Z - A Order</option>
+                                    <select class="form-control" id="sorting" onchange="handleSortingChange(this.value)">
+                                        <option value="price_asc">Low - High Price</option>
+                                        <option value="price_desc">High - Low Price</option>
+                                        <option value="name_asc">A - Z Order</option>
+                                        <option value="name_desc">Z - A Order</option>
                                     </select>
-                                    <h3 class="total-show-product">Bulunan: <span>1 - 12 ürün</span></h3>
-                                </div>
+                            </div>
                             </div>
 
                         </div>
@@ -96,20 +94,25 @@
                                                         <a href="/Shop/ProductDetails/@item.Id">@item.Name</a>
                                                     </h4>
                                                     <ul class="review">
-                                                        @for (int i = 1; i <= 5; i++)
+                                                        @if (@ViewBag.Point != 5)
                                                         {
-                                                            <li><i class="lni lni-star-filled"></i></li>
-
-                                                        }
-                                                        @if (5 != 5)
-                                                        {
-                                                            @for (int i = 1; i < (5 - 5) * -1; i++)
+                                                            @for (int i = 1; i <= @ViewBag.Point; i++)
+                                                            {
+                                                                <li><i class="lni lni-star-filled"></i></li>
+                                                            }
+                                                            @for (int i = 1; i <= (5 - @ViewBag.Point); i++)
                                                             {
                                                                 <li><i class="lni lni-star"></i></li>
                                                             }
                                                         }
-                                                        <li><i class="lni lni-star"></i></li>
-                                                        <li><span>5 Puan</span></li>
+                                                        else
+                                                        {
+                                                            @for (int i = 1; i <= 5; i++)
+                                                            {
+                                                                <li><i class="lni lni-star-filled"></i></li>
+                                                            }
+                                                        }
+                                                        <li><span> @ViewBag.Point</span></li>
                                                     </ul>
                                                     <div class="price">
                                                         <span>₺@item.Price</span>
@@ -375,3 +378,22 @@
 </section>
 <!-- End Product Grids -->
 
+<script>
+    function handleSortingChange(sorting) {
+        var currentUrl = window.location.href;
+        var url = new URL(currentUrl);
+        url.searchParams.set("sorting", sorting);
+        window.location.href = url.href;
+    }
+
+    // Sayfa yüklendiğinde mevcut sıralama değerine göre seçeneği işaretleyen kod
+    window.addEventListener('DOMContentLoaded', function () {
+        var currentUrl = window.location.href;
+        var url = new URL(currentUrl);
+        var sorting = url.searchParams.get("sorting");
+        if (sorting) {
+            var sortingSelect = document.getElementById("sorting");
+            sortingSelect.value = sorting;
+        }
+    });
+</script>

@@ -21,6 +21,9 @@ namespace E_Commerce.Entity.Concrete
 
         public int CardId { get; set; }
         public Cart? Cart { get; set; }
+
+        public int RoleId { get; set; }
+        public Role? Role { get; set; }
     }
 
 }

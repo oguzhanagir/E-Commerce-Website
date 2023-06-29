@@ -17,8 +17,6 @@ namespace E_Commerce.UI.Controllers
 
         }
 
-
-
         public IActionResult Index()
         {
             string email = HttpContext.Session.GetString("Email")!;
@@ -44,6 +42,7 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+
         [HttpPost]
         [Route("Cart/AddProductToCart/{id}/products/{productId}")]
         public IActionResult AddProductToCart(int id, int productId)
@@ -58,14 +57,15 @@ namespace E_Commerce.UI.Controllers
         public IActionResult RemoveProductFromCart(int userId, int cartItemId)
         {
             _cartService.RemoveProductFromCart(userId, cartItemId);
-            return RedirectToAction("Index", "Cart"); ;
+            return RedirectToAction("Index", "Cart");
         }
+
 
         [HttpPut("{userId}/products/{productId}")]
         public IActionResult UpdateCartItemQuantity(int userId, int productId, int quantity)
         {
             _cartService.UpdateCartItemQuantity(userId, productId, quantity);
-            return Ok();
+            return RedirectToAction("Index", "Cart");
         }
     }
 }

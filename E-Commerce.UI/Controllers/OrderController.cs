@@ -1,4 +1,5 @@
 ﻿using E_Commerce.Core.Abstract.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce.UI.Controllers
@@ -12,24 +13,24 @@ namespace E_Commerce.UI.Controllers
             _orderService = orderService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult ConfirmOrder(int id)
         {
             _orderService.ConfirmOrderService(id);
-            return View();
+            return RedirectToAction("SellingProducts","Order");
         }
-
+        
+        
+        [Authorize(Roles = "Admin")]
         public IActionResult CancelOrder(int id)
         {
             _orderService.CancelOrderService(id);
-            return View();
+            return RedirectToAction("SellingProducts", "Order");
         }
 
-
+        
+        [Authorize(Roles = "Admin")]
         public IActionResult SellingProducts()
         {
             var sellingProductsList = _orderService.GetAll();

@@ -1,7 +1,9 @@
 ﻿using E_Commerce.Business.Service;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace E_Commerce.UI.Controllers
 {
@@ -20,6 +22,8 @@ namespace E_Commerce.UI.Controllers
             return View(about);
         }
 
+
+        [Authorize(Roles = "Admin")]
         public IActionResult AboutAdminList()
         {
             var about = _aboutService.GetById(2);
@@ -32,6 +36,7 @@ namespace E_Commerce.UI.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult UpdateAbout(int id)
         {
@@ -39,6 +44,7 @@ namespace E_Commerce.UI.Controllers
             return View(about);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> UpdateAbout(About about, IFormFile file)
         {

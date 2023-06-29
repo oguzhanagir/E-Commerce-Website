@@ -9,5 +9,6 @@ namespace E_Commerce.Core.Abstract.Repository
 {
     public interface IAddressRepository:IGenericRepository<Address>
     {
+        IEnumerable<Address> GetAddressesByUserId(int id);
     }
 }

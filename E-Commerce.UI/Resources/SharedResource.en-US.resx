@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>Choose a Language</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="Navbar.About" xml:space="preserve">
     <value>About</value>
   </data>
@@ -129,7 +138,31 @@
   <data name="Navbar.Shop" xml:space="preserve">
     <value>Shop</value>
   </data>
+  <data name="Navbar.SpecialDesign" xml:space="preserve">
+    <value>Special Design and Wholesale Sales</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Our Phone Number</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
   <data name="ShippingInfo" xml:space="preserve">
     <value>Free Shipping</value>
+  </data>
+  <data name="SocialMedia" xml:space="preserve">
+    <value>Social Media</value>
+  </data>
+  <data name="Turkish" xml:space="preserve">
+    <value>Turkish</value>
+  </data>
+  <data name="WeeklySale.Button" xml:space="preserve">
+    <value>Shop Now</value>
+  </data>
+  <data name="WeeklySale.Content" xml:space="preserve">
+    <value>Saving up to 50% off all online store items this week.</value>
+  </data>
+  <data name="WeeklySale.Title" xml:space="preserve">
+    <value>Weekly Sale!</value>
   </data>
 </root>

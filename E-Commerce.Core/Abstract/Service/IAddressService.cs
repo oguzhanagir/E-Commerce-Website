@@ -9,5 +9,6 @@ namespace E_Commerce.Core.Abstract.Service
 {
     public interface IAddressService : IGenericService<Address>
     {
+        IEnumerable<Address> GetAddressesByUser(int id);
     }
 }

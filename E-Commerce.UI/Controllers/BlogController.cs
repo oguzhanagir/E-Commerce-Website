@@ -1,6 +1,8 @@
 ﻿using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Text.RegularExpressions;
 
 namespace E_Commerce.UI.Controllers
@@ -79,18 +81,22 @@ namespace E_Commerce.UI.Controllers
             int readingTimeInMinutes = totalWords / wordsPerMinute;
             return readingTimeInMinutes;
         }
+
+        [Authorize(Roles = "Admin")]
         public IActionResult BlogAdminList()
         {
             var blogList = _blogService.GetAll();
             return View(blogList);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult AddBlog()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddBlog(Blog blog, IFormFile file)
         {
@@ -113,6 +119,7 @@ namespace E_Commerce.UI.Controllers
             return RedirectToAction("BlogAdminList", "Blog");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult UpdateBlog(int id)
         {
@@ -120,6 +127,7 @@ namespace E_Commerce.UI.Controllers
             return View(blog);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> UpdateBlog(Blog blog, IFormFile file)
         {
@@ -142,6 +150,7 @@ namespace E_Commerce.UI.Controllers
             return RedirectToAction("BlogAdminList", "Blog");
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteBlog(int id)
         {
             _blogService.Delete(id);
