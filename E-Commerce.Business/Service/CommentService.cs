@@ -52,8 +52,18 @@ namespace E_Commerce.Business.Service
 
         public IEnumerable<Comment> GetCommentsByProductId(int id)
         {
-            var comments = _unitOfWork.Comments.GetCommentByProductId(id);
+            var comments = _unitOfWork.Comments.GetCommentByProductId(id).Where(x=>x.CommentType == "Product");
             return comments;
         }
+
+
+        public IEnumerable<Comment> GetCommentListTypeBlog(int id)
+        {
+            var commentsBlog = _unitOfWork.Comments.GetCommentByBlogId(id).Where(x => x.CommentType == "Blog");
+            return commentsBlog;
+        }
+
+
+
     }
 }

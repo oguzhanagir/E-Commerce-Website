@@ -15,7 +15,13 @@ namespace E_Commerce.Entity.Concrete
         public string? Mail { get; set; } 
         public string? Content { get; set; }
         public int Star { get; set; }
+
+        public string? CommentType { get; set; }
+
         public int ProductId { get; set; }
         public Product? Product { get; set; }
+
+        public int BlogId { get; set; }
+        public Blog? Blog { get; set; }
     }
 }

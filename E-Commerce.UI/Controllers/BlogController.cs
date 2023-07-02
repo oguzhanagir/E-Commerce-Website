@@ -10,10 +10,12 @@ namespace E_Commerce.UI.Controllers
     public class BlogController : Controller
     {
         private readonly IBlogService _blogService;
+        private readonly ICommentService _commentService;
 
-        public BlogController(IBlogService blogService)
+        public BlogController(IBlogService blogService, ICommentService commentService)
         {
             _blogService = blogService;
+            _commentService = commentService;
         }
 
         public IActionResult Index()
@@ -33,6 +35,8 @@ namespace E_Commerce.UI.Controllers
                 var topWords = GetTopWords(item.Content!, 5);
                 ViewBag.TopWords = topWords;
             }
+            ViewBag.CommentByBlog = _commentService.GetCommentListTypeBlog(id);
+            @ViewBag.BlogId = id;
             return View(blog);
         }
 

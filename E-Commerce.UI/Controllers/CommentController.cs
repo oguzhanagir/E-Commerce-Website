@@ -18,9 +18,17 @@ namespace E_Commerce.UI.Controllers
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {
-
+            comment.CommentType = "Product";
             _commentService.Create(comment);
             return RedirectToAction("Index","Shop");
+        }
+
+        [HttpPost]
+        public IActionResult AddCommentByBlog(Comment comment)
+        {
+            comment.CommentType = "Blog";
+            _commentService.Create(comment);
+            return RedirectToAction("Index", "Blog");
         }
 
 
@@ -39,5 +47,7 @@ namespace E_Commerce.UI.Controllers
             var comments = _commentService.GetCommentsByProductId(id);
             return View(comments);
         }
+
+      
     }
 }

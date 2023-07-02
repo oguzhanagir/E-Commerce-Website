@@ -4,5 +4,34 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>UpdateMainCategory</h1>
+<div class="form-elements-wrapper mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- input style start -->
+            <div class="card-style mb-30">
+                @using (Html.BeginForm("UpdateMainCategory", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <select class="form-select" name="Id" aria-label="Kategori">
+                        <option>Ana Kategori</option>
+                        @foreach (var category in ViewBag.Category)
+                        {
+                            <option value="@category.Id">@category.Name @category.Id</option>
+                        }
+                    </select>
 
+                    <div class="input-style-1">
+                        <label>Güncellenecek Ana Kategori Adı</label>
+                        <input name="Name" type="text" placeholder="Ana Kategori" />
+                    </div>
+                    <div class="input-style-1">
+                        <input type="file" name="file" />
+                    </div>
+                    <!-- end input -->
+                    <button type="submit" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Kategori Güncelle</button>
+
+                }
+                <!-- end input -->
+            </div>
+        </div>
+    </div>
+</div>

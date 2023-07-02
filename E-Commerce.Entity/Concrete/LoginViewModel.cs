@@ -15,5 +15,6 @@ namespace E_Commerce.Entity.Concrete
 
         [Required(ErrorMessage = "Şifre zorunludur.")]
         public string? Password { get; set; }
+        public bool KeepLoggedIn { get; set; }
     }
 }

@@ -17,13 +17,13 @@ namespace E_Commerce.UI.Controllers
             _categoryService = categoryService;
             _subCategoryService = subCategoryService;
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            var subCategoryList = _subCategoryService.GetAllNormal();
-            ViewBag.SubCategoryList = subCategoryList;
+            var categoryList = _categoryService.GetAllNormal();
             
-            return View(subCategoryList);
+            
+            return View(categoryList);
         }
 
         [Authorize(Roles = "Admin")]
@@ -84,11 +84,11 @@ namespace E_Commerce.UI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public IActionResult UpdateSubCategory(int id)
+        public IActionResult UpdateSubCategory()
         {
-            var subCategory = _subCategoryService.GetById(id);
-        
-            return View(subCategory);
+            ViewBag.SubCategory = _subCategoryService.GetAllNormal();
+            ViewBag.Category = _categoryService.GetAllNormal();
+            return View();
         }
 
 
@@ -108,18 +108,29 @@ namespace E_Commerce.UI.Controllers
         [HttpGet]
         public IActionResult UpdateMainCategory(int id)
         {
-            var subCategory = _categoryService.GetById(id);
+            ViewBag.Category = _categoryService.GetAllNormal();
 
-            return View(subCategory);
+            return View();
         }
 
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult UpdateMainCategory(Category category)
+        public async  Task<IActionResult> UpdateMainCategory(Category category, IFormFile file)
         {
             if (category != null)
             {
+                if (file != null && file.Length > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var filePath = "images/category/" + fileName;
+
+                    using (var stream = new FileStream(Path.Combine("wwwroot", filePath), FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    category.Image = filePath;
+                }
                 _categoryService.Update(category);
             }
             return RedirectToAction("Index", "Category");
@@ -130,6 +141,13 @@ namespace E_Commerce.UI.Controllers
         public IActionResult DeleteSubCategory(int id)
         {
             _subCategoryService.Delete(id);
+            return RedirectToAction("Index", "Category");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteCategory(int id)
+        {
+            _categoryService.Delete(id);
             return RedirectToAction("Index", "Category");
         }
 

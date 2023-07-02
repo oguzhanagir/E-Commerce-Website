@@ -51,14 +51,14 @@
                                     @_localization.Getkey("ChooseLanguage").Value
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="test">
-                                    <a class="dropdown-item" href="/Home/ChangeLanguage?culture=en-US">@_localization.Getkey("English").Value</a>
-                                    <a class="dropdown-item" href="/Home/ChangeLanguage?culture=tr-TR">@_localization.Getkey("Turkish").Value</a>
+                                    <a id="englishLink" class="dropdown-item " href="/Home/ChangeLanguage?culture=en-US">@_localization.Getkey("English").Value</a>
+                                    <a id="turkishLink" class="dropdown-item" href="/Home/ChangeLanguage?culture=tr-TR">@_localization.Getkey("Turkish").Value</a>
                                 </div>
                             </div>
 
 
-                              
-                              
+
+
                         </div>
 
                     </div>
@@ -107,7 +107,7 @@
                             <!-- navbar search start -->
                             <div class="navbar-search search-style-5">
 
-                                <partial name="~/Views/Home/Search.cshtml" ></partial>
+                                <partial name="~/Views/Home/Search.cshtml"></partial>
                             </div>
                             <!-- navbar search Ends -->
                         </div>
@@ -205,6 +205,9 @@
     <a href="#" class="scroll-top">
         <i class="lni lni-chevron-up"></i>
     </a>
+
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -285,6 +288,7 @@
         timer();
         setInterval(timer, 1000);
     </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

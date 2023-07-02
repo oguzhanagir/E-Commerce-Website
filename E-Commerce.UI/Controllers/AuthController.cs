@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -26,44 +27,45 @@ namespace E_Commerce.UI.Controllers
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             var user = _userService.ValidateUser(model.Email!, model.Password!);
-            if (ModelState.IsValid)
+            if (user != null)
             {
-                if (user != null)
+                HttpContext.Session.SetString("Email", model.Email!);
+
+                var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Email!),
+            new Claim(ClaimTypes.Role, user.RoleId == 1 ? "Customer" : "Admin")
+        };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(identity));
+
+                if (user.RoleId == 1)
                 {
-                    HttpContext.Session.SetString("Email", model.Email!);
-                    // Kullanıcının bilgilerini Session'a kaydet
-
-                    // Rol bilgisini claims olarak ekleyin
-                    var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Email, model.Email!),
-                new Claim(ClaimTypes.Role, user.RoleId == 1 ? "Customer" : "Admin")
-            };
-
-                    var identity = new ClaimsIdentity(claims, "login");
-                    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-                    await HttpContext.SignInAsync(principal);
-
-                    if (user.RoleId == 1)
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else if (user.RoleId == 0)
-                    {
-                        return RedirectToAction("Index", "Admin");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
-                else
+                else if (user.RoleId == 2)
                 {
-                    ModelState.AddModelError("Password", "Geçersiz e-posta veya şifre.");
-                    ViewBag.ErrorMessage = "Geçersiz e-posta veya şifre.";
+                    return RedirectToAction("Index", "Admin");
                 }
             }
 
-            return View(model);
+            ModelState.AddModelError("Password", "Geçersiz e-posta veya şifre.");
+            ViewBag.ErrorMessage = "Geçersiz e-posta veya şifre.";
+
+            return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Login", "Auth");
+        }
 
         [HttpGet]
         public IActionResult Register()

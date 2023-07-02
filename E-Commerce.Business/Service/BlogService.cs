@@ -66,5 +66,14 @@ namespace E_Commerce.Business.Service
             _unitOfWork.Blogs.Update(entity);
             _unitOfWork.CompleteAsync();
         }
+
+        public List<string> GetBlogCategoryList()
+        {
+            var blogList = _unitOfWork.Blogs.GetAll();
+            var categoryList = blogList.Select(blog => blog.BlogCategory).Distinct().ToList();
+
+            return categoryList;
+        }
+
     }
 }

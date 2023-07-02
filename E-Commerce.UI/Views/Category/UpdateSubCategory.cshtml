@@ -4,5 +4,42 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>UpdateSubCategory</h1>
+<div class="form-elements-wrapper mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- input style start -->
+            <div class="card-style mb-30">
+                @using (Html.BeginForm("UpdateSubCategory", "Category", FormMethod.Post))
+                {
+                    <select class="form-select" name="CategoryId" aria-label="Kategori">
+                        <option>Ana Kategorisi</option>
+                        @foreach (var category in ViewBag.Category)
+                        {
+                            <option value="@category.Id">@category.Name @category.Id</option>
+                        }
+                    </select>
 
+                    <br />
+                    <select class="form-select" name="Id" aria-label="Kategori">
+                        <option>Alt Kategori</option>
+                        @foreach (var subCategory in ViewBag.SubCategory)
+                        {
+                            <option value="@subCategory.Id">@subCategory.Name @subCategory.Id</option>
+                        }
+                    </select>
+                    <br />
+
+                    <div class="input-style-1">
+                        <label>Alt Kategori Adı</label>
+                        <input name="Name" type="text" placeholder="Alt Kategori" />
+                    </div>
+          
+                    <!-- end input -->
+                    <button type="submit" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Alt Kategori Güncelle</button>
+
+                }
+                <!-- end input -->
+            </div>
+        </div>
+    </div>
+</div>

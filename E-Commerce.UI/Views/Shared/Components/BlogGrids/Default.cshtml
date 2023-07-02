@@ -11,7 +11,7 @@
                             <!-- Start Single Blog -->
                             <div class="single-blog">
                                 <div class="blog-img">
-                                    <a href="blog-single-sidebar.html">
+                                    <a href="/Blog/BlogSingle/@item.Id">
                                         <img src="@item.Image" style="width:370px; height:215px" alt="#">
                                     </a>
                                 </div>
@@ -63,26 +63,7 @@
                     <!-- End Single Widget -->
                     @await Component.InvokeAsync("FeaturedBlogSidebar")
                     <!-- Start Single Widget -->
-                    <div class="widget categories-widget">
-                        <h5 class="widget-title">Top Categories</h5>
-                        <ul class="custom">
-                            <li>
-                                <a href="javascript:void(0)">Editor's Choice</a><span>(24)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Electronics</a><span>(12)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Industrial Design</a><span>(5)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Secure Payments Online</a><span>(15)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Online Shopping</a><span>(7)</span>
-                            </li>
-                        </ul>
-                    </div>
+                    @await Component.InvokeAsync("BlogCategoryList")
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
                     <div class="widget popular-tag-widget">

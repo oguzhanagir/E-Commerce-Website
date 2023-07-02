@@ -46,7 +46,7 @@
                                     @Html.Raw(item.Content)
 
 
-                               
+
                                     <!-- Post Social Share -->
 
                                 </div>
@@ -57,108 +57,76 @@
                     <div class="post-comments">
                         <h3 class="comment-title"><span>Blog Yorumları</span></h3>
                         <ul class="comments-list">
-                            <li>
-                                <div class="comment-img">
-                                    <img src="https://via.placeholder.com/150x150" alt="img">
-                                </div>
-                                <div class="comment-desc">
-                                    <div class="desc-top">
-                                        <h6>Arista Williamson</h6>
-                                        <span class="date">19th May 2023</span>
-                                        <a href="javascript:void(0)" class="reply-link">
-                                            <i class="lni lni-reply"></i>Reply
-                                        </a>
+                            @foreach (var blogComment in ViewBag.CommentByBlog)
+                            {
+                                <li>
+                                    
+                                    <div class="comment-desc">
+                                        <div class="desc-top">
+                                            <h6>@blogComment.FirstName @blogComment.LastName</h6>
+                                            <span class="date">@blogComment.CreatedAt</span>
+                                          
+                                        </div>
+                                        <p>
+                                            @blogComment.Content
+                                        </p>
                                     </div>
-                                    <p>
-                                        Donec aliquam ex ut odio dictum, ut consequat leo interdum. Aenean nunc
-                                        ipsum, blandit eu enim sed, facilisis convallis orci. Etiam commodo
-                                        lectus
-                                        quis vulputate tincidunt. Mauris tristique velit eu magna maximus
-                                        condimentum.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="children">
-                                <div class="comment-img">
-                                    <img src="https://via.placeholder.com/150x150" alt="img">
-                                </div>
-                                <div class="comment-desc">
-                                    <div class="desc-top">
-                                        <h6>Rosalina Kelian</h6>
-                                        <span class="date">15th May 2023</span>
-                                        <a href="javascript:void(0)" class="reply-link">
-                                            <i class="lni lni-reply"></i>Reply
-                                        </a>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="comment-img">
-                                    <img src="https://via.placeholder.com/150x150" alt="img">
-                                </div>
-                                <div class="comment-desc">
-                                    <div class="desc-top">
-                                        <h6>Alex Jemmi</h6>
-                                        <span class="date">12th May 2023</span>
-                                        <a href="javascript:void(0)" class="reply-link">
-                                            <i class="lni lni-reply"></i>Reply
-                                        </a>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam.
-                                    </p>
-                                </div>
-                            </li>
+                                </li>
+                            }
+
                         </ul>
                     </div>
+
+                    @using (Html.BeginForm("AddCommentByBlog", "Comment", FormMethod.Post))
+{
                     <div class="comment-form">
                         <h3 class="comment-reply-title">Yorum Yap</h3>
-                        <form action="#" method="POST">
+                      
                             <div class="row">
                                 <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <input type="hidden" name="BlogId" value="@ViewBag.BlogId" />
+                                        <label for="review-name">Ad</label>
+                                        <input class="form-control" name="FirstName" type="text" id="review-name" required>
+                                    </div>
                                     <div class="form-box form-group">
-                                        <input type="text" name="name" class="form-control form-control-custom"
-                                               placeholder="Website URL" />
+                                        <input type="text" name="FirstName" class="form-control form-control-custom"
+                                               placeholder="Adınız" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="form-box form-group">
-                                        <input type="text" name="email" class="form-control form-control-custom"
-                                               placeholder="Your Name" />
+                                        <input type="text" name="LastName" class="form-control form-control-custom"
+                                               placeholder="Soyadınız" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="form-box form-group">
-                                        <input type="email" name="email"
-                                               class="form-control form-control-custom" placeholder="Your Email" />
+                                        <input type="email" name="Mail"
+                                               class="form-control form-control-custom" placeholder="E-Posta Adresiniz" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="form-box form-group">
-                                        <input type="text" name="name" class="form-control form-control-custom"
-                                               placeholder="Phone Number" />
+                                        <input type="text" name="Title" class="form-control form-control-custom"
+                                               placeholder="Başlık" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-box form-group">
-                                        <textarea name="#" class="form-control form-control-custom"
-                                                  placeholder="Your Comments"></textarea>
+                                        <textarea name="Content" class="form-control form-control-custom"
+                                                  placeholder="Mesajınız"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="button">
-                                        <button type="submit" class="btn">Post Comment</button>
+                                        <button type="submit" class="btn">Yorum Yap</button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                    
                     </div>
+                    }
                 </div>
             </div>
             <aside class="col-lg-4 col-md-12 col-12">
@@ -173,75 +141,12 @@
                     </div>
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
-                    <div class="widget popular-feeds">
-                        <h5 class="widget-title">Featured Posts</h5>
-                        <div class="popular-feed-loop">
-                            <div class="single-popular-feed">
-                                <div class="feed-desc">
-                                    <a class="feed-img" href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/200x200" alt="#">
-                                    </a>
-                                    <h6 class="post-title">
-                                        <a href="blog-single-sidebar.html">
-                                            What information is
-                                            needed for shipping?
-                                        </a>
-                                    </h6>
-                                    <span class="time"><i class="lni lni-calendar"></i> 05th Nov 2023</span>
-                                </div>
-                            </div>
-                            <div class="single-popular-feed">
-                                <div class="feed-desc">
-                                    <a class="feed-img" href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/200x200" alt="#">
-                                    </a>
-                                    <h6 class="post-title">
-                                        <a href="blog-single-sidebar.html">
-                                            Interesting fact about
-                                            gaming consoles
-                                        </a>
-                                    </h6>
-                                    <span class="time"><i class="lni lni-calendar"></i> 24th March 2023</span>
-                                </div>
-                            </div>
-                            <div class="single-popular-feed">
-                                <div class="feed-desc">
-                                    <a class="feed-img" href="blog-single-sidebar.html">
-                                        <img src="https://via.placeholder.com/200x200" alt="#">
-                                    </a>
-                                    <h6 class="post-title">
-                                        <a href="blog-single-sidebar.html">
-                                            Electronics,
-                                            instrumentation & control engineering
-                                        </a>
-                                    </h6>
-                                    <span class="time"><i class="lni lni-calendar"></i> 30th Jan 2023</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("FeaturedBlogSidebar")
+                  
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
-                    <div class="widget categories-widget">
-                        <h5 class="widget-title">Top Categories</h5>
-                        <ul class="custom">
-                            <li>
-                                <a href="javascript:void(0)">Editor's Choice</a><span>(24)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Electronics</a><span>(12)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Industrial Design</a><span>(5)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Secure Payments Online</a><span>(15)</span>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Online Shopping</a><span>(7)</span>
-                            </li>
-                        </ul>
-                    </div>
+                    @await Component.InvokeAsync("BlogCategoryList")
+                 
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
                     <div class="widget popular-tag-widget">
@@ -250,7 +155,7 @@
                             @foreach (var word in @ViewBag.TopWords)
                             {
 
-                                <a href="javascript:void(0)">#@word</a>
+                                <p href="javascript:void(0)">#@word</p>
                             }
                         </div>
                     </div>

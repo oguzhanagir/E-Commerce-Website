@@ -12,5 +12,6 @@ namespace E_Commerce.Core.Abstract.Service
         IEnumerable<Blog> GetAllNormal();
         IEnumerable<Blog> GetLatestBlogToThree();
         List<Blog> GetByIdList(int id);
+        List<string> GetBlogCategoryList();
     }
 }

@@ -10,15 +10,20 @@
                     <div class="hero-slider">
                         @foreach (var item in Model)
                         {
+                            string bannerImage = null;
+                            @foreach (var images in item.ProductImages!)
+                            {
+                                bannerImage = images.ImagePath!;
+                                break;
+                            }
                             <!-- Start Single Slider -->
-                            <div class="single-slider"
-                             style="background-image: url(https://via.placeholder.com/800x500);">
+                            <div class="single-slider" style="background-image: url('@bannerImage); width:800px; height:500px;">
                                 <div class="content">
                                     <h2>
                                         @item.Name
                                     </h2>
                                     <p>
-                                   @item.SubTitle;
+                                        @item.SubTitle
                                     </p>
                                     <h3><span>Sadece Şuan</span> @item.Price</h3>
                                     <div class="button">
@@ -38,7 +43,7 @@
                     <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                         <!-- Start Small Banner -->
                         <div class="hero-small-banner"
-                             style="background-image: url('https://via.placeholder.com/370x250');">
+                             style="background-image: url('https://via.placeholder.com/370x250'); width:370px; height:250px;">
                             <div class="content">
                                 <h2>
                                     <span>New line required</span>

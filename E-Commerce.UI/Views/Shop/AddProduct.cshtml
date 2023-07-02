@@ -10,10 +10,15 @@
             <div class="card-style mb-30">
                 @using (Html.BeginForm("AddProduct", "Shop", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
+
+                    <div class="input-style-1">
+                        <input type="checkbox" name="SpecialProduct"/>
+                    </div>
                     <div class="input-style-1">
                         <label>Ürün Adı</label>
                         <input name="Name" type="text" placeholder="Ürün Ad" />
                     </div>
+
 
                     <div class="input-style-1">
                         <label>Ürün Alt Açıklama</label>
@@ -23,6 +28,8 @@
                     <div class="input-style-1">
                         <input type="file" name="files" multiple />
                     </div>
+
+
 
                   <br />
                     <textarea name="Description">

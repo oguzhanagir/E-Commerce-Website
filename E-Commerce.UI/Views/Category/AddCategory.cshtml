@@ -8,11 +8,14 @@
         <div class="col-lg-6">
             <!-- input style start -->
             <div class="card-style mb-30">
-                @using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+                @using (Html.BeginForm("AddCategory", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="input-style-1">
                         <label>Kategori Adı</label>
                         <input name="Name" type="text" placeholder="Kategori" />
+                    </div>
+                    <div class="input-style-1">
+                        <input type="file" name="file" />
                     </div>
                     <!-- end input -->
                     <button type="submit" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Kategori Ekle</button>

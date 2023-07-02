@@ -54,6 +54,10 @@ namespace E_Commerce.Business.Service
 
             if (user != null && user.Password == password)
             {
+            
+
+           
+
                 return user;
             }
 
@@ -64,9 +68,19 @@ namespace E_Commerce.Business.Service
         {
             if (ValidatePassword(user))
             {
+
                 user.RoleId = 1;
+             
                 _unitOfWork.Users.Add(user);
                 _unitOfWork.CompleteAsync();
+                User findUser = _unitOfWork.Users.GetUserByEmail(user.Email!);
+
+                // Yeni bir sepet oluştur
+                Cart cart = new Cart();
+                cart.UserId = findUser.Id;
+                _unitOfWork.Carts.Add(cart);
+                _unitOfWork.CompleteAsync();
+
                 return true;
             }
             else

@@ -4,6 +4,7 @@ using E_Commerce.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.DataAccess.Migrations
 {
     [DbContext(typeof(CommerceDbContext))]
-    partial class CommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230630180856_UpdatedCommentModeladdedBlogId")]
+    partial class UpdatedCommentModeladdedBlogId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,6 +114,9 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<string>("BlogCategory")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -128,6 +133,8 @@ namespace E_Commerce.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Blogs");
                 });
@@ -553,9 +560,6 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<bool>("SpecialProduct")
-                        .HasColumnType("bit");
-
                     b.Property<string>("SubTitle")
                         .HasColumnType("nvarchar(max)");
 
@@ -719,6 +723,13 @@ namespace E_Commerce.DataAccess.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.Blog", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.Category", null)
+                        .WithMany("Blogs")
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Cargo", b =>
@@ -895,6 +906,8 @@ namespace E_Commerce.DataAccess.Migrations
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Category", b =>
                 {
+                    b.Navigation("Blogs");
+
                     b.Navigation("Products");
 
                     b.Navigation("SubCategories");

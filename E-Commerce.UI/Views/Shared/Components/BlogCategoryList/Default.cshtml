@@ -1,0 +1,12 @@
+﻿<div class="widget categories-widget">
+    <h5 class="widget-title">Top Categories</h5>
+    <ul class="custom">
+        @foreach (var categoryName in ViewBag.CategoryList)
+        {
+            <li>
+                <a href="javascript:void(0)">@categoryName</a>
+            </li>
+        }
+       
+    </ul>
+</div>

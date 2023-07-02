@@ -20,8 +20,19 @@ namespace E_Commerce.Business.Service
 
         public void Create(Product entity)
         {
-            _unitOfWork.Products.Add(entity);
-            _unitOfWork.CompleteAsync();
+            if (entity.SpecialProduct == true)
+            {
+
+                _unitOfWork.Products.Add(entity);
+                _unitOfWork.CompleteAsync();
+            }
+            else
+            {
+                entity.SpecialProduct = false;
+                _unitOfWork.Products.Add(entity);
+                _unitOfWork.CompleteAsync();
+            }
+            
         }
 
         public void Delete(int id)
@@ -104,5 +115,15 @@ namespace E_Commerce.Business.Service
             return viewModel;
 
         }
+
+        public IEnumerable<Product> GetSpecialProducts()
+        {
+            var allProducts = _unitOfWork.Products.GetAll();
+
+            var specialProducts = allProducts.Where(product => product.SpecialProduct == true).Take(5);
+
+            return specialProducts;
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<E_Commerce.Entity.Concrete.SubCategory>
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Category>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -48,42 +48,72 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th><h5>Kategori Banner</h5></th>
                                         <th><h5>Kategori Adı</h5></th>
-                                        <th><h6>Alt Kategori Adı</h6></th>
-                                        <th><h6>Sil</h6></th>
+                                        <th><h5>Ana Kategori Sil</h5></th>
+
+                                        <th><h5>Alt Kategori Adı</h5></th>
+                                        <th><h5>Alt Kategori Sil</h5></th>
                                      
                                     </tr>
                                     <!-- end table row-->
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model)
+                                    @foreach (var category in Model)
                                     {
                                         <tr>
                                             <td class="min-width">
-
-
-                                                <p>@item.Category!.Name</p>
-
-
+                                                <img src="~/@category.Image" style="width:40px; height:40px;" />
                                             </td>
-
                                             <td class="min-width">
-                                                <p>@item.Name</p>
+                                                <p>@category.Name</p>
                                             </td>
                                             <td>
                                                 <div class="action">
-                                                    <a href="/Category/DeleteSubCategory/@item.Id" class="text-danger">
+                                                    <a href="/Category/DeleteCategory/@category.Id" class="text-danger">
                                                         <i class="lni lni-trash-can"></i>
                                                     </a>
                                                 </div>
                                             </td>
-                                           
                                         </tr>
-                                        <!-- end table row -->
+
+                                      
+                                        
+                                            @foreach (var subCategory in category.SubCategories)
+                                            {
+                                                <tr>
+                                                    <td class="min-width"></td>
+                                                    <td class="min-width"></td>
+                                                    <td></td>
+                                                    @if (category.SubCategories.Count == 0)
+                                                    {
+
+                                                        <td class="min-width" colspan="3">
+                                                            <p>Alt kategori bulunmamaktadır.</p>
+                                                    </td>
+
+                                                }
+                                                else
+                                                {
+                                                    <td class="min-width">
+                                                        <p>@subCategory.Name</p>
+                                                    </td>
+                                                }
+                                              
+                                                    <td>
+                                                        <div class="action">
+                                                            <a href="/Category/DeleteSubCategory/@subCategory.Id" class="text-danger">
+                                                                <i class="lni lni-trash-can"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        
                                     }
-
-
                                 </tbody>
+
+
                             </table>
                             <!-- end table -->
                         </div>

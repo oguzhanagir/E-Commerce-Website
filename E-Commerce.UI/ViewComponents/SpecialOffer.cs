@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogBySpecial = _productService.GetAll(); // Special Olarak Değiştirilecektir.
+            var getBlogBySpecial = _productService.GetSpecialProducts();
 
             return View(getBlogBySpecial);
         }

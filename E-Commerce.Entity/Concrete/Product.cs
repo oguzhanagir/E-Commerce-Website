@@ -16,6 +16,8 @@ namespace E_Commerce.Entity.Concrete
         public int Quantity { get; set; }
         public string? Features { get; set; }
 
+        public bool SpecialProduct { get; set; }
+
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 

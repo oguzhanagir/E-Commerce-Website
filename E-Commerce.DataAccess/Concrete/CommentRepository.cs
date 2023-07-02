@@ -22,6 +22,12 @@ namespace E_Commerce.DataAccess.Concrete
             var commentByProductId = _dbContext.Comments!.Where(c => c.ProductId == id).ToList();
             return commentByProductId;
         }
+        public List<Comment> GetCommentByBlogId(int id)
+        {
+            var commentByBlogId = _dbContext.Comments!.Where(c => c.BlogId == id).ToList();
+            return commentByBlogId;
+        }
+
 
     }
 }

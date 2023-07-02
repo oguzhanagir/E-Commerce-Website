@@ -10,5 +10,6 @@ namespace E_Commerce.Core.Abstract.Repository
     public interface ICommentRepository: IGenericRepository<Comment>
     {
         List<Comment> GetCommentByProductId(int id);
+        List<Comment> GetCommentByBlogId(int id);
     }
 }
