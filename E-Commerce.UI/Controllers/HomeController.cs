@@ -16,10 +16,12 @@ namespace E_Commerce.UI.Controllers
     public class HomeController : Controller
     {
         private readonly IProductService _productService;
-
+     
         public HomeController(IProductService productService)
         {
             _productService = productService;
+            
+
         }
 
         public IActionResult Index()

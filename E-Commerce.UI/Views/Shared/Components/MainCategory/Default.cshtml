@@ -1,7 +1,9 @@
-﻿<ul>
-    <li><a href="javascript:void(0)">Computers & Accessories</a></li>
-    <li><a href="javascript:void(0)">Smartphones & Tablets</a></li>
-    <li><a href="javascript:void(0)">TV, Video & Audio</a></li>
-    <li><a href="javascript:void(0)">Cameras, Photo & Video</a></li>
-    <li><a href="javascript:void(0)">Headphones</a></li>
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.Category>
+
+<ul>
+   @foreach (var category in Model)
+    {
+        <li><a href="/Shop/GetProductByCategory/@category.Id">@category.Name</a></li>
+
+    }
 </ul>

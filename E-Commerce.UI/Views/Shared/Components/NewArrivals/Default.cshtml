@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<E_Commerce.Entity.Concrete.Product>
 
 <div class="col-lg-4 col-md-4 col-12 custom-responsive-margin">
-    <h4 class="list-title">Yeni Gelenler</h4>
+    <h4 class="list-title">@_localization.Getkey("NewArrivals.Title").Value</h4>
     @foreach (var item in Model)
     {
         <!-- Start Single List -->

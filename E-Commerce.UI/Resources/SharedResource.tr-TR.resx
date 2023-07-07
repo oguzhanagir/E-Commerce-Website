@@ -117,14 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BestSellers.Title" xml:space="preserve">
+    <value>En Çok Satanlar</value>
+  </data>
+  <data name="CallInfo.SubContent" xml:space="preserve">
+    <value>Canlı Sohbet Edin ve Arayın.</value>
+  </data>
+  <data name="CallInfo.Title" xml:space="preserve">
+    <value>24/7 Destek.</value>
+  </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>Dil Seçin</value>
+  </data>
+  <data name="ContactInfo.Title" xml:space="preserve">
+    <value>Bizimle İletişime Geçin</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>İngilizce</value>
   </data>
+  <data name="FeaturedCategories" xml:space="preserve">
+    <value>Öne Çıkan Kategoriler</value>
+  </data>
+  <data name="FeaturedCategories.SubContent" xml:space="preserve">
+    <value>Size özel olarak seçtiğimiz ve ilginizi çekebilecek çeşitli kategorileri bir araya getirdik. Farklı zevklere hitap eden ve ihtiyaçlarınızı karşılayabilecek ürünlerin yer aldığı kategorilerimizi keşfedin.</value>
+  </data>
+  <data name="LatestBlogs.SubContent" xml:space="preserve">
+    <value>Aydınlatma dünyasındaki en son gelişmeler ve ilginç içerikler hakkında güncel bilgileri sunan bloglarımızı keşfedin.
+                        Aydınlatma trendleri, tasarım ipuçları, enerji verimliliği ve daha fazlasıyla ilgili yazılarımızla sizleri aydınlatıyoruz.</value>
+  </data>
+  <data name="LatestBlogs.Title" xml:space="preserve">
+    <value>En Son Bloglar</value>
+  </data>
+  <data name="LatestProduct.SubContent" xml:space="preserve">
+    <value>En yeni ve çeşitli ürünleri sizin için bir araya getirdik.
+                        Her zevke uygun seçeneklerimizle alışveriş deneyiminizi zenginleştirelim.
+                        Kaliteli ve güvenilir markaların ürünleri arasından seçim yaparak ihtiyaçlarınızı karşılayabilirsiniz.</value>
+  </data>
+  <data name="LatestProducts" xml:space="preserve">
+    <value>Son Ürünler</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Giriş Yap</value>
+  </data>
+  <data name="Meta.Lang" xml:space="preserve">
+    <value>tr</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Daha Fazla</value>
   </data>
   <data name="Navbar.About" xml:space="preserve">
     <value>Hakkımızda</value>
@@ -141,17 +180,56 @@
   <data name="Navbar.SpecialDesign" xml:space="preserve">
     <value>Özel Tasarım ve Toptan Satış</value>
   </data>
+  <data name="NewArrivals.Title" xml:space="preserve">
+    <value>Yeni Gelenler</value>
+  </data>
+  <data name="Newsletter.Button" xml:space="preserve">
+    <value>Abone Ol</value>
+  </data>
+  <data name="Newsletter.SubContent" xml:space="preserve">
+    <value>En son bilgileri, Satışları ve Teklifleri alın.</value>
+  </data>
+  <data name="Newsletter.Title" xml:space="preserve">
+    <value>Haber Bültenimize Abone Olun</value>
+  </data>
+  <data name="PaymentInfo.SubContent" xml:space="preserve">
+    <value>Güvenli Ödeme Hizmetleri.</value>
+  </data>
+  <data name="PaymentInfo.Title" xml:space="preserve">
+    <value>Online Ödeme.</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telefon Numaramız</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Kayıt Ol</value>
   </data>
-  <data name="ShippingInfo" xml:space="preserve">
-    <value>Ücretsiz Kargo</value>
+  <data name="ReturnInfo.SubContent" xml:space="preserve">
+    <value>Sorunsuz Alışveriş.</value>
+  </data>
+  <data name="ReturnInfo.Title" xml:space="preserve">
+    <value>Kolay Dönüş.</value>
+  </data>
+  <data name="ShippingInfo.SubContent" xml:space="preserve">
+    <value>₺150 Üzerinde Siparişe.</value>
+  </data>
+  <data name="ShippingInfo.Title" xml:space="preserve">
+    <value>Ücretsiz Kargo.</value>
   </data>
   <data name="SocialMedia" xml:space="preserve">
     <value>Sosyal Medya</value>
+  </data>
+  <data name="SpecialOffer" xml:space="preserve">
+    <value>Özel Teklif</value>
+  </data>
+  <data name="SpecialOffer.SubContent" xml:space="preserve">
+    <value>Aydınlatma dünyasında benzersiz fırsatlar sunuyoruz!
+                        Sınırlı bir süre için geçerli olan bu özel tekliflerle aydınlatma ihtiyaçlarınızı
+                        uygun fiyatlarla karşılayabilirsiniz. Hemen keşfedin ve evinize, ofisinize veya herhangi bir mekana yeni bir
+                        ışıltı katın!</value>
+  </data>
+  <data name="TopRated.Title" xml:space="preserve">
+    <value>En Çok Oy Alanlar</value>
   </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>

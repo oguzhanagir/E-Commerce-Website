@@ -1,4 +1,11 @@
 ﻿@model IEnumerable<E_Commerce.Entity.Concrete.Product>
+@{
+    ViewData["Title"] = "GetProductBySubCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="~/Views/Shop/BreadCrumbs.cshtml"></partial>
+
 <!-- Start Product Grids -->
 <section class="product-grids section">
     <div class="container">
@@ -28,7 +35,7 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-@item.Id">
                                         @foreach (var subItem in item.SubCategories)
                                         {
-                                            <a class="dropdown-item" href="/Shop/SubCategory/@subItem.Id">@subItem.Name</a>
+                                            <a class="dropdown-item" href="/Shop/GetProductBySubCategory/@subItem.Id">@subItem.Name</a>
                                         }
                                     </div>
                                 </li>
@@ -65,7 +72,7 @@
                                         <option value="name_asc">A - Z Order</option>
                                         <option value="name_desc">Z - A Order</option>
                                     </select>
-                            </div>
+                                </div>
                             </div>
 
                         </div>
@@ -405,3 +412,5 @@
         }
     });
 </script>
+
+<partial name="~/Views/Home/Footer.cshtml"></partial>

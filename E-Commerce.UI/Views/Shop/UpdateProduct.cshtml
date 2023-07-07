@@ -22,34 +22,37 @@
                          @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control input-default" })
                     </div>
 
+                    <br />
                     <div class="input-style-1">
-                        <input type="file" name="files" multiple />
+                        @foreach (var item in Model.ProductImages!)
+                        {
+                            <img src="~/@item.ImagePath" style="width:150px; height:150px;" class="img" alt="@Model.Name">
+                        }
                     </div>
-
+<br />
+                    <div class="input-style-1">
+                        @Html.TextBoxFor(x => x.ProductImages, new { type = "file", multiple = "multiple" })
+                    </div>
                   <br />
                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-default" })
-               @*     <textarea name="Description">
-                         Welcome to TinyMCE!
-                    </textarea>*@
+       
                     <br />
 
-                    <select class="form-select" name="CategoryId" aria-label="Kategori">
-                        <option>Kategori</option>
-                        @foreach (var category in ViewBag.Category)
-                        {
-                            <option value="@category.Id">@category.Name @category.Id</option>
-                        }
-                    </select>
+                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Category, new { @class = "form-select input-default" })
+
+                    <br />
+
+                    @Html.DropDownListFor(x => x.SubCategoryId, (List<SelectListItem>)ViewBag.SubCategories, new { @class = "form-select input-default" })
                     <br />
                     <div class="input-style-1">
                         <label>Ürün Stoğu</label>
                         @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control input-default" })
 
                     </div>
-
                     <div class="input-style-1">
                         <label>Ürün Özellikleri</label>
-                        @Html.TextBoxFor(x => x.Features, new { @class = "form-control input-default" })
+                        @Html.TextAreaFor(x => x.Features, new { @class = "form-control input-default" })
+                     
                     </div>
 
                     <div class="input-style-1">
@@ -59,7 +62,7 @@
 
 
                     <!-- end input -->
-                    <button type="submit" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Ürün Ekle</button>
+                    <button type="submit" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Ürün Güncelle</button>
 
                 }
                 <!-- end input -->

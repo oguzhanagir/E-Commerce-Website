@@ -49,7 +49,8 @@
                                     <tr>
                                         <th><h6>Ürün Id</h6></th>
                                         <th><h6>Ürün Adı</h6></th>
-                                        <th><h6>Kategorisi</h6></th>
+                                        <th><h6>Ana Kategorisi</h6></th>
+                                        <th><h6>Alt Kategorisi</h6></th>
                                         <th><h6>Kaç Adet Sepette</h6></th>
                                         <th><h6>Yorumlar</h6></th>
                                         <th><h6>Sil</h6></th>
@@ -70,6 +71,9 @@
                                             <td class="min-width">
                                                 <p>@item.Category!.Name</p>
                                             </td>
+                                             <td class="min-width">
+                                                <p>@item.SubCategory!.Name</p>
+                                            </td>
                                             <td class="min-width">
                                                 <p>3</p>
                                             </td>
@@ -89,7 +93,7 @@
                                             </td>
                                             <td>
                                                 <div class="action">
-                                                    <a href="/Shop/UpdateProduct/@item.Id" class="text-warning">
+                                                    <a href="/Shop/UpdateProduct/@item.Id" class="text-warning m-auto">
                                                         <i class="lni lni-pencil"></i>
                                                     </a>
                                                 </div>

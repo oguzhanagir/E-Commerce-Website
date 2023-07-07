@@ -18,6 +18,9 @@ namespace E_Commerce.Entity.Concrete
 
         public bool SpecialProduct { get; set; }
 
+        public int SubCategoryId { get; set; }
+        public SubCategory SubCategory { get; set; }
+
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 

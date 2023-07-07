@@ -71,7 +71,7 @@ namespace E_Commerce.Business.Service
 
         public IEnumerable<Product> GetAllWithCategory()
         {
-            var producList = _unitOfWork.Products.GetAll(x => x.Category!,y=>y.ProductImages!);
+            var producList = _unitOfWork.Products.GetAll(x => x.Category!,y=>y.ProductImages!,z=>z.SubCategory);
             return producList;
         }
 
@@ -81,19 +81,28 @@ namespace E_Commerce.Business.Service
             return producList;
         }
 
+        public IEnumerable<Product> GetAllWithSubCategoryById(int id)
+        {
+            var producList = _unitOfWork.Products.GetAll(x => x.Category!, y => y.ProductImages!,z=>z.SubCategory!).Where(c => c.SubCategoryId == id);
+            return producList;
+        }
+
+        
 
         public Product GetById(int id)
         {
-            return _unitOfWork.Products.GetById(id,x=>x.Category!,y=>y.ProductImages!);
+            return _unitOfWork.Products.GetById(id,x=>x.Category!,y=>y.ProductImages!,z=>z.SubCategory!);
         }
 
         public IEnumerable<Category> GetCategories()
         {
-            return _unitOfWork.Categories.GetAll();
+            return _unitOfWork.Categories.GetAll(x=>x.SubCategories!);
         }
 
         public void Update(Product entity)
         {
+        
+          
             _unitOfWork.Products.Update(entity);
             _unitOfWork.CompleteAsync();
         }

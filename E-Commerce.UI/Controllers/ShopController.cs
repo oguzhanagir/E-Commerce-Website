@@ -3,6 +3,7 @@ using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
 
 namespace E_Commerce.UI.Controllers
@@ -13,13 +14,15 @@ namespace E_Commerce.UI.Controllers
         private readonly IOrderService _orderService;
         private readonly IUserService _userService;
         private readonly ICommentService _commentService;
+        private readonly ISubCategoryService _subCategoryService;
 
-        public ShopController(IProductService productService, IOrderService orderService, IUserService userService, ICommentService commentService)
+        public ShopController(IProductService productService, IOrderService orderService, IUserService userService, ICommentService commentService,ISubCategoryService subCategoryService)
         {
             _productService = productService;
             _orderService = orderService;
             _userService = userService;
             _commentService = commentService;
+            _subCategoryService = subCategoryService;
         }
 
         public IActionResult Index()
@@ -101,7 +104,25 @@ namespace E_Commerce.UI.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(int id)
         {
-            ViewBag.Category = _productService.GetCategories();
+            
+       
+
+            List<SelectListItem> categories = (from x in _productService.GetCategories()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.Name,
+                                               Value = x.Id.ToString()
+                                           }).ToList();
+            ViewBag.Category = categories;
+
+            List<SelectListItem> subCategories = (from x in _subCategoryService.GetAllNormal()
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.Name,
+                                                   Value = x.Id.ToString()
+                                               }).ToList();
+            ViewBag.SubCategories = subCategories;
+
             var product = _productService.GetById(id);
             return View(product);
         }
@@ -142,6 +163,12 @@ namespace E_Commerce.UI.Controllers
 
                     product.ProductImages = imageList;
                 }
+                else
+                {
+                    var findProduct = _productService.GetById(product.Id);
+                    product.ProductImages = findProduct.ProductImages;
+                }
+                
                 _productService.Update(product);
             }
             return RedirectToAction("ProductAdminList", "Shop");
@@ -151,7 +178,22 @@ namespace E_Commerce.UI.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
-            ViewBag.Category = _productService.GetCategories();
+            List<SelectListItem> categories = (from x in _productService.GetCategories()
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.Name,
+                                                   Value = x.Id.ToString()
+                                               }).ToList();
+            ViewBag.Category = categories;
+
+            List<SelectListItem> subCategories = (from x in _subCategoryService.GetAllNormal()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.Name,
+                                                      Value = x.Id.ToString()
+                                                  }).ToList();
+            ViewBag.SubCategories = subCategories;
+
             return View();
         }
 
@@ -196,6 +238,23 @@ namespace E_Commerce.UI.Controllers
 
             return RedirectToAction("ProductAdminList", "Shop");
 
+        }
+    
+        
+        public IActionResult GetProductByCategory(int id)
+        {
+            var products = _productService.GetAllWithCategoryById(id);
+            ViewBag.Categories = _productService.GetCategories();
+       
+            return View(products);
+        }
+
+        public IActionResult GetProductBySubCategory(int id)
+        {
+            var products = _productService.GetAllWithSubCategoryById(id);
+            ViewBag.Categories = _productService.GetCategories();
+          
+            return View(products);
         }
     }
 }

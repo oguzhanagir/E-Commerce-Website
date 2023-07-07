@@ -1,0 +1,120 @@
+﻿ <!-- Start Footer Area -->
+<footer class="footer">
+    <!-- Start Footer Top -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="inner-content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-12">
+                        <div class="footer-logo">
+                            <a href="index.html">
+                                <img src="assets/images/logo/white-logo.svg" alt="#">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-12">
+                        <div class="footer-newsletter">
+                            <h4 class="title">
+                                @_localization.Getkey("Newsletter.Title").Value
+                                <span>@_localization.Getkey("LatestProducts").Value</span>
+                            </h4>
+                            <div class="newsletter-form-head">
+                                <form action="@Url.Action("AddSubscribe", "Subscribe")" method="post" class="newsletter-form">
+                                    <input name="Mail" placeholder="E-Mail Adresiniz" type="email">
+                                    <div class="button">
+                                        <button type="submit" class="btn">@_localization.Getkey("Newsletter.Button").Value<span class="dir-part"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Top -->
+    <!-- Start Footer Middle -->
+    <div class="footer-middle">
+        <div class="container">
+            <div class="bottom-inner">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer f-contact">
+                            <h3>@_localization.Getkey("ContactInfo.Title").Value</h3>
+                            <p class="phone">Telefon No:@ViewBag.ContactInfoPhoneNumber </p>
+
+                            <p class="mail">
+                                <a href="mailto:support@mail.com">@ViewBag.ContactInfoMail</a>
+                            </p>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer f-link">
+                            <h3>Menü</h3>
+                            <ul>
+                                <li><a href="/About/Index">Hakkımızda</a></li>
+                                <li><a href="/Contact/Index">İletişim</a></li>
+                                <li><a href="/Blog/Index">Blog</a></li>
+                                <li><a href="/Wholesale/Index">Toptan Satış</a></li>
+                                <li><a href="/Shop/Index">Mağaza</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer f-link">
+                            <h3>Kategoriler</h3>
+                            @await Component.InvokeAsync("MainCategory")
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Middle -->
+    <!-- Start Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="inner-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <div class="payment-gateway">
+                            <span>We Accept:</span>
+                            <img src="assets/images/footer/credit-cards-footer.png" alt="#">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="copyright">
+                            <p>
+                                Developed by<a href="https://yipadanismanlik.com/" rel="nofollow"
+                                               target="_blank">YİPA Danışmanlık</a>
+                                <br />
+                                @*  Designed by<a href="https://graygrids.com/" rel="nofollow"
+                                target="_blank">GrayGrids</a>*@
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <ul class="socila">
+                            <li>
+                                <span>Bizi Takip Edin:</span>
+                            </li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Bottom -->
+</footer>
+<!--/ End Footer Area -->

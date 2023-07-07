@@ -1,0 +1,21 @@
+{
+  "name": "Laterne Aydınlatma",
+  "short_name": "Laterne",
+  "description": "Aydınlatma ürünleri satın alabileceğiniz bir e-ticaret uygulaması.",
+  "start_url": "https://laterneaydinlatma.com/Shop",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0167f3",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

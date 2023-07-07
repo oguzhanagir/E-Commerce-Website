@@ -1,4 +1,5 @@
-﻿@{
+﻿@model E_Commerce.Entity.Concrete.Product
+@{
     ViewData["Title"] = "AddProduct";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -12,7 +13,8 @@
                 {
 
                     <div class="input-style-1">
-                        <input type="checkbox" name="SpecialProduct"/>
+                        <label class="text-center">Özel Ürün</label>
+                        <input type="checkbox" name="SpecialProduct" />
                     </div>
                     <div class="input-style-1">
                         <label>Ürün Adı</label>
@@ -26,24 +28,29 @@
                     </div>
 
                     <div class="input-style-1">
-                        <input type="file" name="files" multiple />
+                        <input type="file" id="fileInput" name="files" multiple />
+                    </div>
+
+                    <div class="input-style-1">
+                        <label>Eklenen Resimler</label>
+                        <div id="imageContainer"  style="display: flex; gap: 30px;"></div>
                     </div>
 
 
-
-                  <br />
+                    <br />
                     <textarea name="Description">
-                         Welcome to TinyMCE!
-                    </textarea>
+                                 Welcome to TinyMCE!
+                            </textarea>
                     <br />
-                    <select class="form-select" name="CategoryId" aria-label="Kategori">
-                        <option>Kategori</option>
-                        @foreach (var category in ViewBag.Category)
-                        {
-                            <option value="@category.Id">@category.Name @category.Id</option>
-                        }
-                    </select>
+
+
+                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Category, new { @class = "form-select input-default" })
+
                     <br />
+
+                    @Html.DropDownListFor(x => x.SubCategoryId, (List<SelectListItem>)ViewBag.SubCategories, new { @class = "form-select input-default" })
+                    <br />
+
                     <div class="input-style-1">
                         <label>Ürün Stoğu</label>
                         <input name="Quantity" type="number" placeholder="Stok" />
@@ -51,8 +58,10 @@
 
                     <div class="input-style-1">
                         <label>Ürün Özellikleri</label>
-                        <input name="Features" type="text" placeholder="Özellikler" />
+                        @Html.TextAreaFor(x => x.Features, new { @class = "form-control input-default" })
+
                     </div>
+
 
                     <div class="input-style-1">
                         <label>Ürün Fiyat</label>
@@ -76,4 +85,43 @@
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
+</script>
+
+<script>
+    // Dosya seçimi değiştiğinde çağrılacak işlev
+    function handleFileSelect(event) {
+        var files = event.target.files;
+        var imageContainer = document.getElementById("imageContainer");
+
+        // Önce mevcut resimleri temizle
+        imageContainer.innerHTML = "";
+
+        // Her bir dosya için img ve radio elementlerini oluştur ve ekranı güncelle
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.createElement("img");
+                img.style.width = "150px";
+                img.style.height = "150px";
+                img.src = e.target.result;
+
+                var radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "selectedImage";
+
+                var container = document.createElement("div");
+                container.appendChild(img);
+                container.appendChild(radio);
+
+                imageContainer.appendChild(container);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Dosya seçiminde değişiklik olduğunda handleFileSelect işlevini çağır
+    document.getElementById("fileInput").addEventListener("change", handleFileSelect, false);
 </script>

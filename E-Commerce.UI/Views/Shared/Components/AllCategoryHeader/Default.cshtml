@@ -6,13 +6,13 @@
         @foreach (var category in Model)
         {
             <li>
-                <a href="/Shop/Index/@category.Id">@category.Name <i class="lni lni-chevron-right"></i></a>
+                <a href="/Shop/GetProductByCategory/@category.Id">@category.Name <i class="lni lni-chevron-right"></i></a>
                 <ul class="inner-sub-category">
                    @foreach (var subCategory in category.SubCategories!)
                     {
 
                         <li>
-                            <a href="/Shop/Index/@subCategory.Id">@subCategory.Name</a>
+                            <a href="/Shop/GetProductBySubCategory/@subCategory.Id">@subCategory.Name</a>
 
                         </li>
                     }

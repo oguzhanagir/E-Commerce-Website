@@ -19,9 +19,15 @@ namespace E_Commerce.DataAccess.Concrete
 
         public IEnumerable<Product> GetPopularProduct()
         {
-            var popularProducts =  _dbContext.Products!.OrderByDescending(p => p.Price).Take(10).ToList();
+            var popularProducts = _dbContext.Products!
+                .OrderByDescending(p => p.Price)
+                .Take(10)
+                .Include(p => p.ProductImages) // ProductImages ilişkisini Include et
+                .ToList();
+
             return popularProducts;
         }
+
 
         public IEnumerable<Product> GetBestSellers()
         {

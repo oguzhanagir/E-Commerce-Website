@@ -3,7 +3,9 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <section class="table-components">
     <div class="container-fluid">
         <!-- ========== title-wrapper start ========== -->
@@ -52,8 +54,7 @@
                                         <th><h5>Kategori Adı</h5></th>
                                         <th><h5>Ana Kategori Sil</h5></th>
 
-                                        <th><h5>Alt Kategori Adı</h5></th>
-                                        <th><h5>Alt Kategori Sil</h5></th>
+                                        
                                      
                                     </tr>
                                     <!-- end table row-->
@@ -62,56 +63,60 @@
                                     @foreach (var category in Model)
                                     {
                                         <tr>
-                                            <td class="min-width">
-                                                <img src="~/@category.Image" style="width:40px; height:40px;" />
-                                            </td>
-                                            <td class="min-width">
-                                                <p>@category.Name</p>
+                                            <td>@category.Name</td>
+                                            <td class="w-75">
+                                                <div class="accordion text-center" id="accordion-@category.Id">
+
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading-@category.Id">
+                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@category.Id" aria-expanded="true" aria-controls="collapse-@category.Id">
+                                                                Alt Kategorileri Göster
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse-@category.Id" class="accordion-collapse collapse show" aria-labelledby="heading-@category.Id" data-bs-parent="#accordion-@category.Id">
+                                                            <div class="accordion-body">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Alt Kategori Adı</th>
+                                                                            <th>Alt Kategori Sil</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @foreach (var subCategory in category.SubCategories)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    @subCategory.Name
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="action">
+                                                                                        <a href="/Category/DeleteSubCategory/@subCategory.Id" class="text-danger m-auto">
+                                                                                            <i class="lni lni-trash-can"></i>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </td>
                                             <td>
                                                 <div class="action">
-                                                    <a href="/Category/DeleteCategory/@category.Id" class="text-danger">
+                                                    <a href="/Category/DeleteCategory/@category.Id" class="text-danger m-auto">
                                                         <i class="lni lni-trash-can"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-
-                                      
-                                        
-                                            @foreach (var subCategory in category.SubCategories)
-                                            {
-                                                <tr>
-                                                    <td class="min-width"></td>
-                                                    <td class="min-width"></td>
-                                                    <td></td>
-                                                    @if (category.SubCategories.Count == 0)
-                                                    {
-
-                                                        <td class="min-width" colspan="3">
-                                                            <p>Alt kategori bulunmamaktadır.</p>
-                                                    </td>
-
-                                                }
-                                                else
-                                                {
-                                                    <td class="min-width">
-                                                        <p>@subCategory.Name</p>
-                                                    </td>
-                                                }
-                                              
-                                                    <td>
-                                                        <div class="action">
-                                                            <a href="/Category/DeleteSubCategory/@subCategory.Id" class="text-danger">
-                                                                <i class="lni lni-trash-can"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        
                                     }
                                 </tbody>
+
 
 
                             </table>
