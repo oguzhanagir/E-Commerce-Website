@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.UI", "E-Commerce.UI\E-Commerce.UI.csproj", "{0677C91E-9A4B-4A43-A7B6-3DDA2784C9F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Commerce.UI", "E-Commerce.UI\E-Commerce.UI.csproj", "{0677C91E-9A4B-4A43-A7B6-3DDA2784C9F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.Core", "E-Commerce.Core\E-Commerce.Core.csproj", "{F36F4C47-BCC9-4BD1-BC9B-F3945A60D2DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Commerce.Core", "E-Commerce.Core\E-Commerce.Core.csproj", "{F36F4C47-BCC9-4BD1-BC9B-F3945A60D2DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.DataAccess", "E-Commerce.DataAccess\E-Commerce.DataAccess.csproj", "{BA734175-C3A6-421C-9268-A35B00D159C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Commerce.DataAccess", "E-Commerce.DataAccess\E-Commerce.DataAccess.csproj", "{BA734175-C3A6-421C-9268-A35B00D159C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.Business", "E-Commerce.Business\E-Commerce.Business.csproj", "{4F68FEFE-BB21-4117-B626-EBCD0665ADBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Commerce.Business", "E-Commerce.Business\E-Commerce.Business.csproj", "{4F68FEFE-BB21-4117-B626-EBCD0665ADBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.Entity", "E-Commerce.Entity\E-Commerce.Entity.csproj", "{FDF15832-ECB6-4DA7-9236-02E465BBE27C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Commerce.Entity", "E-Commerce.Entity\E-Commerce.Entity.csproj", "{FDF15832-ECB6-4DA7-9236-02E465BBE27C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageScraper", "LanguageScraper\LanguageScraper.csproj", "{D4B31C4F-CCC1-4D77-BD88-98C9BA8318EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTranslate", "GTranslate\GTranslate.csproj", "{3BD4B316-7337-436D-989D-1CC56913D6B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{FDF15832-ECB6-4DA7-9236-02E465BBE27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDF15832-ECB6-4DA7-9236-02E465BBE27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDF15832-ECB6-4DA7-9236-02E465BBE27C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B31C4F-CCC1-4D77-BD88-98C9BA8318EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B31C4F-CCC1-4D77-BD88-98C9BA8318EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B31C4F-CCC1-4D77-BD88-98C9BA8318EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B31C4F-CCC1-4D77-BD88-98C9BA8318EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD4B316-7337-436D-989D-1CC56913D6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD4B316-7337-436D-989D-1CC56913D6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD4B316-7337-436D-989D-1CC56913D6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD4B316-7337-436D-989D-1CC56913D6B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

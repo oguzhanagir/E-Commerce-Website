@@ -16,22 +16,31 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Category -->
                     <div class="single-category">
-                        <h3 class="heading">@item.Name</h3>
-                        <ul>
-                            @foreach (var subCategory in item.SubCategories!)
-                            {
-                                <li><a href="/Shop/Index/@subCategory.Id">@subCategory.Name</a></li>
-                            }
-                            
-                        </ul>
-                        <div class="images">
-                            <img src="@item.Image" style="width:180px; height:180px;" alt="Kategori Banner">
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="/Shop/GetProductByCategory/@item.Id"><h3 class="heading">@item.Name</h3></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    @foreach (var subCategory in item.SubCategories!)
+                                    {
+                                        <li><a href="/Shop/GetProductBySubCategory/@subCategory.Id">@subCategory.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                  
+                            <div class="col-6">
+                                <div class="images">
+                                    <img src="@item.Image" style="width:200px; height:200px;" alt="Kategori Banner">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- End Single Category -->
                 </div>
             }
-
         </div>
     </div>
 </section>

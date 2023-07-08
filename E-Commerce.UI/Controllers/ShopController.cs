@@ -16,7 +16,7 @@ namespace E_Commerce.UI.Controllers
         private readonly ICommentService _commentService;
         private readonly ISubCategoryService _subCategoryService;
 
-        public ShopController(IProductService productService, IOrderService orderService, IUserService userService, ICommentService commentService,ISubCategoryService subCategoryService)
+        public ShopController(IProductService productService, IOrderService orderService, IUserService userService, ICommentService commentService, ISubCategoryService subCategoryService)
         {
             _productService = productService;
             _orderService = orderService;
@@ -51,7 +51,7 @@ namespace E_Commerce.UI.Controllers
             ViewBag.PageController = "Mağaza";
             return View();
         }
-      
+
         public IActionResult ProductDetails(int id)
         {
             var product = _productService.GetById(id);
@@ -70,7 +70,7 @@ namespace E_Commerce.UI.Controllers
                 var user = _userService.GetUserByMail(email);
                 var orders = _orderService.GetByUserId(user.Id);
 
-                 return View(orders);
+                return View(orders);
             }
             else
             {
@@ -104,23 +104,23 @@ namespace E_Commerce.UI.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(int id)
         {
-            
-       
+
+
 
             List<SelectListItem> categories = (from x in _productService.GetCategories()
-                                           select new SelectListItem
-                                           {
-                                               Text = x.Name,
-                                               Value = x.Id.ToString()
-                                           }).ToList();
-            ViewBag.Category = categories;
-
-            List<SelectListItem> subCategories = (from x in _subCategoryService.GetAllNormal()
                                                select new SelectListItem
                                                {
                                                    Text = x.Name,
                                                    Value = x.Id.ToString()
                                                }).ToList();
+            ViewBag.Category = categories;
+
+            List<SelectListItem> subCategories = (from x in _subCategoryService.GetAllNormal()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.Name,
+                                                      Value = x.Id.ToString()
+                                                  }).ToList();
             ViewBag.SubCategories = subCategories;
 
             var product = _productService.GetById(id);
@@ -130,47 +130,10 @@ namespace E_Commerce.UI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> UpdateProduct(Product product, List<IFormFile> files)
-
+        public IActionResult UpdateProduct(Product product)
         {
-            if (product != null)
-            {
-                if (files != null && files.Count > 0)
-                {
-                    var imageList = new List<ProductImage>(); // Image listesi burada tanımlanır
+            _productService.Update(product);
 
-                    foreach (var file in files)
-                    {
-                        if (file.Length > 0)
-                        {
-                            var fileName = Path.GetFileName(file.FileName);
-                            var filePath = "images/product/" + fileName;
-
-                            using (var stream = new FileStream(Path.Combine("wwwroot", filePath), FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-
-                            var image = new ProductImage
-                            {
-                                ImagePath = filePath,
-                                ProductId = product.Id
-                            };
-
-                            imageList.Add(image); // Her bir image nesnesi imageList'e eklenir
-                        }
-                    }
-
-                    product.ProductImages = imageList;
-                }
-                else
-                {
-                    var findProduct = _productService.GetById(product.Id);
-                    product.ProductImages = findProduct.ProductImages;
-                }
-                
-                _productService.Update(product);
-            }
             return RedirectToAction("ProductAdminList", "Shop");
         }
 
@@ -239,13 +202,13 @@ namespace E_Commerce.UI.Controllers
             return RedirectToAction("ProductAdminList", "Shop");
 
         }
-    
-        
+
+
         public IActionResult GetProductByCategory(int id)
         {
             var products = _productService.GetAllWithCategoryById(id);
             ViewBag.Categories = _productService.GetCategories();
-       
+
             return View(products);
         }
 
@@ -253,7 +216,7 @@ namespace E_Commerce.UI.Controllers
         {
             var products = _productService.GetAllWithSubCategoryById(id);
             ViewBag.Categories = _productService.GetCategories();
-          
+
             return View(products);
         }
     }

@@ -1,6 +1,6 @@
-﻿@model IEnumerable<E_Commerce.Entity.Concrete.Product>
+﻿@model IEnumerable<E_Commerce.Entity.Concrete.ProductImage>
 @{
-    ViewData["Title"] = "ProductAdminList";
+    ViewData["Title"] = "UpdateProductImage";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,8 +12,8 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Ürün Tablosu</h2>
-                        <a href="/Shop/AddProduct" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Ürün Ekle</a>
+                        <h2>Resim Tablosu</h2>
+                        <a href="/ProductImage/AddProductImage/@ViewBag.ProductId" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Resim Ekle</a>
 
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                     <a href="#0">Kontrol Paneli</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Ürünler
+                                    Resimler
                                 </li>
                             </ol>
                         </nav>
@@ -42,20 +42,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10">Ürün Listesi</h6>
+                        <h6 class="mb-10">Resim Listesi</h6>
                         <div class="table-wrapper table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th><h6>Ürün Id</h6></th>
-                                        <th><h6>Ürün Adı</h6></th>
-                                        <th><h6>Ana Kategorisi</h6></th>
-                                        <th><h6>Alt Kategorisi</h6></th>
-                                        <th><h6>Stok</h6></th>
-                                        <th><h6>Yorumlar</h6></th>
-                                        <th><h6>Resimler</h6></th>
+                                        <th><h6>Resim Id</h6></th>
+                                        <th><h6>Resim</h6></th>
                                         <th><h6>Sil</h6></th>
-                                        <th><h6>Güncelle</h6></th>
                                     </tr>
                                     <!-- end table row-->
                                 </thead>
@@ -67,45 +61,17 @@
                                                 <p>@item.Id</p>
                                             </td>
                                             <td class="min-width">
-                                                <p><a href="/Shop/ProducDetails/@item.Id">@item.Name</a></p>
+                                                <img src="/@item.ImagePath" style="width:150px; height:150px;" />
                                             </td>
-                                            <td class="min-width">
-                                                <p>@item.Category!.Name</p>
-                                            </td>
-                                             <td class="min-width">
-                                                <p>@item.SubCategory!.Name</p>
-                                            </td>
-                                            <td class="min-width">
-                                                <p>@item.Quantity</p>
-                                            </td>
+                                           
                                             <td>
                                                 <div class="action">
-                                                    <a href="/Comment/GetCommentByProductIdAdmin/@item.Id" class="text-primary">
-                                                        <i class="lni lni-wechat"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="action">
-                                                    <a href="/ProductImage/UpdateProductImage/@item.Id" class="text-primary">
-                                                        <i class="lni lni-image"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="action">
-                                                    <a href="/Shop/DeleteProduct/@item.Id" class="text-danger">
+                                                    <a href="/ProductImage/DeleteProductImage/@item.Id?productId=@item.ProductId" class="text-danger">
                                                         <i class="lni lni-trash-can"></i>
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="action">
-                                                    <a href="/Shop/UpdateProduct/@item.Id" class="text-warning m-auto">
-                                                        <i class="lni lni-pencil"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                           
                                         </tr>
                                         <!-- end table row -->
                                     }

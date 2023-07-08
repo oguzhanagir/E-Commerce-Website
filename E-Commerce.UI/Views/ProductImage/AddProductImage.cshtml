@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "AddProductImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="form-elements-wrapper mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- input style start -->
+            <div class="card-style mb-30">
+                @using (Html.BeginForm("AddProductImage", "ProductImage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="input-style-1">
+                        <input type="text" id="ProductId" name="ProductId" value="@ViewBag.ProductId" hidden  />
+                    </div>
+                    <div class="input-style-1">
+                        <input type="file" id="fileInput" name="file"  />
+                    </div>
+
+                    
+            <!-- end input -->
+                    <button type="submit" class="main-btn primary-btn rounded-md btn-hover mt-5 ">Resim Ekle</button>
+
+                }
+                <!-- end input -->
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -49,5 +49,12 @@ namespace E_Commerce.Business.Service
             _unitOfWork.Images.Update(entity);
             _unitOfWork.CompleteAsync();
         }
+
+        public IEnumerable<ProductImage> GetByProductId(int id)
+        {
+            var images = _unitOfWork.Images.GetAll().Where(x => x.ProductId == id);
+            return images;
+        }
+
     }
 }

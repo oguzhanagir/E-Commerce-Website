@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Core.Abstract.Repository;
 using E_Commerce.Entity.Abstract;
+using GTranslate.Translators;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace E_Commerce.DataAccess.Concrete
 {
@@ -14,11 +16,12 @@ namespace E_Commerce.DataAccess.Concrete
     {
         private readonly CommerceDbContext _dbContext;
         private readonly DbSet<T> _dbSet;
-
+        public AggregateTranslator Translator { get; set; }
         public GenericRepository(CommerceDbContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<T>();
+            Translator = new AggregateTranslator();
         }
 
         public void Add(T entity)
@@ -41,6 +44,35 @@ namespace E_Commerce.DataAccess.Concrete
             return _dbSet.AsEnumerable();
         }
 
+        private async Task<T> TranslateModelProperties(T model, string language)
+        {
+            var translatedModel = Activator.CreateInstance<T>();
+            var properties = typeof(T).GetProperties();
+
+            foreach (var property in properties)
+            {
+                if (property.PropertyType == typeof(string))
+                {
+                    var value = property.GetValue(model);
+
+                    if (value != null)
+                    {
+                        var result = await Translator.TranslateAsync(value.ToString(), language);
+                        var translatedValue = result.Translation;
+
+                        property.SetValue(translatedModel, translatedValue);
+                    }
+                }
+                else
+                {
+                    property.SetValue(translatedModel, property.GetValue(model));
+                }
+            }
+
+            return translatedModel;
+        }
+
+
         public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = _dbSet;
@@ -50,12 +82,13 @@ namespace E_Commerce.DataAccess.Concrete
             {
                 query = query.Include(includeProperty);
             }
-
             return query.AsEnumerable();
+
+            
         }
 
 
-  
+
 
         public List<T> List(Expression<Func<T, bool>> where)
         {

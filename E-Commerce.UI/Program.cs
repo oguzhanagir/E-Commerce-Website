@@ -72,6 +72,7 @@ builder.Services.AddTransient(typeof(IPaymentStatusService), typeof(PaymentStatu
 builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 builder.Services.AddTransient(typeof(IUserService), typeof(UserService));
 builder.Services.AddTransient(typeof(ISubscribeService), typeof(SubscribeService));
+builder.Services.AddTransient(typeof(IImageService), typeof(ImageService));
 
 
 

@@ -9,5 +9,6 @@ namespace E_Commerce.Core.Abstract.Service
 {
     public interface IImageService : IGenericService<ProductImage>
     {
+        IEnumerable<ProductImage> GetByProductId(int id);
     }
 }

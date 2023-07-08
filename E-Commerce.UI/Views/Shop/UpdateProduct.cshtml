@@ -3,6 +3,7 @@
     ViewData["Title"] = "UpdateProduct";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="https://cdn.tiny.cloud/1/85g670p73mrxvdgf5t3g9fcg7it4xrqko3lxljbk4bn5tu0b/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <div class="form-elements-wrapper mt-5">
@@ -13,36 +14,39 @@
                 @using (Html.BeginForm("UpdateProduct", "Shop", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="input-style-1">
-                        <label>Ürün Adı</label>
-                         @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-default" })
+                        <label class="text-center">Özel Ürün</label>
+                        <input type="checkbox" name="SpecialProduct" value="true" />
                     </div>
+                    <br />
+
+                    <div class="input-style-1">
+                        <label>Ürün Adı</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-default" })
+                    </div>
+                    <br />
 
                     <div class="input-style-1">
                         <label>Ürün Alt Açıklama</label>
-                         @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control input-default" })
+                        @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control input-default" })
                     </div>
-
                     <br />
+
                     <div class="input-style-1">
-                        @foreach (var item in Model.ProductImages!)
-                        {
-                            <img src="~/@item.ImagePath" style="width:150px; height:150px;" class="img" alt="@Model.Name">
-                        }
+                        <label>Açıklama</label>
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-default" })
                     </div>
-<br />
+                    <br />
+
                     <div class="input-style-1">
-                        @Html.TextBoxFor(x => x.ProductImages, new { type = "file", multiple = "multiple" })
+                        <label>Ana Kategori</label>
+                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Category, new { @class = "form-select input-default" })
                     </div>
-                  <br />
-                   @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-default" })
-       
                     <br />
 
-                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Category, new { @class = "form-select input-default" })
-
-                    <br />
-
-                    @Html.DropDownListFor(x => x.SubCategoryId, (List<SelectListItem>)ViewBag.SubCategories, new { @class = "form-select input-default" })
+                    <div class="input-style-1">
+                        <label>Alt Kategori</label>
+                        @Html.DropDownListFor(x => x.SubCategoryId, (List<SelectListItem>)ViewBag.SubCategories, new { @class = "form-select input-default" })
+                    </div>
                     <br />
                     <div class="input-style-1">
                         <label>Ürün Stoğu</label>
@@ -52,12 +56,12 @@
                     <div class="input-style-1">
                         <label>Ürün Özellikleri</label>
                         @Html.TextAreaFor(x => x.Features, new { @class = "form-control input-default" })
-                     
+
                     </div>
 
                     <div class="input-style-1">
                         <label>Ürün Fiyat</label>
-                         @Html.TextBoxFor(x => x.Price, new { @class = "form-control input-default" })
+                        @Html.TextBoxFor(x => x.Price, new { @class = "form-control input-default" })
                     </div>
 
 
@@ -77,4 +81,16 @@
         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
+</script>
+
+<script>
+    function deleteProductImage(id) {
+        $.get('/ProductImage/DeleteProductImage/' + id)
+            .done(function (result) {
+                // Silme işlemi başarılı olduğunda yapılacak işlemler
+            })
+            .fail(function (xhr, status, error) {
+                // Hata durumunda yapılacak işlemler
+            });
+    }
 </script>
