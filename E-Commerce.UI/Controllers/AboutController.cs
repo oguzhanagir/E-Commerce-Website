@@ -18,7 +18,7 @@ namespace E_Commerce.UI.Controllers
 
         public IActionResult Index()
         {
-            var about = _aboutService.GetById(2);
+            var about = _aboutService.GetById(1);
             return View(about);
         }
 
@@ -26,7 +26,7 @@ namespace E_Commerce.UI.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult AboutAdminList()
         {
-            var about = _aboutService.GetById(2);
+            var about = _aboutService.GetById(1);
             return View(about);
         }
         

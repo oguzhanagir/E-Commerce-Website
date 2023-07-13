@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddBasket" xml:space="preserve">
+    <value>Добавить в корзину Октябрь</value>
+  </data>
+  <data name="AllCategories" xml:space="preserve">
+    <value>Все категории</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>арабский язык</value>
+  </data>
+  <data name="BestSellers.Title" xml:space="preserve">
+    <value>Бестселлеры</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>блог</value>
+  </data>
+  <data name="CallInfo.SubContent" xml:space="preserve">
+    <value>Общайтесь в Чате или Звоните по Телефону.</value>
+  </data>
+  <data name="CallInfo.Title" xml:space="preserve">
+    <value>Поддержка 24/7.</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>Выберите язык</value>
+  </data>
+  <data name="Contact.Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Contact.Content" xml:space="preserve">
+    <value>Свяжитесь с нами, чтобы получить дополнительную информацию о осветительных приборах, разместить заказ или ответить на любые ваши вопросы. Мы будем рады вам помочь.</value>
+  </data>
+  <data name="Contact.PhoneNumber" xml:space="preserve">
+    <value>Наш номер телефона</value>
+  </data>
+  <data name="Contact.Title" xml:space="preserve">
+    <value>Свяжитесь с нами</value>
+  </data>
+  <data name="ContactInfo.Title" xml:space="preserve">
+    <value>связаться с нами</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="FeaturedCategories" xml:space="preserve">
+    <value>Избранные категории</value>
+  </data>
+  <data name="FeaturedCategories.SubContent" xml:space="preserve">
+    <value>Мы собрали воедино различные категории, которые мы специально отобрали для вас и которые могут вас заинтересовать. Ознакомьтесь с нашими категориями, которые удовлетворяют различные вкусы и удовлетворяют ваши потребности с помощью продуктов, включенных в них.</value>
+  </data>
+  <data name="Form.Button" xml:space="preserve">
+    <value>Отправить сообщение</value>
+  </data>
+  <data name="Form.Mail" xml:space="preserve">
+    <value>Ваша почта</value>
+  </data>
+  <data name="Form.Message" xml:space="preserve">
+    <value>Ваше сообщение</value>
+  </data>
+  <data name="Form.Name" xml:space="preserve">
+    <value>Ваше имя</value>
+  </data>
+  <data name="Form.PhoneNumber" xml:space="preserve">
+    <value>Ваш номер телефона</value>
+  </data>
+  <data name="Form.Subject" xml:space="preserve">
+    <value>Ваша тема</value>
+  </data>
+  <data name="LatestBlogs.SubContent" xml:space="preserve">
+    <value>Discover our blogs that provide up-to-date information on the latest developments and interesting content in the world of lighting. We enlighten you with our articles on lighting trends, design tips, energy efficiency, and much more.</value>
+  </data>
+  <data name="LatestBlogs.Title" xml:space="preserve">
+    <value>Последние блоги</value>
+  </data>
+  <data name="LatestProducts" xml:space="preserve">
+    <value>Новейшие продукты</value>
+  </data>
+  <data name="LatestProducts.SubContent" xml:space="preserve">
+    <value>Мы собрали для вас самые декоммунизированные и разнообразные продукты.
+                        Давайте обогатим ваш опыт покупок нашими вариантами на любой вкус.
+                        Выбирая продукцию от качественных и надежных брендов, вы можете декоммунизировать свои потребности.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Авторизоваться</value>
+  </data>
+  <data name="Meta.Lang" xml:space="preserve">
+    <value>англ.</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>больше</value>
+  </data>
+  <data name="Navbar.About" xml:space="preserve">
+    <value>насчет</value>
+  </data>
+  <data name="Navbar.Contact" xml:space="preserve">
+    <value>контакт</value>
+  </data>
+  <data name="Navbar.Home" xml:space="preserve">
+    <value>Домой</value>
+  </data>
+  <data name="Navbar.Shop" xml:space="preserve">
+    <value>Магазин</value>
+  </data>
+  <data name="Navbar.SpecialDesign" xml:space="preserve">
+    <value>Специальный дизайн и оптовые продажи</value>
+  </data>
+  <data name="NewArrivals.Title" xml:space="preserve">
+    <value>Новые поступления</value>
+  </data>
+  <data name="Newsletter.Button" xml:space="preserve">
+    <value>Подписываться</value>
+  </data>
+  <data name="Newsletter.Mail" xml:space="preserve">
+    <value>Ваш адрес электронной почты</value>
+  </data>
+  <data name="Newsletter.SubContent" xml:space="preserve">
+    <value>Получайте самую свежую информацию, распродажи и предложения.</value>
+  </data>
+  <data name="Newsletter.Title" xml:space="preserve">
+    <value>Получайте самую свежую информацию, распродажи и предложения.</value>
+  </data>
+  <data name="PaymentInfo.SubContent" xml:space="preserve">
+    <value>Безопасные платежные сервисы.</value>
+  </data>
+  <data name="PaymentInfo.Title" xml:space="preserve">
+    <value>Онлайн-оплата.</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Наш номер телефона</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Диапазон цен декабря</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Зарегистрировать</value>
+  </data>
+  <data name="ReturnInfo.SubContent" xml:space="preserve">
+    <value>Беспроблемный шопинг.</value>
+  </data>
+  <data name="ReturnInfo.Title" xml:space="preserve">
+    <value>Легкое возвращение.</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>русский язык</value>
+  </data>
+  <data name="ShippingInfo.SubContent" xml:space="preserve">
+    <value>При заказе свыше 150 йен</value>
+  </data>
+  <data name="ShippingInfo.Title" xml:space="preserve">
+    <value>бесплатная доставка</value>
+  </data>
+  <data name="Shop.Search" xml:space="preserve">
+    <value>Поиск товаров Дек</value>
+  </data>
+  <data name="SocialMedia" xml:space="preserve">
+    <value>социальные медиа</value>
+  </data>
+  <data name="SpecialDesing.Content" xml:space="preserve">
+    <value>Для тех, кто хочет изменить мир освещения к лучшему, мы предлагаем уникальные возможности с помощью специально разработанных осветительных приборов. Каждый из наших продуктов специально разработан с использованием тщательно отобранных материалов и квалифицированной ручной работы. Создайте атмосферу так, как вам нравится, с помощью осветительных приборов, соответствующих вашим вкусам и потребностям вашего помещения. Украсьте свой дом, рабочее деку или проект с помощью наших эксклюзивных дизайнов, сочетающих эстетику и функциональность. Окунитесь в уникальный опыт освещения, который ждет вас, и откройте для себя новые способы освещения ваших помещений.</value>
+  </data>
+  <data name="SpecialDesing.Title" xml:space="preserve">
+    <value>Создайте свой собственный стиль с помощью специально разработанных осветительных приборов</value>
+  </data>
+  <data name="SpecialOffer" xml:space="preserve">
+    <value>специальное предложение</value>
+  </data>
+  <data name="SpecialOffer.SubContent" xml:space="preserve">
+    <value>Мы предлагаем уникальные возможности в мире освещения!
+                        Удовлетворите свои потребности в освещении с помощью этих специальных предложений, которые действительны в течение ограниченного времени
+                        вы можете позволить себе это по доступным ценам. Откройте для себя его сейчас и создайте новый для своего дома, офиса или любого другого места
+                        добавь блеска!</value>
+  </data>
+  <data name="TopRated.Title" xml:space="preserve">
+    <value>Большинство проголосовавших</value>
+  </data>
+  <data name="Turkish" xml:space="preserve">
+    <value>Турецкий язык</value>
+  </data>
+  <data name="WeeklySale.Button" xml:space="preserve">
+    <value>Купить</value>
+  </data>
+  <data name="WeeklySale.Content" xml:space="preserve">
+    <value>Скидка до 50% на все товары интернет-магазина на этой неделе.</value>
+  </data>
+  <data name="WeeklySale.Title" xml:space="preserve">
+    <value>Еженедельная распродажа</value>
+  </data>
+  <data name="WholeSale.Content" xml:space="preserve">
+    <value>Если вашему бизнесу или проекту требуется большое количество осветительных приборов, наш оптовый вариант для вас. Мы предлагаем выгодные цены и гибкость для менеджеров проектов, дизайнеров интерьеров и оптовых покупателей. Откройте для себя экономически эффективный способ украсить свои помещения высококачественными и долговечными осветительными приборами. Выбирайте из нашего широкого ассорти деки, чтобы найти светильники, соответствующие вашим потребностям. Мы приглашаем вас познакомиться с нашими оптовыми осветительными приборами и рады предоставить качественные световые решения для вашего бизнеса или проекта.</value>
+  </data>
+  <data name="WholeSale.Title" xml:space="preserve">
+    <value>Оптовые осветительные приборы, соответствующие вашим проектным и бизнес-потребностям</value>
+  </data>
+</root>

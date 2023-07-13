@@ -20,7 +20,7 @@ namespace E_Commerce.UI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var about = _aboutService.GetById(2);
+            var about = _aboutService.GetAll().First();
             return View(about);
         }
 

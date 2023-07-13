@@ -20,7 +20,7 @@
                             </h4>
                             <div class="newsletter-form-head">
                                 <form action="@Url.Action("AddSubscribe", "Subscribe")" method="post" class="newsletter-form">
-                                    <input name="Mail" placeholder="E-Mail Adresiniz" type="email">
+                                    <input name="Mail" placeholder="@_localization.Getkey("Newsletter.Mail").Value" type="email">
                                     <div class="button">
                                         <button type="submit" class="btn">@_localization.Getkey("Newsletter.Button").Value<span class="dir-part"></span></button>
                                     </div>
@@ -56,11 +56,11 @@
                         <div class="single-footer f-link">
                             <h3>Menü</h3>
                             <ul>
-                                <li><a href="/About/Index">Hakkımızda</a></li>
-                                <li><a href="/Contact/Index">İletişim</a></li>
+                                <li><a href="/About/Index">@_localization.Getkey("Navbar.About").Value</a></li>
+                                <li><a href="/Contact/Index">@_localization.Getkey("Navbar.Contact").Value</a></li>
                                 <li><a href="/Blog/Index">Blog</a></li>
-                                <li><a href="/Wholesale/Index">Toptan Satış</a></li>
-                                <li><a href="/Shop/Index">Mağaza</a></li>
+                                <li><a href="/Wholesale/Index">@_localization.Getkey("Navbar.SpecialDesign").Value</a></li>
+                                <li><a href="/Shop/Index">@_localization.Getkey("Navbar.Shop").Value</a></li>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -68,7 +68,7 @@
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Single Widget -->
                         <div class="single-footer f-link">
-                            <h3>Kategoriler</h3>
+                            <h3>@_localization.Getkey("Categories").Value</h3>
                             @await Component.InvokeAsync("MainCategory")
                         </div>
                         <!-- End Single Widget -->
@@ -85,15 +85,14 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-12">
                         <div class="payment-gateway">
-                            <span>We Accept:</span>
-                            <img src="assets/images/footer/credit-cards-footer.png" alt="#">
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-12">
                         <div class="copyright">
                             <p>
                                 Developed by<a href="https://yipadanismanlik.com/" rel="nofollow"
-                                               target="_blank">YİPA Danışmanlık</a>
+                                               target="_blank">YIPA Danışmanlık</a>
                                 <br />
                                 @*  Designed by<a href="https://graygrids.com/" rel="nofollow"
                                 target="_blank">GrayGrids</a>*@

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using E_Commerce.Core.Abstract.Repository.ar;
+using E_Commerce.Core.Abstract.Repository.en;
+using E_Commerce.Core.Abstract.Repository.ru;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +14,6 @@ namespace E_Commerce.Core.Abstract.Repository
         IAddressRepository Addresses { get; }
         IBlogRepository Blogs { get; }
         ICategoryRepository Categories { get; }
-
         IOrderItemRepository OrderItems { get; }
         IOrderRepository Orders { get; }
         IOrderStatusRepository OrderStatuses { get; }
@@ -29,6 +31,27 @@ namespace E_Commerce.Core.Abstract.Repository
         ICommentRepository Comments { get; }
         ISubscribeRepository Subscribes { get; }
 
-       void CompleteAsync();
+
+        ICategoryENRepository CategoryENs { get; }
+        IAboutENRepository AboutENs { get; }
+        IBlogENRepository BlogENs { get; }
+        IProductENRepository ProductENs { get; }
+        ISubCategoryENRepository SubCategoryENs { get; }
+        ISubCategoryRURepository SubCategoryRUs { get; }
+        ISubCategoryARRepository SubCategoryARs { get; }
+
+        ICategoryARRepository CategoryARs { get; }
+        IAboutARRepository AboutARs { get; }
+        IBlogARRepository BlogARs { get; }
+        IProductARRepository ProductARs { get; }
+
+        ICategoryRURepository CategoryRUs { get; }
+        IAboutRURepository AboutRUs { get; }
+        IBlogRURepository BlogRUs { get; }
+        IProductRURepository ProductRUs { get; }
+
+
+
+        void CompleteAsync();
     }
 }

@@ -101,6 +101,176 @@ namespace E_Commerce.DataAccess.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.AboutAR", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CompanyAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyPhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AboutARs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.BlogAR", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BlogCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogARs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.CategoryAR", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryARs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.ProductAR", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SpecialProduct")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("ProductARs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.SubCategoryAR", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("SubCategoryARs");
+                });
+
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -271,7 +441,16 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductARId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductENId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductRUId")
                         .HasColumnType("int");
 
                     b.Property<int>("Star")
@@ -287,7 +466,13 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("BlogId");
 
+                    b.HasIndex("ProductARId");
+
+                    b.HasIndex("ProductENId");
+
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductRUId");
 
                     b.ToTable("Comments");
                 });
@@ -324,6 +509,176 @@ namespace E_Commerce.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.AboutEN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CompanyAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyPhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AboutENs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.BlogEN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BlogCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogENs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.CategoryEN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryENs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.ProductEN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SpecialProduct")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("ProductENs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.SubCategoryEN", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("SubCategoryENs");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>
@@ -385,7 +740,16 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProductARId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductENId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductRUId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -398,7 +762,13 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
+                    b.HasIndex("ProductARId");
+
+                    b.HasIndex("ProductENId");
+
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductRUId");
 
                     b.ToTable("OrderItems");
                 });
@@ -532,6 +902,243 @@ namespace E_Commerce.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("CategoryARId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryENId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryRUId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SpecialProduct")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("SubCategoryARId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SubCategoryENId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SubCategoryRUId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryARId");
+
+                    b.HasIndex("CategoryENId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CategoryRUId");
+
+                    b.HasIndex("SubCategoryARId");
+
+                    b.HasIndex("SubCategoryENId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.HasIndex("SubCategoryRUId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductARId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductENId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductRUId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductARId");
+
+                    b.HasIndex("ProductENId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductRUId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.AboutRU", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CompanyAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyPhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AboutRUs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.BlogRU", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BlogCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogRUs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.CategoryRU", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryRUs");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.ProductRU", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -571,10 +1178,10 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("SubCategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("ProductRUs");
                 });
 
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.ProductImage", b =>
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.SubCategoryRU", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -582,32 +1189,8 @@ namespace E_Commerce.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImages");
-                });
-
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -620,7 +1203,9 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("SubCategoryRUs");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.SubCategory", b =>
@@ -726,6 +1311,36 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.ProductAR", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.SubCategoryAR", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.SubCategoryAR", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.CategoryAR", "Category")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Cargo", b =>
                 {
                     b.HasOne("E_Commerce.Entity.Concrete.Order", "Order")
@@ -771,15 +1386,57 @@ namespace E_Commerce.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.ProductAR", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ProductARId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.en.ProductEN", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ProductENId");
+
                     b.HasOne("E_Commerce.Entity.Concrete.Product", "Product")
                         .WithMany("Comments")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.ProductRU", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ProductRUId");
+
                     b.Navigation("Blog");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.ProductEN", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce.Entity.Concrete.en.SubCategoryEN", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.SubCategoryEN", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.en.CategoryEN", "Category")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>
@@ -821,11 +1478,23 @@ namespace E_Commerce.DataAccess.Migrations
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
 
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.ProductAR", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductARId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.en.ProductEN", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductENId");
+
                     b.HasOne("E_Commerce.Entity.Concrete.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.ProductRU", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductRUId");
 
                     b.Navigation("Product");
                 });
@@ -851,13 +1520,79 @@ namespace E_Commerce.DataAccess.Migrations
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Product", b =>
                 {
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.CategoryAR", null)
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryARId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.en.CategoryEN", null)
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryENId");
+
                     b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.CategoryRU", null)
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryRUId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.SubCategoryAR", null)
+                        .WithMany("Product")
+                        .HasForeignKey("SubCategoryARId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.en.SubCategoryEN", null)
+                        .WithMany("Product")
+                        .HasForeignKey("SubCategoryENId");
+
                     b.HasOne("E_Commerce.Entity.Concrete.SubCategory", "SubCategory")
+                        .WithMany("Product")
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.SubCategoryRU", null)
+                        .WithMany("Product")
+                        .HasForeignKey("SubCategoryRUId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ProductImage", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.ProductAR", null)
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductARId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.en.ProductEN", null)
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductENId");
+
+                    b.HasOne("E_Commerce.Entity.Concrete.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.ProductRU", null)
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductRUId");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.ProductRU", b =>
+                {
+                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.SubCategoryRU", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -868,15 +1603,15 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("SubCategory");
                 });
 
-            modelBuilder.Entity("E_Commerce.Entity.Concrete.ProductImage", b =>
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.SubCategoryRU", b =>
                 {
-                    b.HasOne("E_Commerce.Entity.Concrete.Product", "Product")
-                        .WithMany("ProductImages")
-                        .HasForeignKey("ProductId")
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.CategoryRU", "Category")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.SubCategory", b =>
@@ -901,6 +1636,27 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.CategoryAR", b =>
+                {
+                    b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.ProductAR", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("OrderItems");
+
+                    b.Navigation("ProductImages");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.SubCategoryAR", b =>
+                {
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Cart", b =>
                 {
                     b.Navigation("CartItems");
@@ -911,6 +1667,27 @@ namespace E_Commerce.DataAccess.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.CategoryEN", b =>
+                {
+                    b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.ProductEN", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("OrderItems");
+
+                    b.Navigation("ProductImages");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.en.SubCategoryEN", b =>
+                {
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Order", b =>
@@ -932,6 +1709,32 @@ namespace E_Commerce.DataAccess.Migrations
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Role", b =>
                 {
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.CategoryRU", b =>
+                {
+                    b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.ProductRU", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("OrderItems");
+
+                    b.Navigation("ProductImages");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.SubCategoryRU", b =>
+                {
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("E_Commerce.Entity.Concrete.SubCategory", b =>
+                {
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.User", b =>

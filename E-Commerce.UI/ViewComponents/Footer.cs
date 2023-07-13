@@ -13,7 +13,7 @@ namespace E_Commerce.UI.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            var contactInfo = _aboutService.GetById(2);
+            var contactInfo = _aboutService.GetAll().First();
             ViewBag.ContactInfoMail = contactInfo.CompanyMail;
             ViewBag.ContactInfoPhoneNumber = contactInfo.CompanyPhoneNumber;
             return View();

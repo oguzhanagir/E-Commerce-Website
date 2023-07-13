@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddBasket" xml:space="preserve">
+    <value>Sepete Ekle</value>
+  </data>
+  <data name="AllCategories" xml:space="preserve">
+    <value>Tüm Kategoriler</value>
+  </data>
   <data name="BestSellers.Title" xml:space="preserve">
     <value>En Çok Satanlar</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
   </data>
   <data name="CallInfo.SubContent" xml:space="preserve">
     <value>Canlı Sohbet Edin ve Arayın.</value>
@@ -126,8 +135,23 @@
   <data name="CallInfo.Title" xml:space="preserve">
     <value>24/7 Destek.</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategoriler</value>
+  </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>Dil Seçin</value>
+  </data>
+  <data name="Contact.Address" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="Contact.Content" xml:space="preserve">
+    <value>Aydınlatma ürünleri hakkında daha fazla bilgi almak, sipariş vermek veya sorularınızı yanıtlamak için bize ulaşın. Size yardımcı olmaktan mutluluk duyacağız.</value>
+  </data>
+  <data name="Contact.PhoneNumber" xml:space="preserve">
+    <value>Telefon Numaramız</value>
+  </data>
+  <data name="Contact.Title" xml:space="preserve">
+    <value>Bizimle İletişime Geç</value>
   </data>
   <data name="ContactInfo.Title" xml:space="preserve">
     <value>Bizimle İletişime Geçin</value>
@@ -141,6 +165,24 @@
   <data name="FeaturedCategories.SubContent" xml:space="preserve">
     <value>Size özel olarak seçtiğimiz ve ilginizi çekebilecek çeşitli kategorileri bir araya getirdik. Farklı zevklere hitap eden ve ihtiyaçlarınızı karşılayabilecek ürünlerin yer aldığı kategorilerimizi keşfedin.</value>
   </data>
+  <data name="Form.Button" xml:space="preserve">
+    <value>Mesajını Gönder</value>
+  </data>
+  <data name="Form.Mail" xml:space="preserve">
+    <value>Mailiniz</value>
+  </data>
+  <data name="Form.Message" xml:space="preserve">
+    <value>Mesajınız</value>
+  </data>
+  <data name="Form.Name" xml:space="preserve">
+    <value>Adınız</value>
+  </data>
+  <data name="Form.PhoneNumber" xml:space="preserve">
+    <value>Telefon Numaranız</value>
+  </data>
+  <data name="Form.Subject" xml:space="preserve">
+    <value>Konunuz</value>
+  </data>
   <data name="LatestBlogs.SubContent" xml:space="preserve">
     <value>Aydınlatma dünyasındaki en son gelişmeler ve ilginç içerikler hakkında güncel bilgileri sunan bloglarımızı keşfedin.
                         Aydınlatma trendleri, tasarım ipuçları, enerji verimliliği ve daha fazlasıyla ilgili yazılarımızla sizleri aydınlatıyoruz.</value>
@@ -148,13 +190,13 @@
   <data name="LatestBlogs.Title" xml:space="preserve">
     <value>En Son Bloglar</value>
   </data>
-  <data name="LatestProduct.SubContent" xml:space="preserve">
+  <data name="LatestProducts" xml:space="preserve">
+    <value>Son Ürünler</value>
+  </data>
+  <data name="LatestProducts.SubContent" xml:space="preserve">
     <value>En yeni ve çeşitli ürünleri sizin için bir araya getirdik.
                         Her zevke uygun seçeneklerimizle alışveriş deneyiminizi zenginleştirelim.
                         Kaliteli ve güvenilir markaların ürünleri arasından seçim yaparak ihtiyaçlarınızı karşılayabilirsiniz.</value>
-  </data>
-  <data name="LatestProducts" xml:space="preserve">
-    <value>Son Ürünler</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Giriş Yap</value>
@@ -186,6 +228,9 @@
   <data name="Newsletter.Button" xml:space="preserve">
     <value>Abone Ol</value>
   </data>
+  <data name="Newsletter.Mail" xml:space="preserve">
+    <value>E-Posta Adresiniz</value>
+  </data>
   <data name="Newsletter.SubContent" xml:space="preserve">
     <value>En son bilgileri, Satışları ve Teklifleri alın.</value>
   </data>
@@ -200,6 +245,12 @@
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telefon Numaramız</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Fiyat Aralığı</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Sıralama</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Kayıt Ol</value>
@@ -216,8 +267,17 @@
   <data name="ShippingInfo.Title" xml:space="preserve">
     <value>Ücretsiz Kargo.</value>
   </data>
+  <data name="Shop.Search" xml:space="preserve">
+    <value>Ürün Ara</value>
+  </data>
   <data name="SocialMedia" xml:space="preserve">
     <value>Sosyal Medya</value>
+  </data>
+  <data name="SpecialDesing.Content" xml:space="preserve">
+    <value>Aydınlatma dünyasında fark yaratmak isteyenler için özel tasarım aydınlatma ürünleriyle benzersiz bir deneyim sunuyoruz. Her bir ürünümüz, özenle seçilmiş malzemeler ve uzman el işçiliği ile özel olarak tasarlanır. Kendi zevkinize ve mekanınızın ihtiyaçlarına uygun aydınlatma armatürleri ile atmosferi istediğiniz gibi şekillendirin. Estetik ve işlevselliği bir araya getiren özel tasarımlarımızla evinizi, iş yerinizi veya projenizi aydınlatın. Sizi bekleyen eşsiz aydınlatma deneyimine adım atın ve mekanlarınızı aydınlatmanın yeni yollarını keşfedin.</value>
+  </data>
+  <data name="SpecialDesing.Title" xml:space="preserve">
+    <value>Özel Tasarım Aydınlatma Ürünleriyle Kendi Stilinizi Yaratın</value>
   </data>
   <data name="SpecialOffer" xml:space="preserve">
     <value>Özel Teklif</value>
@@ -242,5 +302,11 @@
   </data>
   <data name="WeeklySale.Title" xml:space="preserve">
     <value>Haftalık Satış</value>
+  </data>
+  <data name="WholeSale.Content" xml:space="preserve">
+    <value>İşletmenizin veya projenizin büyük miktarda aydınlatma ürününe ihtiyacı varsa, toptan satış seçeneğimiz tam size göre. Proje yöneticileri, iç mimarlar ve toptan alıcılar için avantajlı fiyatlar ve esneklik sunuyoruz. Yüksek kaliteli ve dayanıklı aydınlatma ürünleriyle mekanlarınızı aydınlatmanın maliyet etkin bir yolunu keşfedin. Geniş ürün yelpazemiz arasından seçim yaparak ihtiyaçlarınıza uygun armatürleri bulun. Sizi toptan aydınlatma ürünlerimizle tanışmaya davet ediyoruz ve işletmenize veya projenize kaliteli aydınlatma çözümleri sağlamaktan mutluluk duyuyoruz.</value>
+  </data>
+  <data name="WholeSale.Title" xml:space="preserve">
+    <value>Proje Ve İşletme İhtiyaçlarınıza Uygun Toptan Aydınlatma Ürünleri</value>
   </data>
 </root>

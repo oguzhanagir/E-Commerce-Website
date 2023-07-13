@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<E_Commerce.Entity.Concrete.Category>
 
 <div class="mega-category-menu">
-    <span class="cat-button"><i class="lni lni-menu"></i>Tüm Kategoriler</span>
+    <span class="cat-button"><i class="lni lni-menu"></i>@_localization.Getkey("AllCategories").Value</span>
     <ul class="sub-category">
         @foreach (var category in Model)
         {

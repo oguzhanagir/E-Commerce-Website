@@ -36,6 +36,11 @@ namespace E_Commerce.UI.Controllers
                 {
                     Expires = DateTimeOffset.UtcNow.AddYears(1)
                 });
+            Response.Cookies.Append("SelectedLanguage", culture, new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(30) // Örnek olarak, çerezin 30 gün boyunca geçerli olmasını sağlar
+            });
+
             return Redirect(Request.Headers["Referer"].ToString());
         }
 

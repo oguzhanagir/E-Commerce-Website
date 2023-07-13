@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.Core\E-Commerce.Core.csproj" />
+    <ProjectReference Include="..\GTranslate\GTranslate.csproj" />
+    <ProjectReference Include="..\LanguageScraper\LanguageScraper.csproj" />
   </ItemGroup>
 
 </Project>

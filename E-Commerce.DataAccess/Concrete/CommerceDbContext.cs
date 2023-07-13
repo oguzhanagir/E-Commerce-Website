@@ -1,4 +1,7 @@
 ﻿using E_Commerce.Entity.Concrete;
+using E_Commerce.Entity.Concrete.ar;
+using E_Commerce.Entity.Concrete.en;
+using E_Commerce.Entity.Concrete.ru;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,6 +37,27 @@ namespace E_Commerce.DataAccess.Concrete
         public DbSet<Comment>? Comments { get; set; }
         public DbSet<Subscribe>? Subscribes { get; set; }
 
+
+        public DbSet<AboutEN>? AboutENs { get; set; }
+        public DbSet<BlogEN>? BlogENs { get; set; }
+        public DbSet<ProductEN>? ProductENs { get; set; }
+        public DbSet<CategoryEN>? CategoryENs { get; set; }
+        public DbSet<SubCategoryEN>? SubCategoryENs { get; set; }
+
+
+        public DbSet<AboutRU>? AboutRUs { get; set; }
+        public DbSet<BlogRU>? BlogRUs { get; set; }
+        public DbSet<ProductRU>? ProductRUs { get; set; }
+        public DbSet<CategoryRU>? CategoryRUs { get; set; }
+        public DbSet<SubCategoryRU>? SubCategoryRUs { get; set; }
+
+
+        public DbSet<AboutAR>? AboutARs { get; set; }
+        public DbSet<BlogAR>? BlogARs { get; set; }
+        public DbSet<ProductAR>? ProductARs { get; set; }
+        public DbSet<CategoryAR>? CategoryARs { get; set; }
+
+        public DbSet<SubCategoryAR>? SubCategoryARs { get; set; }
     }
 
 }

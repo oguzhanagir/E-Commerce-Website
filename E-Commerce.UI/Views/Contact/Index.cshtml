@@ -15,10 +15,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Bizimle İletişime Geç</h2>
+                        <h2>@_localization.Getkey("Contact.Title").Value</h2>
                         <p>
-                            Aydınlatma ürünleri hakkında daha fazla bilgi almak, sipariş vermek veya sorularınızı yanıtlamak için bize ulaşın. Size yardımcı olmaktan mutluluk duyacağız.
-
+                            @_localization.Getkey("Contact.Content").Value
                         </p>
                     </div>
                 </div>
@@ -30,7 +29,7 @@
                             <!-- Start Single Info -->
                             <div class="single-info">
                                 <i class="lni lni-map"></i>
-                                <h3>Adres</h3>
+                                <h3>@_localization.Getkey("Contact.Address").Value</h3>
                                 <ul>
                                     <li>@Model.CompanyAddress</li>
                                 </ul>
@@ -39,7 +38,7 @@
                             <!-- Start Single Info -->
                             <div class="single-info">
                                 <i class="lni lni-phone"></i>
-                                <h3>Telefon Numaramız</h3>
+                                <h3>@_localization.Getkey("Contact.PhoneNumber").Value</h3>
                                 <ul>
 
                                     <li><a href="tel:@Model.CompanyPhoneNumber">@Model.CompanyPhoneNumber</a></li>
@@ -82,36 +81,36 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="FullName" type="text" placeholder="Adınız"
+                                                <input name="FullName" type="text" placeholder="@_localization.Getkey("Form.Name").Value"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="Subject" type="text" placeholder="Konu"
+                                                <input name="Subject" type="text" placeholder="@_localization.Getkey("Form.Subject").Value"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="Mail" type="email" placeholder="Mail Adresi"
+                                                <input name="Mail" type="email" placeholder="@_localization.Getkey("Form.Mail").Value"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-group">
-                                                <input name="Phone" type="text" placeholder="Telefon Numarası"
+                                                <input name="Phone" type="text" placeholder="@_localization.Getkey("Form.PhoneNumber").Value"
                                                        required="required">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group message">
-                                                <textarea name="Message" placeholder="Mesaj"></textarea>
+                                                <textarea name="Message" placeholder="@_localization.Getkey("Form.Message").Value"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button">
-                                                <button type="submit" class="btn ">Mesajı Gönder</button>
+                                                <button type="submit" class="btn ">@_localization.Getkey("Form.Button").Value</button>
                                             </div>
                                         </div>
                                     </div>

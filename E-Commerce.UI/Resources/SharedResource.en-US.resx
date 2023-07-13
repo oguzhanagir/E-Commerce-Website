@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddBasket" xml:space="preserve">
+    <value>Add to Cart</value>
+  </data>
+  <data name="AllCategories" xml:space="preserve">
+    <value>All Categories</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
   <data name="BestSellers.Title" xml:space="preserve">
     <value>Best Sellers</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
   </data>
   <data name="CallInfo.SubContent" xml:space="preserve">
     <value>Live Chat Or Call.</value>
@@ -126,8 +138,23 @@
   <data name="CallInfo.Title" xml:space="preserve">
     <value>24/7 Support.</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>Choose a Language</value>
+  </data>
+  <data name="Contact.Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Contact.Content" xml:space="preserve">
+    <value>Contact us to get more information about lighting products, place an order or answer your questions. We will be happy to help you.</value>
+  </data>
+  <data name="Contact.PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="Contact.Title" xml:space="preserve">
+    <value>Contact Us</value>
   </data>
   <data name="ContactInfo.Title" xml:space="preserve">
     <value>Contact Us</value>
@@ -141,19 +168,37 @@
   <data name="FeaturedCategories.SubContent" xml:space="preserve">
     <value>We have brought together various categories that we specially selected for you and that might interest you. Explore our categories that cater to different tastes and meet your needs with the products included in them.</value>
   </data>
+  <data name="Form.Button" xml:space="preserve">
+    <value>Send Message</value>
+  </data>
+  <data name="Form.Mail" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="Form.Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Form.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Form.PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="Form.Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
   <data name="LatestBlogs.SubContent" xml:space="preserve">
     <value>Discover our blogs that provide up-to-date information on the latest developments and interesting content in the world of lighting. We enlighten you with our articles on lighting trends, design tips, energy efficiency, and much more.</value>
   </data>
   <data name="LatestBlogs.Title" xml:space="preserve">
     <value>Latest Blogs</value>
   </data>
-  <data name="LatestProduct.SubContent" xml:space="preserve">
-    <value>En yeni ve çeşitli ürünleri sizin için bir araya getirdik.
-                        Her zevke uygun seçeneklerimizle alışveriş deneyiminizi zenginleştirelim.
-                        Kaliteli ve güvenilir markaların ürünleri arasından seçim yaparak ihtiyaçlarınızı karşılayabilirsiniz.</value>
-  </data>
   <data name="LatestProducts" xml:space="preserve">
     <value>Latest Products</value>
+  </data>
+  <data name="LatestProducts.SubContent" xml:space="preserve">
+    <value>We have brought together the latest and most diverse products for you.Dec.
+                        Let's enrich your shopping experience with our options suitable for every taste.
+                        You can meet your needs by choosing among the products of high-quality and reliable brands. Dec.</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -185,6 +230,9 @@
   <data name="Newsletter.Button" xml:space="preserve">
     <value>Subscribe</value>
   </data>
+  <data name="Newsletter.Mail" xml:space="preserve">
+    <value>Mail Address</value>
+  </data>
   <data name="Newsletter.SubContent" xml:space="preserve">
     <value>Get the latest information, Sales and Offers.</value>
   </data>
@@ -200,6 +248,12 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Our Phone Number</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price Range</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Ranking</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
@@ -209,14 +263,26 @@
   <data name="ReturnInfo.Title" xml:space="preserve">
     <value>Easy Return.</value>
   </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Russian</value>
+  </data>
   <data name="ShippingInfo.SubContent" xml:space="preserve">
     <value>On order over ₺150</value>
   </data>
   <data name="ShippingInfo.Title" xml:space="preserve">
     <value>Free Shipping</value>
   </data>
+  <data name="Shop.Search" xml:space="preserve">
+    <value>Search Product</value>
+  </data>
   <data name="SocialMedia" xml:space="preserve">
     <value>Social Media</value>
+  </data>
+  <data name="SpecialDesing.Content" xml:space="preserve">
+    <value>We offer a unique experience with specially designed lighting products for those who want to make a difference in the lighting world. Each of our products is specially designed with carefully selected materials and expert manual workmanship. Shape the atmosphere as you want with lighting fixtures suitable for your own taste and the needs of your space. Brighten up your home, workplace or project with our special designs that combine aesthetics and functionality Decently. Step into the unique lighting experience waiting for you and discover new ways to light up your spaces.</value>
+  </data>
+  <data name="SpecialDesing.Title" xml:space="preserve">
+    <value>Create Your Own Style with Special Design Lighting Products</value>
   </data>
   <data name="SpecialOffer" xml:space="preserve">
     <value>Special Offer</value>
@@ -238,5 +304,11 @@
   </data>
   <data name="WeeklySale.Title" xml:space="preserve">
     <value>Weekly Sale!</value>
+  </data>
+  <data name="WholeSale.Content" xml:space="preserve">
+    <value>If your business or project needs a large amount of lighting products, our wholesale option is for you. We offer advantageous prices and flexibility for project managers, interior designers and wholesale buyers. Discover a cost-effective way to light up your spaces with high-quality and durable lighting products. Find the fixtures that suit your needs by choosing from our wide range of products.Dec. We invite you to get acquainted with our wholesale lighting products, and we are pleased to provide quality lighting solutions to your business or project.</value>
+  </data>
+  <data name="WholeSale.Title" xml:space="preserve">
+    <value>Wholesale Lighting Products Suitable For Your Project And Business Needs</value>
   </data>
 </root>

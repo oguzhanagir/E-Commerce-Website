@@ -44,35 +44,7 @@ namespace E_Commerce.DataAccess.Concrete
             return _dbSet.AsEnumerable();
         }
 
-        private async Task<T> TranslateModelProperties(T model, string language)
-        {
-            var translatedModel = Activator.CreateInstance<T>();
-            var properties = typeof(T).GetProperties();
-
-            foreach (var property in properties)
-            {
-                if (property.PropertyType == typeof(string))
-                {
-                    var value = property.GetValue(model);
-
-                    if (value != null)
-                    {
-                        var result = await Translator.TranslateAsync(value.ToString(), language);
-                        var translatedValue = result.Translation;
-
-                        property.SetValue(translatedModel, translatedValue);
-                    }
-                }
-                else
-                {
-                    property.SetValue(translatedModel, property.GetValue(model));
-                }
-            }
-
-            return translatedModel;
-        }
-
-
+     
         public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = _dbSet;

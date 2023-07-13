@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Reflection;
+using E_Commerce.Business.Translators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,8 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     var supportCultures = new List<CultureInfo>
     {
         new CultureInfo("en-US"),
-        new CultureInfo("fr-FR"),
+        new CultureInfo("ar-SA"),
+        new CultureInfo("ru-RU"),
         new CultureInfo("tr-TR"),
     };
     options.DefaultRequestCulture = new RequestCulture(culture: "tr-TR", uiCulture: "tr-TR");
@@ -73,6 +75,7 @@ builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 builder.Services.AddTransient(typeof(IUserService), typeof(UserService));
 builder.Services.AddTransient(typeof(ISubscribeService), typeof(SubscribeService));
 builder.Services.AddTransient(typeof(IImageService), typeof(ImageService));
+builder.Services.AddTransient(typeof(LanguageTranslator));
 
 
 
@@ -114,6 +117,22 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.Use(async (context, next) =>
+{
+    var selectedLanguage = context.Request.Cookies["SelectedLanguage"];
+    if (string.IsNullOrEmpty(selectedLanguage))
+    {
+        // Varsayýlan dil deðerini belirle
+        selectedLanguage = "tr-TR";
+
+        // Çereze varsayýlan dil deðerini kaydet
+        context.Response.Cookies.Append("SelectedLanguage", selectedLanguage);
+    }
+
+    // Diðer middleware'leri çalýþtýr
+    await next.Invoke();
+});
 
 app.UseRequestLocalization();
 app.UseHttpsRedirection();
