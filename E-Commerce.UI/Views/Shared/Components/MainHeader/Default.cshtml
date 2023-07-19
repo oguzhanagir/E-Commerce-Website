@@ -16,23 +16,40 @@
                                 bannerImage = images.ImagePath!;
                                 break;
                             }
-                            <!-- Start Single Slider -->
-                            <div class="single-slider" style="background-image: url(/@bannerImage); width:868px; height:500px;">
-                                <div class="content">
-                                    <h2>
-                                        @item.Name
-                                    </h2>
-                                    <p>
-                                        @item.SubTitle
-                                    </p>
-                                    <h3><span>Sadece Şuan</span> @item.Price</h3>
-                                    <div class="button">
-                                        <a href="/Shop/ProductDetails/@item.Id" class="btn">Satın Al</a>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="single-slider" style="width: 868px; height: 500px;">
+                                            <div class="content" style="padding: 20px;">
+                                                <div class="row">
+                                                    <div class="col-md-6" style="margin-top:80px;">
+                                                        <h2 style="margin-top:40px;">@item.Name</h2>
+                                                        <p>@item.SubTitle</p>
+                                                        <h3><span>Sadece Şuan</span> @item.Price</h3>
+                                                        <div class="button">
+                                                            <a href="/Shop/ProductDetails/@item.Id" class="btn">Satın Al</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6" >
+                                                        <div class="single-slider" style="width: 868px; height: 500px;">
+                                                            <div class="content" style="padding: 20px;">
+                                                                <img src="/@bannerImage" class="img-fluid" style="width: 300px; height: 500px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
+
+
+
+        
                             <!-- End Single Slider -->
-                         
                         }
 
                     </div>
@@ -43,18 +60,29 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                         <!-- Start Small Banner -->
+                        @{
+                            string special = null;
+                        }
+                        @foreach (var images in ViewBag.Product.ProductImages!)
+                        {
+                            special = images.ImagePath!;
+                            break;
+                        }
                         <div class="hero-small-banner"
-                             style="background-image: url('https://via.placeholder.com/370x250'); width:370px; height:250px;">
+                             style="background-image: url('/@special'); width:415px; height:250px;">
                             <div class="content">
-                                <h2>
-                                    <span>New line required</span>
-                                    iPhone 12 Pro Max
-                                </h2>
-                                <h3>$259.99</h3>
+                                <a href="/Shop/ProductDetails/@ViewBag.Product.Id">
+                                    <h2>
+                                        @ViewBag.Product.Name
+                                    </h2>
+                                </a>
+                                <h3>@ViewBag.Product.Price</h3>
                             </div>
                         </div>
                         <!-- End Small Banner -->
                     </div>
+
+
                     <div class="col-lg-12 col-md-6 col-12">
                         <!-- Start Small Banner -->
                         <div class="hero-small-banner style2">

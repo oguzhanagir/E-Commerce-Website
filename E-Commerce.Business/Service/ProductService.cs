@@ -31,10 +31,10 @@ namespace E_Commerce.Business.Service
         private int GenerateUniqueId()
         {
 
-            int lastUsedId = _unitOfWork.Categories.GetLastUsedId();
+            int lastUsedId = _unitOfWork.Products.GetLastUsedId();
             if (lastUsedId == null)
             {
-                lastUsedId = 5;
+                lastUsedId = 10;
             }
 
             // Yeni bir benzersiz ID oluşturun
@@ -75,7 +75,6 @@ namespace E_Commerce.Business.Service
                 Features = translatedFeaturesEN,
                 Price = entity.Price,
                 Quantity = entity.Quantity,
-                Category = entity.Category
                 SpecialProduct = entity.SpecialProduct,
                 SubCategoryId = entity.SubCategoryId,
                 CategoryId = entity.CategoryId,
@@ -207,7 +206,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -231,7 +235,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -255,7 +264,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -289,7 +303,8 @@ namespace E_Commerce.Business.Service
             // Diğer işlemler...
             if (culture.Name == "en-US")
             {
-                var enProducts = _unitOfWork.ProductENs.GetAll();
+                var enProducts = _unitOfWork.ProductENs.GetAll(x => x.ProductImages, y => y.Category).Take(10);
+                
                 var products = enProducts.Select(enProducts => new Product
                 {
                     Id = enProducts.Id,
@@ -305,7 +320,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -313,7 +333,7 @@ namespace E_Commerce.Business.Service
             }
             else if (culture.Name == "ar-SA")
             {
-                var enProducts = _unitOfWork.ProductARs.GetAll();
+                var enProducts = _unitOfWork.ProductARs.GetAll(x => x.ProductImages, y => y.Category).Take(10);
                 var products = enProducts.Select(enProducts => new Product
                 {
                     Id = enProducts.Id,
@@ -329,7 +349,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -337,7 +362,7 @@ namespace E_Commerce.Business.Service
             }
             else if (culture.Name == "ru-RU")
             {
-                var enProducts = _unitOfWork.ProductRUs.GetAll();
+                var enProducts = _unitOfWork.ProductRUs.GetAll(x=>x.ProductImages,y=>y.Category).Take(10);
                 var products = enProducts.Select(enProducts => new Product
                 {
                     Id = enProducts.Id,
@@ -353,7 +378,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -404,7 +434,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -428,7 +463,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -452,7 +492,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -503,7 +548,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -527,7 +577,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -551,7 +606,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -602,7 +662,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -626,7 +691,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -650,7 +720,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -701,7 +776,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -725,7 +805,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -749,7 +834,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 });
 
@@ -800,7 +890,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 };
 
@@ -824,7 +919,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 };
 
@@ -848,7 +948,12 @@ namespace E_Commerce.Business.Service
                     ProductImages = enProducts.ProductImages,
                     OrderItems = enProducts.OrderItems,
                     Comments = enProducts.Comments,
-
+                    Category = new Category
+                    {
+                        Name = enProducts.Category.Name,
+                        Image = enProducts.Category.Image,
+                        Products = enProducts.Category.Products,
+                    }
 
                 };
 
@@ -933,6 +1038,7 @@ namespace E_Commerce.Business.Service
             // Rusça ürünü oluşturun ve kaydedin
             var productRU = new ProductRU
             {
+                Id = entity.Id,
                 Name = translatedNameRU,
                 SubTitle = translatedSubTitleRU,
                 Description = translatedDescriptionRU,
@@ -970,6 +1076,12 @@ namespace E_Commerce.Business.Service
         }
 
 
+        public Product GetFirstProduct()
+        {
+            var product = _unitOfWork.Products.GetAll().OrderBy(p => p.Id).First();
 
+
+            return product!;
+        }
     }
 }

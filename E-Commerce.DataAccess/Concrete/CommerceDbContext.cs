@@ -36,6 +36,7 @@ namespace E_Commerce.DataAccess.Concrete
         public DbSet<Cargo>? Cargoes { get; set; }
         public DbSet<Comment>? Comments { get; set; }
         public DbSet<Subscribe>? Subscribes { get; set; }
+        public DbSet<SubCategory>? SubCategories { get; set; }
 
 
         public DbSet<AboutEN>? AboutENs { get; set; }

@@ -20,5 +20,16 @@ namespace E_Commerce.DataAccess.Concrete
         {
             return _dbContext.Blogs!.OrderByDescending(b=>b.CreatedAt).Take(3).ToList();
         }
+
+
+        public int GetLastUsedId()
+        {
+            var lastUsedId = _dbContext.Blogs!
+                .OrderByDescending(c => c.Id)
+                .Select(c => c.Id)
+                .FirstOrDefault();
+
+            return lastUsedId;
+        }
     }
 }

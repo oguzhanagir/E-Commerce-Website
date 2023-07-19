@@ -86,8 +86,8 @@ namespace E_Commerce.UI.Controllers
         [HttpGet]
         public IActionResult UpdateSubCategory()
         {
-            ViewBag.SubCategory = _subCategoryService.GetAllNormal();
-            ViewBag.Category = _categoryService.GetAllNormal();
+            ViewBag.SubCategory = _categoryService.GetSubCategories();
+            ViewBag.Category = _categoryService.GetCategories();
             return View();
         }
 

@@ -14,7 +14,7 @@ namespace E_Commerce.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var getBlogByNew = _productService.GetNewArrivalsToThree();
+            var getBlogByNew = _productService.GetAll().Take(3);
 
             return View(getBlogByNew);
         }

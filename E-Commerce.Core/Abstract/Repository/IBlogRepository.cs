@@ -10,5 +10,6 @@ namespace E_Commerce.Core.Abstract.Repository
     public interface IBlogRepository : IGenericRepository<Blog>
     {
         IEnumerable<Blog> GetLatestBlogToThree();
+        int GetLastUsedId();
     }
 }

@@ -17,7 +17,7 @@ namespace E_Commerce.UI.ViewComponents
         public IViewComponentResult Invoke()
         {
             var getBlogByPopular = _productService.GetPopularProducts();
-          
+            ViewBag.Product = _productService.GetFirstProduct();
             return View(getBlogByPopular);
         }
     }

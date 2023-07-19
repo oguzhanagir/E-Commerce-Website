@@ -31,10 +31,10 @@ namespace E_Commerce.Business.Service
         private int GenerateUniqueId()
         {
 
-            int lastUsedId = _unitOfWork.Categories.GetLastUsedId();
+            int lastUsedId = _unitOfWork.Blogs.GetLastUsedId();
             if (lastUsedId == null)
             {
-                lastUsedId = 5;
+                lastUsedId = 10;
             }
 
             // Yeni bir benzersiz ID oluşturun

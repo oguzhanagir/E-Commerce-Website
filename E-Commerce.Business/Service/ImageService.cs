@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Core.Abstract.Repository;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using E_Commerce.Entity.Concrete.ru;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,15 @@ namespace E_Commerce.Business.Service
 
         public void Create(ProductImage entity)
         {
+            var product = _unitOfWork.Products.GetById(entity.ProductId);
+            var productEN = _unitOfWork.ProductENs.GetById(entity.ProductId);
+            var productAR = _unitOfWork.ProductARs.GetById(entity.ProductId);
+            var productRU = _unitOfWork.ProductRUs.GetById(entity.ProductId);
+
+            entity.Product = product;
+            entity.ProductRU = productRU;
+            entity.ProductAR = productAR;
+            entity.ProductEN = productEN;
             _unitOfWork.Images.Add(entity);
             _unitOfWork.CompleteAsync();
         }

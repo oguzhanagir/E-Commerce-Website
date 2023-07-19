@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Business.Service;
 using E_Commerce.Core.Abstract.Service;
 using E_Commerce.Entity.Concrete;
+using E_Commerce.Entity.Concrete.en;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
@@ -40,6 +41,7 @@ namespace E_Commerce.UI.Controllers
                     productImage.ImagePath = filePath;
                 }
                 productImage.Id = 0;
+               
             _imageService.Create(productImage);
             }
 

@@ -12,5 +12,7 @@ namespace E_Commerce.Core.Abstract.Service
         Task<int> GetProductCountWithCategory(int id);
         IEnumerable<Category> GetAllNormal();
         IEnumerable<Category> GetAllNormalWithFive();
+        IEnumerable<Category> GetCategories();
+        IEnumerable<SubCategory> GetSubCategories();
     }
 }

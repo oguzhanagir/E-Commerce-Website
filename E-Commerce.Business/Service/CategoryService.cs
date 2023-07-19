@@ -219,6 +219,7 @@ namespace E_Commerce.Business.Service
                     Id = enCategory.Id,
                     Name = enCategory.Name,
                     Products = enCategory.Products,
+                    Image = enCategory.Image,
                     SubCategories = enCategory.SubCategories!.Select(enSubCategory => new SubCategory
                     {
                         Id = enSubCategory.Id,
@@ -238,6 +239,7 @@ namespace E_Commerce.Business.Service
                     Id = arCategory.Id,
                     Name = arCategory.Name,
                     Products = arCategory.Products,
+                    Image = arCategory.Image,
                     SubCategories = arCategory.SubCategories.Select(arSubCategory => new SubCategory
                     {
                         Id = arSubCategory.Id,
@@ -256,6 +258,7 @@ namespace E_Commerce.Business.Service
                     Id = ruCategory.Id,
                     Name = ruCategory.Name,
                     Products = ruCategory.Products,
+                    Image = ruCategory.Image,
                     SubCategories = ruCategory.SubCategories.Select(ruSubCategory => new SubCategory
                     {
                         Id = ruSubCategory.Id,
@@ -410,7 +413,17 @@ namespace E_Commerce.Business.Service
             _unitOfWork.CompleteAsync();
         }
     
-    
+        public IEnumerable<Category> GetCategories()
+        {
+            var categories = _unitOfWork.Categories.GetAll();
+            return categories; 
+        }
+
+        public IEnumerable<SubCategory> GetSubCategories()
+        {
+            var categories = _unitOfWork.SubCategories.GetAll();
+            return categories;
+        }
     }
 
 }

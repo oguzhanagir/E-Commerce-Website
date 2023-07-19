@@ -28,6 +28,6 @@ namespace E_Commerce.Entity.Concrete.en
         public ICollection<OrderItem>? OrderItems { get; set; }
         public ICollection<Comment>? Comments { get; set; }
 
-     
+       
     }
 }

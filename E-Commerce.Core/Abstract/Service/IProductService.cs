@@ -19,5 +19,6 @@ namespace E_Commerce.Core.Abstract.Service
         List<SearchResultViewModel> SearchProduct(string query);
         IEnumerable<Product> GetSpecialProducts();
         IEnumerable<Product> GetAllWithSubCategoryById(int id);
+        Product GetFirstProduct();
     }
 }

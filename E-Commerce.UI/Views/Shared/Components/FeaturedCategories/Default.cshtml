@@ -17,12 +17,14 @@
                     <!-- Start Single Category -->
                     <div class="single-category">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-6 col-mg-6">
                                 <a href="/Shop/GetProductByCategory/@item.Id"><h3 class="heading">@item.Name</h3></a>
+
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                          
+                            <div class="col-lg-6 col-md-6">
                                 <ul>
                                     @foreach (var subCategory in item.SubCategories!)
                                     {
@@ -30,14 +32,16 @@
                                     }
                                 </ul>
                             </div>
-                  
-                            <div class="col-6">
-                                <div class="images">
-                                    <img src="@item.Image" style="width:200px; height:200px;" alt="Kategori Banner">
+                            <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+                                <div class="position-relative">
+                                    <div style="width:200px; height:200px; overflow: hidden;">
+                                        <img class="img-thumbnail" src="/@item.Image" style="width:100%; height:100%;" alt="Kategori Banner">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- End Single Category -->
                 </div>
             }

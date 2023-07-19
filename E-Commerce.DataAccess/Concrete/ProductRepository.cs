@@ -22,7 +22,8 @@ namespace E_Commerce.DataAccess.Concrete
             var popularProducts = _dbContext.Products!
                 .OrderByDescending(p => p.Price)
                 .Take(10)
-                .Include(p => p.ProductImages) // ProductImages ilişkisini Include et
+                .Include(p => p.ProductImages)
+                 .Include(x=>x.Category)
                 .ToList();
 
             return popularProducts;
@@ -90,5 +91,14 @@ namespace E_Commerce.DataAccess.Concrete
             return viewModelList;
         }
 
+        public int GetLastUsedId()
+        {
+            var lastUsedId = _dbContext.Products!
+                .OrderByDescending(c => c.Id)
+                .Select(c => c.Id)
+                .FirstOrDefault();
+
+            return lastUsedId;
+        }
     }
 }

@@ -266,6 +266,7 @@ namespace E_Commerce.Business.Service
             // İngilizce about oluşturun ve kaydedin
             var aboutEN = new AboutEN
             {
+                Id = entity.Id,
                 Title = translatedTitleEN,
                 Content = translatedContentEN,
                 ImagePath = entity.ImagePath,
@@ -280,6 +281,7 @@ namespace E_Commerce.Business.Service
             // Arapça about oluşturun ve kaydedin
             var aboutAR = new AboutAR
             {
+                Id = entity.Id,
                 Title = translatedTitleAR,
                 Content = translatedContentAR,
                 ImagePath = entity.ImagePath,
@@ -293,6 +295,7 @@ namespace E_Commerce.Business.Service
             // Rusça about oluşturun ve kaydedin
             var aboutRU = new AboutRU
             {
+                Id = entity.Id,
                 Title = translatedTitleRU,
                 Content = translatedContentRU,
                 ImagePath = entity.ImagePath,

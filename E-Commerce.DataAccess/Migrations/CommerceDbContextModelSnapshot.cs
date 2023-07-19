@@ -1232,7 +1232,7 @@ namespace E_Commerce.DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("SubCategory");
+                    b.ToTable("SubCategories");
                 });
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.Subscribe", b =>
@@ -1313,7 +1313,7 @@ namespace E_Commerce.DataAccess.Migrations
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.ar.ProductAR", b =>
                 {
-                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                    b.HasOne("E_Commerce.Entity.Concrete.ar.CategoryAR", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1411,7 +1411,7 @@ namespace E_Commerce.DataAccess.Migrations
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.en.ProductEN", b =>
                 {
-                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                    b.HasOne("E_Commerce.Entity.Concrete.en.CategoryEN", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1586,7 +1586,7 @@ namespace E_Commerce.DataAccess.Migrations
 
             modelBuilder.Entity("E_Commerce.Entity.Concrete.ru.ProductRU", b =>
                 {
-                    b.HasOne("E_Commerce.Entity.Concrete.Category", "Category")
+                    b.HasOne("E_Commerce.Entity.Concrete.ru.CategoryRU", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

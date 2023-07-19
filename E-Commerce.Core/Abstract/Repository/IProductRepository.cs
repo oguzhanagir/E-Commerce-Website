@@ -15,5 +15,6 @@ namespace E_Commerce.Core.Abstract.Repository
         IEnumerable<Product> GetNewArrivalsToThree();
         public List<Product> PerformSearch(string query);
         List<SearchResultViewModel> ConvertToViewModel(List<Product> searchResults);
+        int GetLastUsedId();
     }
 }
